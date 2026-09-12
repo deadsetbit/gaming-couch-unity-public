@@ -1,0 +1,1636 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GCPlayerStore&lt;T&gt; | Gaming Couch | 0.1.0-alpha.9 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GCPlayerStore&lt;T&gt; | Gaming Couch | 0.1.0-alpha.9 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="DSB.GC.GCPlayerStore`1">
+
+
+
+  <h1 id="DSB_GC_GCPlayerStore_1" data-uid="DSB.GC.GCPlayerStore`1" class="text-break">
+Class GCPlayerStore&lt;T&gt;  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="DSB.html">DSB</a>.<a class="xref" href="DSB.GC.html">GC</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GCPlayerStore&lt;T&gt; : GCPlayerStoreOutput&lt;T&gt;, GCPlayerStoreInput&lt;T&gt; where T : GCPlayer</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GCPlayerStore&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="GCPlayerStoreOutput-1.html">GCPlayerStoreOutput</a>&lt;T&gt;</div>
+      <div><a class="xref" href="GCPlayerStoreInput-1.html">GCPlayerStoreInput</a>&lt;T&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="DSB_GC_GCPlayerStore_1__ctor_" data-uid="DSB.GC.GCPlayerStore`1.#ctor*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1__ctor" data-uid="DSB.GC.GCPlayerStore`1.#ctor">
+  GCPlayerStore()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerStore()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedBotPlayers_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedBotPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedBotPlayers" data-uid="DSB.GC.GCPlayerStore`1.EliminatedBotPlayers">
+  EliminatedBotPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminatedBot.&quot;, true)]
+public List&lt;T&gt; EliminatedBotPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedBotPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedBotPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedBotPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.EliminatedBotPlayersEnumerable">
+  EliminatedBotPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminatedBot.&quot;, true)]
+public IEnumerable&lt;T&gt; EliminatedBotPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedNonBotPlayers_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedNonBotPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedNonBotPlayers" data-uid="DSB.GC.GCPlayerStore`1.EliminatedNonBotPlayers">
+  EliminatedNonBotPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminatedNonBot.&quot;, true)]
+public List&lt;T&gt; EliminatedNonBotPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedNonBotPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedNonBotPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedNonBotPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.EliminatedNonBotPlayersEnumerable">
+  EliminatedNonBotPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminatedNonBot.&quot;, true)]
+public IEnumerable&lt;T&gt; EliminatedNonBotPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedPlayerCount_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayerCount*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedPlayerCount" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayerCount">
+  EliminatedPlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminated.Count.&quot;, true)]
+public int EliminatedPlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedPlayers_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedPlayers" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayers">
+  EliminatedPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminated; broad eliminated includes permanent and revokable elimination.&quot;, true)]
+public List&lt;T&gt; EliminatedPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_EliminatedPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_EliminatedPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.EliminatedPlayersEnumerable">
+  EliminatedPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminated; broad eliminated includes permanent and revokable elimination.&quot;, true)]
+public IEnumerable&lt;T&gt; EliminatedPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayerCount_" data-uid="DSB.GC.GCPlayerStore`1.PlayerCount*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayerCount" data-uid="DSB.GC.GCPlayerStore`1.PlayerCount">
+  PlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Players.Count.&quot;, true)]
+public int PlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_Players_" data-uid="DSB.GC.GCPlayerStore`1.Players*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_Players" data-uid="DSB.GC.GCPlayerStore`1.Players">
+  Players
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Every player in the store, in the order they were added. This is the store's live list: <a class="xref" href="DSB.GC.GCPlayerStore-1.html#DSB_GC_GCPlayerStore_1_AddPlayer__0_">AddPlayer(T)</a> and <a class="xref" href="DSB.GC.GCPlayerStore-1.html#DSB_GC_GCPlayerStore_1_Clear">Clear()</a> mutate it in place, so snapshot it (<code>.ToList()</code>) before adding or clearing players while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; Players { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersBot">
+  PlayersBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminated_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminated" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminated">
+  PlayersEliminated
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedBot">
+  PlayersEliminatedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedNonBot">
+  PlayersEliminatedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanent_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanent" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanent">
+  PlayersEliminatedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanentBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanentBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanentBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanentBot">
+  PlayersEliminatedPermanentBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedPermanentBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanentNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanentNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedPermanentNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedPermanentNonBot">
+  PlayersEliminatedPermanentNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedPermanentNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokable_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokable" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokable">
+  PlayersEliminatedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokableBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokableBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokableBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokableBot">
+  PlayersEliminatedRevokableBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedRevokableBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokableNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokableNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEliminatedRevokableNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersEliminatedRevokableNonBot">
+  PlayersEliminatedRevokableNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersEliminatedRevokableNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.PlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.PlayersEnumerable">
+  PlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Players.&quot;, true)]
+public IEnumerable&lt;T&gt; PlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinished_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinished*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinished" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinished">
+  PlayersFinished
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinished { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedBot">
+  PlayersFinishedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedNonBot">
+  PlayersFinishedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanent_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanent" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanent">
+  PlayersFinishedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanentBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanentBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanentBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanentBot">
+  PlayersFinishedPermanentBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedPermanentBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanentNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanentNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedPermanentNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedPermanentNonBot">
+  PlayersFinishedPermanentNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedPermanentNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokable_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokable" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokable">
+  PlayersFinishedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokableBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokableBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokableBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokableBot">
+  PlayersFinishedRevokableBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedRevokableBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokableNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokableNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersFinishedRevokableNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersFinishedRevokableNonBot">
+  PlayersFinishedRevokableNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersFinishedRevokableNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersNonBot">
+  PlayersNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersUneliminated_" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersUneliminated" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminated">
+  PlayersUneliminated
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersUneliminated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersUneliminatedBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminatedBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersUneliminatedBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminatedBot">
+  PlayersUneliminatedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersUneliminatedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_PlayersUneliminatedNonBot_" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminatedNonBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_PlayersUneliminatedNonBot" data-uid="DSB.GC.GCPlayerStore`1.PlayersUneliminatedNonBot">
+  PlayersUneliminatedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Live store collection, rebuilt in place on every accepted elimination or finish transition; snapshot it (<code>.ToList()</code>) before mutating player state while enumerating.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; PlayersUneliminatedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedBotPlayers_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedBotPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedBotPlayers" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedBotPlayers">
+  UneliminatedBotPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminatedBot.&quot;, true)]
+public List&lt;T&gt; UneliminatedBotPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedBotPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedBotPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedBotPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedBotPlayersEnumerable">
+  UneliminatedBotPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminatedBot.&quot;, true)]
+public IEnumerable&lt;T&gt; UneliminatedBotPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedNonBotPlayers_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedNonBotPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedNonBotPlayers" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedNonBotPlayers">
+  UneliminatedNonBotPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminatedNonBot.&quot;, true)]
+public List&lt;T&gt; UneliminatedNonBotPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedNonBotPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedNonBotPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedNonBotPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedNonBotPlayersEnumerable">
+  UneliminatedNonBotPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminatedNonBot.&quot;, true)]
+public IEnumerable&lt;T&gt; UneliminatedNonBotPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedPlayerCount_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayerCount*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedPlayerCount" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayerCount">
+  UneliminatedPlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminated.Count.&quot;, true)]
+public int UneliminatedPlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedPlayers_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayers*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedPlayers" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayers">
+  UneliminatedPlayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminated; broad uneliminated means eliminationState is None.&quot;, true)]
+public List&lt;T&gt; UneliminatedPlayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_UneliminatedPlayersEnumerable_" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayersEnumerable*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_UneliminatedPlayersEnumerable" data-uid="DSB.GC.GCPlayerStore`1.UneliminatedPlayersEnumerable">
+  UneliminatedPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminated; broad uneliminated means eliminationState is None.&quot;, true)]
+public IEnumerable&lt;T&gt; UneliminatedPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="DSB_GC_GCPlayerStore_1_AddPlayer_" data-uid="DSB.GC.GCPlayerStore`1.AddPlayer*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_AddPlayer__0_" data-uid="DSB.GC.GCPlayerStore`1.AddPlayer(`0)">
+  AddPlayer(T)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddPlayer(T player)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_Clear_" data-uid="DSB.GC.GCPlayerStore`1.Clear*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_Clear" data-uid="DSB.GC.GCPlayerStore`1.Clear">
+  Clear()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_GetPlayerById_" data-uid="DSB.GC.GCPlayerStore`1.GetPlayerById*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_GetPlayerById_System_Int32_" data-uid="DSB.GC.GCPlayerStore`1.GetPlayerById(System.Int32)">
+  GetPlayerById(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;GetPlayerById has been removed from the game-facing runtime contract. Use GetPlayerByIndex.&quot;, true)]
+public T GetPlayerById(int playerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayerStore_1_GetPlayerByIndex_" data-uid="DSB.GC.GCPlayerStore`1.GetPlayerByIndex*"></a>
+
+  <h3 id="DSB_GC_GCPlayerStore_1_GetPlayerByIndex_System_Int32_" data-uid="DSB.GC.GCPlayerStore`1.GetPlayerByIndex(System.Int32)">
+  GetPlayerByIndex(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the player registered under <code class="paramref">playerIndex</code>, or <code>null</code> when no
+player has that index. Lookup is keyed strictly by player index; it never falls back to list
+position, so an unknown index yields <code>null</code> rather than an unrelated player or an exception.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T GetPlayerByIndex(int playerIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.9" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.9</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
