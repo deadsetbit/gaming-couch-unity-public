@@ -1,0 +1,114 @@
+{
+  "id": "valid-full-roster-seat-color-map",
+  "valid": true,
+  "issues": [],
+  "capture": {
+    "assert": true,
+    "success": true,
+    "entryKey": "duel",
+    "seed": 12345,
+    "players": [
+      {
+        "playerIndex": 0,
+        "type": "player",
+        "color": "pink"
+      },
+      {
+        "playerIndex": 1,
+        "type": "player",
+        "color": "cyan"
+      },
+      {
+        "playerIndex": 2,
+        "type": "player",
+        "color": "yellow"
+      },
+      {
+        "playerIndex": 3,
+        "type": "player",
+        "color": "purple"
+      },
+      {
+        "playerIndex": 4,
+        "type": "player",
+        "color": "red"
+      },
+      {
+        "playerIndex": 5,
+        "type": "player",
+        "color": "green"
+      },
+      {
+        "playerIndex": 6,
+        "type": "player",
+        "color": "blue"
+      },
+      {
+        "playerIndex": 7,
+        "type": "player",
+        "color": "brown"
+      }
+    ],
+    "seatIdentities": [
+      {
+        "sourceSeatIndex": 1,
+        "stableKey": "1",
+        "label": "Seat 1",
+        "playerType": "player",
+        "playerColor": "blue"
+      },
+      {
+        "sourceSeatIndex": 2,
+        "stableKey": "2",
+        "label": "Seat 2",
+        "playerType": "player",
+        "playerColor": "red"
+      },
+      {
+        "sourceSeatIndex": 3,
+        "stableKey": "3",
+        "label": "Seat 3",
+        "playerType": "player",
+        "playerColor": "green"
+      },
+      {
+        "sourceSeatIndex": 4,
+        "stableKey": "4",
+        "label": "Seat 4",
+        "playerType": "player",
+        "playerColor": "yellow"
+      },
+      {
+        "sourceSeatIndex": 5,
+        "stableKey": "5",
+        "label": "Seat 5",
+        "playerType": "player",
+        "playerColor": "purple"
+      },
+      {
+        "sourceSeatIndex": 6,
+        "stableKey": "6",
+        "label": "Seat 6",
+        "playerType": "player",
+        "playerColor": "pink"
+      },
+      {
+        "sourceSeatIndex": 7,
+        "stableKey": "7",
+        "label": "Seat 7",
+        "playerType": "player",
+        "playerColor": "cyan"
+      },
+      {
+        "sourceSeatIndex": 8,
+        "stableKey": "8",
+        "label": "Seat 8",
+        "playerType": "player",
+        "playerColor": "brown"
+      }
+    ]
+  },
+  "write": {
+    "assert": false
+  }
+}

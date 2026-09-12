@@ -1,0 +1,80 @@
+{
+  "id": "preserving-write-unrelated-top-level-fields",
+  "valid": true,
+  "issues": [],
+  "capture": {
+    "assert": false
+  },
+  "write": {
+    "assert": true,
+    "success": true,
+    "resultValid": true,
+    "data": {
+      "devVersion": 2,
+      "entryKey": "coop",
+      "seed": "98765",
+      "seats": [
+        {
+          "name": "P1",
+          "enabled": false,
+          "isBot": false
+        },
+        {
+          "name": "P2",
+          "enabled": true,
+          "isBot": false
+        },
+        {
+          "name": "P3",
+          "enabled": false,
+          "isBot": false
+        },
+        {
+          "name": "P4",
+          "enabled": true,
+          "isBot": false
+        },
+        {
+          "name": "P5",
+          "enabled": false,
+          "isBot": false
+        },
+        {
+          "name": "P6",
+          "enabled": false,
+          "isBot": false
+        },
+        {
+          "name": "P7",
+          "enabled": false,
+          "isBot": false
+        },
+        {
+          "name": "P8",
+          "enabled": false,
+          "isBot": false
+        }
+      ]
+    },
+    "writtenText": {
+      "contains": [
+        "\"unrelatedTopLevel\": \"keep-me\"",
+        "\"nestedUnrelated\": {",
+        "\"id\": \"contract-fixture\""
+      ],
+      "endsWithNewline": true
+    },
+    "readBack": {
+      "assert": true,
+      "valid": true,
+      "devVersion": 2,
+      "entryKey": "coop",
+      "seed": "98765",
+      "seatCount": 8,
+      "enabledSeatIndexes": [
+        2,
+        4
+      ]
+    }
+  }
+}
