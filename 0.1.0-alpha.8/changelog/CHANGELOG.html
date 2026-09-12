@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Changelog | Gaming Couch | 0.1.0-alpha.8 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Changelog | Gaming Couch | 0.1.0-alpha.8 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="changelog">Changelog</h1>
+
+<h2 id="unreleased">[Unreleased]</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>The platform runtime contract and the DevApp / local-play contract now ship with the package, under <code>Documentation~/</code>, and are linked from the README. They are the JS-to-Unity wire spec and the <code>gc.dev.json</code> / <code>gc.platform.json</code> spec; previously they were readable only in the package's own repository.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Documentation, changelog and licence links in the package manifest, and every API reference link in the README, now point into this release's own folder under <code>https://deadsetbit.github.io/gaming-couch-unity-public/</code>. Each release's documentation is published separately and is never overwritten, so a pinned install reads the documentation for the version it actually has rather than for whatever shipped most recently.</li>
+<li>Every documentation page states the version it documents and carries a link to <a href="https://gamingcouch.com">https://gamingcouch.com</a>.</li>
+</ul>
+<h2 id="010-alpha7---2026-09-10">[0.1.0-alpha.7] - 2026-09-10</h2>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Renamed <code>ApplyDevAppInput</code> to <code>ApplyExternalPlayerInput</code>. It is the shared entry point for hosted platform input as well as DevApp input, so the old name described half of what it does. Hosted platform inputs also report as <code>platform_input</code> rather than <code>devapp_input</code> in diagnostics, so the two sources can be told apart.</li>
+<li>Narrowed <code>IGCPlayerStore</code>'s collection properties to <code>IReadOnlyList</code>. <code>GCPlayerStore</code> keeps its <code>List</code> properties and satisfies the interface explicitly, so a game that declares the concrete store and calls <code>List</code> members on it is unaffected. The derived collections are rebuilt whenever a transition is accepted, so enumerating one while eliminating players still throws -- that hazard is now documented per property.</li>
+<li>Wire Example Game asks before moving an existing folder at one of the example paths to the Trash, matching what Create Example Scene has always done. All four entry points -- the menu item, the checklist action, the start-screen action and the method itself -- share one dialog, and declining is reported as a warning rather than a failure. The swap is also a single named undo group, so one undo restores all of it instead of part.</li>
+<li>A reused <code>index.html</code> whose contents do not match the packaged WebGL template is reported as differing instead of being accepted silently, which was hiding template drift across package upgrades. Nothing is overwritten.</li>
+<li>The DevApp connection's <code>serverUrl</code> is no longer a serialized inspector field.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Removed the Codex test bridge (<code>Editor/GamingCouchCodexTestBridge.cs</code>) and its <code>Tools/run-open-unity-tests.py</code> runner. The bridge let an agent run this package's tests inside an already-open Editor by polling a request file under the user's application-data directory. It was internal agent tooling that happened to ship inside the package's <code>Editor/</code> folder, and it was inert for anyone who had not opted in, so removing it changes no package behavior. The <code>.gamingcouch/codex-bridge.enabled</code> marker file and the <code>GAMINGCOUCH_CODEX_TEST_BRIDGE</code> environment variable no longer do anything and can be deleted. The Unity CLI covers package validation (<code>unity test</code>), and its <code>com.unity.pipeline</code> channel is the supported way to drive a live Editor; <code>AGENTS.md</code> documents the flow.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Fixed the package failing to compile on Unity 6000.3 with <code>error CS1061: 'SerializedProperty' does not contain a definition for 'objectReferenceEntityIdValue'</code>. The scene-wiring missing-reference check gated that property behind <code>UNITY_6000_3_OR_NEWER</code>, but while the <code>EntityId</code> type ships in 6000.3, the <code>SerializedProperty.objectReferenceEntityIdValue</code> accessor only arrives in 6000.4. The guard is now <code>UNITY_6000_4_OR_NEWER</code>, which leaves 6000.3 on the deprecated but still available instance-ID path.</li>
+<li>Fixed the Codex test bridge activating in every Editor with this package installed. It was gated behind <code>#if UNITY_INCLUDE_TESTS</code>, which is active in a package consumer's Editor, so simply installing the package started a background file-polling bridge that created directories outside the project, wrote a token manifest into the user's application-data directory, and (on macOS/Linux) tightened permissions there. The bridge is now opt-in per host project -- a <code>.gamingcouch/codex-bridge.enabled</code> marker file or the <code>GAMINGCOUCH_CODEX_TEST_BRIDGE</code> environment variable -- and is completely inert without one.</li>
+<li>Fixed the test bridge restricting a directory it does not own: its permission walk rooted at the local application-data directory itself, so on macOS/Linux it chmod-ed <code>~/.local/share</code> to 0700. It now creates, symlink-rejects and 0700-restricts only <code>&lt;localappdata&gt;/Gaming Couch</code> and below.</li>
+<li>Fixed <code>GamingCouch.Instance.Clear()</code> dropping the run-scoped player-index mapping, which did not reset the run but permanently disarmed it: every later platform inputs message was silently dropped and <code>GameOver()</code> could never submit a placement. The round-reset pattern -- <code>Clear()</code> followed by <code>SetupPlayers</code> without a fresh <code>Play()</code> -- works again.</li>
+<li>Fixed <code>GCPlayerStore.Clear()</code> leaving player game objects alive outside play mode. It called <code>Object.Destroy</code>, which defers outside play mode (and logs &quot;Destroy may not be called from edit mode&quot;), so the store emptied while the objects lingered in the scene. It now destroys immediately outside play mode and iterates a snapshot, so a <code>GCPlayer</code> subclass that touches the store from <code>OnDestroy</code> cannot break the loop mid-clear. Player builds are unaffected -- this only showed up in the Editor and editor tooling.</li>
+<li>Fixed the DevApp devtool router applying zeroed values for keys a message omits. <code>JsonUtility</code> cannot express an absent key, so a payload-less <code>timescale_state</code> was applied as timescale 0 (clamped downstream) and unpaused, silently unpausing a paused game. Missing-key devtool messages are now ignored.</li>
+<li>Fixed the <code>GamingCouch</code> inspector re-running the full Start Screen readiness scan -- disk reads, a whole-scene component walk, GameView reflection and WebGL template stats -- on every repaint. It is now cached and refreshed at most twice a second.</li>
+<li>Fixed customised keyboard bindings resetting silently on package upgrade. The serialized input fields were renamed (<code>a0</code>/<code>a1</code>/<code>b0</code>/<code>b1</code> to <code>axisX</code>/<code>axisY</code>/<code>buttonPrimary</code>/<code>buttonSecondary</code>) with no <code>[FormerlySerializedAs]</code>, so Unity dropped the stored values on deserialize.</li>
+<li>Fixed <code>SetupPlayers</code> aborting mid-roster when a player's <code>type</code> differed in case, for example <code>&quot;Bot&quot;</code>. <code>_InternalSetPlayerProperties</code> used a case-sensitive throwing <code>Enum.Parse</code> while the rest of the roster pipeline used the tolerant resolver, and the rethrow left a deactivated instantiated object behind. It now uses the same resolver.</li>
+<li>Fixed template setup failing outright in a project that contains its own type named <code>GCPlayer</code>. The stock-player lookup returned the first simple-name match across every assembly, so a namesake shadowed the real type; namesakes that fail the base-type check are now skipped.</li>
+<li>Fixed seat names being persisted to <code>gc.dev.json</code> untrimmed. A padded name passed Unity's 1-8 character rule, but the DevApp checks the minimum on the trimmed value and the maximum on the raw one, so it rejected the file -- and that rejection is whole-file: the project dropped to action-required, seat config became uneditable and the local runner refused to start, recoverable only by hand-editing the JSON. Trimming now happens in the draft's file conversion, which write, validation and the dirty comparison all pass through, and an already-padded file reads as dirty on load so applying normalizes it.</li>
+<li>Fixed the game-over result of every run after the first being silently dropped while the DevApp is attached. <code>runId</code> was minted on each WebSocket open and a Unity restart keeps the socket open, so the id never changed between runs -- the DevApp refuses a second game-over for the same id and only clears per-run diagnostics when it changes. The id is now minted once per run, restart included, and survives a reconnect.</li>
+<li>Fixed the runtime rejecting DevApp messages that were not byte-identical to the compact form. The inbound router matched the exact bytes of <code>&quot;type&quot;:&quot;gcdevtool&quot;</code> before parsing, so a pretty-printed or spaced message was dropped. The probe is now a fast path that falls through to the parser, and the payload key probes tolerate whitespace the same way.</li>
+<li>Fixed concurrent <code>SendAsync</code> calls on one <code>ClientWebSocket</code> when two runtime outputs landed in the same frame, which both .NET and Mono reject and which surfaced only through logging that is off by default. Sends now go through one queue drained by a single pump.</li>
+<li>Fixed two races around DevApp reconnects and capped inbound message reassembly. A receive completing just before a close could loop back onto the new socket, and a snapshot coroutine outliving its connection could clear a newer send's in-flight flag; both now bail on a connection epoch. The fragmented-message accumulators grew unbounded until <code>EndOfMessage</code> and are now capped, with the remainder discarded so a truncated tail is never reassembled into a message of its own.</li>
+<li>Fixed a malformed platform pause payload throwing inside the JS-to-Unity dispatch. <code>GamingCouchPause</code> parsed with a throwing <code>bool.Parse</code> while the sibling inputs path was already hardened.</li>
+<li>Fixed <code>GCPlayerStore.Clear()</code> leaving the store half-cleared: it never unsubscribed <code>AcceptedTransition</code>, and a game-destroyed GameObject could abort the loop, after which the next <code>AddPlayer</code> threw.</li>
+<li>Fixed the bake-time JSON writer shipping in player builds. <code>GCRuntimeInfo.cs</code> held an editor-only writer that was not <code>#if</code>-guarded even though only Editor code calls it; it is now wrapped in <code>UNITY_EDITOR</code>.</li>
+<li>Fixed a re-entrant log capture loop with <code>webSocketLogging</code> and full log capture both on: a <code>[GCDevApp][WebSocket]</code> line became a diagnostic, became a runtime message, and was logged again in the same frame.</li>
+<li>Fixed <code>gc.dev.json</code> and the two sidecar files being written non-atomically while external tools and the 0.25s stamp poller read them. All three now write to a temp file and rename.</li>
+<li>Fixed a read-only <code>Assets</code> folder throwing straight out of <code>OnGUI</code>. <code>InstallTemplateFiles</code> caught nothing; filesystem failures are now blocked reasons naming the path. The jslib's runtime-messages, screen-space and setup-hud imports also parsed JSON bare while their siblings wrapped it, so malformed JSON threw out of the bridge.</li>
+<li>Fixed a successful WebGL apply raising a modal error dialog when a row had been deselected. Readiness folded deliberately-skipped rows into its blocking flag; the apply seam now softens its own status when every still-changed row is one the caller deselected, while readiness itself stays honest.</li>
+<li>Fixed the WebGL template shipping a hardcoded <code>&lt;title&gt;App&lt;/title&gt;</code>.</li>
+<li>Fixed the inspector rendering validation issues through a hand-rolled formatter that dropped the gate prefix and path suffix the start-screen window shows, and fixed UNC paths being over-redacted because only drive-absolute paths took the Windows comparison.</li>
+<li>Fixed <code>CS0649</code> appearing in every consumer's console for <code>GCPlayer.playerName</code>.</li>
+<li>Fixed the start screen recomputing its scene list twice per repaint and allocating four <code>GUIStyle</code>s per row, and the pending-setup poller running a full assembly and type sweep on every editor tick on the default template path. The stock player type is now memoized, cached only on success so a tick during compilation stays free to find it later.</li>
+</ul>
+<h2 id="010-alpha6---2026-07-18">[0.1.0-alpha.6] - 2026-07-18</h2>
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Rebaked the WebGL runtime-info payload (<code>Runtime/Resources/GamingCouchRuntimeInfo.json</code>) and package version to <code>0.1.0-alpha.6</code>; <code>gameProtocolVersion</code> stays <code>1</code>.</li>
+</ul>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Added a one-command version-bump release protocol (<code>Tools/bump-version.py</code> plus <code>npm run release:*</code> shortcuts) that bumps <code>package.json</code>, re-bakes the runtime-info payload, verifies, commits, and creates the <code>unity-&lt;version&gt;</code> tag. This is maintainer tooling and does not change package runtime behavior.</li>
+</ul>
+<h3 id="removed-1">Removed</h3>
+<ul>
+<li>Removed the Gaming Couch Unity Template link from the package documentation reference list.</li>
+</ul>
+<h2 id="010-alpha5---2026-07-14">[0.1.0-alpha.5] - 2026-07-14</h2>
+<h3 id="added-2">Added</h3>
+<ul>
+<li>Added a &quot;Gaming Couch scenes&quot; section at the top of the Start Screen that lists project scenes containing a <code>GamingCouch</code> component, highlights the active scene, and lets you open a pre-existing scene without opening each scene to detect it. Unity crash-recovery <code>_Recovery</code> backups are excluded from the list.</li>
+<li>Added a &quot;Wire example game&quot; action (Start Screen button and menu) that upgrades the barebones template scene in place into the full playable example, swapping the listener component and repointing the player prefab without overwriting existing work.</li>
+</ul>
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Restructured the generated example into two self-contained, swappable game scripts sharing one scene: a barebones <code>GCExampleTemplate</code> (wiring demo, stock <code>GCPlayer</code>) and a full <code>GCExampleGame</code> (playable loop, <code>GCExamplePlayer</code>). Each script is itself the platform listener and implements the <code>SendMessage</code> lifecycle methods directly, with no adapter or base class, and the example now compiles against the real runtime API so generation cannot silently drift from it. Renamed <code>GCGameExample</code> to <code>GCExampleGame</code> and <code>GCPlayerExample</code> to <code>GCExamplePlayer</code> accordingly.</li>
+<li>Changed &quot;Create New Example Scene&quot; to reset the example to a single canonical <code>GCExampleScene</code> instead of adding a scene alongside the existing one. The action is now idempotent: it moves previous example scenes and any leftover blocking folders to the Trash (recoverable) and reuses valid existing example scripts and the player prefab rather than deleting and regenerating them.</li>
+<li>Hid the Active Scene Name/Path summary in the Start Screen whenever the active scene already appears in the Gaming Couch scenes list, keeping it only as a fallback for an active scene with no <code>GamingCouch</code> component.</li>
+</ul>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Fixed the WebGL runtime attestation reporting a stale version: the baked <code>Runtime/Resources/GamingCouchRuntimeInfo.json</code> was left at <code>0.1.0-alpha.3</code> after the <code>0.1.0-alpha.4</code> version bump and is now rebaked to match the released package version.</li>
+<li>Fixed editor console noise and IMGUI layout errors during example scene setup by guarding the <code>[ExecuteInEditMode]</code> log initialization behind play mode and running Start Screen actions on the next editor tick instead of mid-<code>OnGUI</code>.</li>
+<li>Fixed example-folder cleanup so it is honestly recoverable: imported folders are moved to the Trash, a raw un-imported folder is removed only when empty, and a non-empty un-imported folder is refused rather than permanently deleted.</li>
+</ul>
+<h2 id="010-alpha4---2026-07-09">[0.1.0-alpha.4] - 2026-07-09</h2>
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Added WebGL runtime-info drift detection: exports now write canonical root <code>gc.runtime-info.json</code>, bake the same payload into an early <code>GamingCouchRegisterRuntimeInfo</code> callback before splash screen, keep <code>GamingCouchInstanceStarted()</code> payload-free, let the hosted SDK fail startup on sidecar/runtime drift, and make upload validation require and validate <code>gc.runtime-info.json</code>.</li>
+<li>Updated Unity build diagnostics: <code>gc.unity-build-info.json</code> now has runtime identity, build environment, host OS diagnostics, and build result sections; upload processing preserves it when present, but upload validation does not require or validate it.</li>
+<li>Documented the Unity package as strict-current at its runtime boundary: hosted play payloads must arrive with current active-player identity, runtime input must use <code>playerIndex</code>, and legacy <code>players[]</code>/<code>playerId</code> adaptation belongs in the Gaming Couch client/SDK before Unity is invoked.</li>
+<li>Clarified that source-seat mapping remains supported for local editor play because seats are local setup, not hosted platform identity.</li>
+<li>Documented retained obsolete Unity APIs as compile-time errors with migration guidance toward <code>GCPlayer.Index</code>, <code>playerIndex</code>, current player-state APIs, and current HUD/runtime-state paths.</li>
+<li>Renamed the clean WebGL export workflow to Gaming Couch web export settings across editor setup code, menus, tests, and documentation.</li>
+</ul>
+<h3 id="removed-2">Removed</h3>
+<ul>
+<li>Removed the right stick input API: <code>GCControllerInputs.rightX</code>/<code>rightY</code> and the underlying <code>a2</code>/<code>a3</code> axis fields no longer exist.</li>
+<li>Removed unused controller input fields <code>b3</code> and DPad <code>b12</code>–<code>b15</code>; <code>leftX</code>/<code>leftY</code> now read the left stick axes only, without DPad fallback.</li>
+</ul>
+<h3 id="release-notes">Release Notes</h3>
+<ul>
+<li>Protocol-version decision: the current recommendation is no <code>gameProtocolVersion</code> bump if client/SDK adapters already translate legacy payloads and send current payloads to this package. Any bump remains a release-owner/user decision based on rollout risk and adapter compatibility.</li>
+</ul>
+<h2 id="010-alpha3---2026-05-26">[0.1.0-alpha.3] - 2026-05-26</h2>
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Added the Gaming Couch Start Screen with quick-start setup actions that scaffold a working example scene from scratch: the <code>GamingCouch</code> object, an example game listener, an example player prefab, generated example scripts, and the scene wiring between them.</li>
+<li>Added Start Screen project-readiness reporting so setup surfaces which pieces are still missing.</li>
+</ul>
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Fixed editor keyboard input priority during local editor play.</li>
+<li>Fixed DevApp runtime game-over and reconnect handling.</li>
+<li>Fixed a WebGL export preview compile error.</li>
+</ul>
+<h2 id="010-alpha2---2026-05-09">[0.1.0-alpha.2] - 2026-05-09</h2>
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Added root <code>gc.dev.json</code> sync for Unity editor local play settings.</li>
+<li>Added a file-backed <code>GamingCouch</code> inspector flow for entry, seed, and eight-seat roster edits.</li>
+<li>Added warning-only <code>gc.platform.json</code> light-read behavior when platform data is missing or invalid.</li>
+<li>Added valid platform data gates for Apply and Play, including Unity platform, selected entry, and entry <code>maxPlayers</code>.</li>
+<li>Added editor Play Mode and Gaming Couch restart gates that auto-apply valid non-conflicted drafts and block invalid or conflicted drafts.</li>
+<li>Added editor-only <code>com.unity.nuget.newtonsoft-json</code> dependency for structured JSON parsing and unknown-field-preserving <code>gc.dev.json</code> writes.</li>
+<li>Added Gaming Couch web export settings documentation for the Unity 6 workflow, project-local template install, release defaults, no-overwrite behavior, warning-only build-target policy, and v1 playtest exclusion.</li>
+</ul>
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>This development line now targets Unity 6 for Gaming Couch web export settings and splash/logo removal.</li>
+<li>Unity editor local play settings now use root <code>gc.dev.json</code> as the source of truth instead of old scene-serialized entry/player settings.</li>
+<li>Unity requires an existing root <code>gc.dev.json</code>; it does not create, bootstrap, or repair local project JSON files.</li>
+<li>Unity editor local playtests may run with one enabled seat even when production platform data declares a higher <code>minPlayers</code>.</li>
+</ul>
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.8" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.8</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
