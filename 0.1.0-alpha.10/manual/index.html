@@ -1,0 +1,556 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | Gaming Couch | 0.1.0-alpha.10 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.10 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<p>Unity integration for the Gaming Couch platform.</p>
+<p>This is the guide for <strong>game developers</strong> building a Unity game for Gaming Couch. It takes you from
+install to a playable example and then documents each topic you need as your game grows.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#how-your-game-runs">How your game runs</a></li>
+<li><a href="#install">Install</a></li>
+<li><a href="#quick-setup">Quick Setup</a></li>
+<li><a href="#the-game-script">The game script</a></li>
+<li><a href="#players-and-colors">Players and colors</a></li>
+<li><a href="#player-inputs">Player inputs</a></li>
+<li><a href="#player-placement">Player placement</a></li>
+<li><a href="#the-hud">The HUD</a></li>
+<li><a href="#game-flow">Game flow</a></li>
+<li><a href="#build-and-upload">Build and upload</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#what-next">What next?</a></li>
+<li><a href="#creating-a-unity-project-from-scratch">Creating a Unity project from scratch</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+<h2 id="how-your-game-runs">How your game runs</h2>
+<p>Gaming Couch runs your game as a WebGL build inside the platform. You do not build any menus, lobby,
+controller UI, or scoreboard yourself — the platform provides them and hands your game everything it
+needs:</p>
+<ul>
+<li><strong>Players and their inputs.</strong> The platform decides who is playing and streams each player's
+controller state to your game. Your game reads players and inputs; it never manages joining,
+leaving, or names.</li>
+<li><strong>The hosted HUD.</strong> Player nametags, the scoreboard, off-screen indicators, points, and meters are
+rendered by the platform. Your game feeds it values through the <code>GCPlayer</code> state calls (<code>SetScore</code>,
+<code>SetLives</code>, and so on); it does not draw any of it.</li>
+<li><strong>Colors.</strong> Each player has an assigned color your game uses to draw that player.</li>
+</ul>
+<p>The lifecycle your game participates in:</p>
+<ol>
+<li><strong>Setup</strong> — the platform tells your game to prepare (load your level/mode). You configure the game
+and HUD, then signal you are done.</li>
+<li><strong>Play</strong> — the platform hands you the round's players and a seed. You spawn the players and start
+the round.</li>
+<li><strong>Playing</strong> — you read inputs each frame and report state changes (score, elimination, finish) so
+the hosted HUD stays in sync.</li>
+<li><strong>Game over</strong> — you tell the platform the final placement.</li>
+</ol>
+<p>The rest of this guide shows how to do each step.</p>
+<h2 id="install">Install</h2>
+<p><strong>Recommended — through DevApp.</strong> DevApp installs this package into your project and keeps it on the
+version the platform expects. Sign in at <a href="https://devspace.gamingcouch.com">devspace.gamingcouch.com</a>
+and bootstrap your game, download DevApp from the <strong>Downloads</strong> page, then add your Unity project
+folder in DevApp and link it to the game. No account yet? Ask for one on
+<a href="https://discord.gg/UqSX9ZGz5u">Discord</a>.</p>
+<p><strong>Manual.</strong> Unity's <em>Package Manager</em> → <em>Add package from git URL</em>, with a release tag:</p>
+<pre><code>https://github.com/deadsetbit/gaming-couch-unity-public.git#unity-&lt;version&gt;
+</code></pre>
+<p>Pick a version from the <a href="https://github.com/deadsetbit/gaming-couch-unity-public/tags">tags</a>.
+Installed this way the version is pinned — Unity offers no update for a git URL, so you move to a
+newer release by editing the tag.</p>
+<p>Either way, follow <a href="#quick-setup">Quick Setup</a> once the package is in the project.</p>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li><strong>Unity 6 (<code>6000.0</code>).</strong> This development line targets Unity 6 so Gaming Couch web export can remove
+the Unity splash/logo branding.</li>
+<li><strong>Web Build Support module</strong> (formerly <em>WebGL Build Support</em>). Not installed by default — add it
+from <em>Unity Hub → (gear on your Unity version) → Add modules → Web Build Support</em>, then reopen the
+project. The Start Screen flags this and links to Unity Hub if the module is missing. Then, from
+<em>Build Settings</em>, switch the platform to Web.</li>
+<li><strong>16:9 aspect ratio.</strong> Fix the Game window to 16:9 (top of the Game window) — the platform is fixed
+to a 16:9 aspect ratio.</li>
+</ul>
+<h2 id="quick-setup">Quick Setup</h2>
+<p>The fastest way to a working scene is the tooling — you do not need to wire anything by hand:</p>
+<ol>
+<li>Open <strong><code>GamingCouch → Start Screen</code></strong>.</li>
+<li>Choose <strong><code>Create New Example Scene</code></strong> (also on the <code>GamingCouch</code> menu directly).</li>
+<li>Press <strong>Play</strong>.</li>
+</ol>
+<p><code>Create New Example Scene</code> offers to save your current scene, creates a fresh scene, wires the
+<code>GamingCouch</code> object, and generates a barebones example <code>Game</code> listener (<code>GCExampleTemplate</code>) plus a
+stock player prefab. The new scene shows an on-screen note in Game View (and logs a clickable console
+message) pointing to the generated <code>GCExampleTemplate</code> file under <code>Assets/GamingCouch/GCExample</code> —
+read it to see the whole platform contract in one file, then grow it into your own game. Players spawn
+only at runtime, so the Game View is otherwise empty until you press Play.</p>
+<blockquote>
+<p><strong>New here? Start from the generated example.</strong> <code>Create New Example Scene</code> gives you
+<code>GCExampleTemplate</code>: a barebones <em>wiring demo</em> — the minimum a listener does to complete the platform
+loop, which you copy and grow into your own game. Want a fuller reference? Run <code>Wire Example Game</code> to
+swap in <code>GCExampleGame</code> + <code>GCExamplePlayer</code>, a small but complete <em>playable loop</em> (scoring, rounds,
+per-player input). The snippets below are the same wiring, isolated topic by topic, for when you set
+up your own scene.</p>
+</blockquote>
+<p>Other menu entries you will use:</p>
+<ul>
+<li><code>GamingCouch → Create GamingCouch GameObject</code> — add just the <code>GamingCouch</code> object to an existing
+scene.</li>
+<li><code>GamingCouch → WebGL Build → …</code> — the web export and build helpers (see <a href="#build-and-upload">Build and upload</a>).</li>
+</ul>
+<h2 id="the-game-script">The game script</h2>
+<p>Your game is driven by one listener script (the &quot;Game&quot; object wired into the <code>GamingCouch</code> object's
+<code>Listener</code> field) plus a player script that extends <code>GCPlayer</code>.</p>
+<p>Declare a player store, typed to your player script, to hold the round's players:</p>
+<pre><code class="lang-C#">using DSB.GC;
+using DSB.GC.Game;
+using DSB.GC.Hud;
+
+// Replace &quot;Player&quot; with your player script name if it differs.
+private GCPlayerStore&lt;Player&gt; playerStore = new GCPlayerStore&lt;Player&gt;();
+</code></pre>
+<p><strong>Setup</strong> — the platform calls <code>GamingCouchSetup</code> when it is time to prepare your game. Load your
+level/mode, configure the game and HUD, then call <code>SetupDone()</code>:</p>
+<pre><code class="lang-C#">private void GamingCouchSetup(GCSetupOptions options)
+{
+    // Load your level / mode based on the options here.
+
+    GamingCouch.Instance.SetupGameVersus(
+        new GCGameVersusSetupOptions()
+        {
+            // How players are ranked — see &quot;Player placement&quot;.
+            placementCriteria = new GCPlacementSortCriteria[] {
+                GCPlacementSortCriteria.EliminatedDescending,
+                GCPlacementSortCriteria.ScoreDescending,
+                GCPlacementSortCriteria.Finished
+            },
+
+            // Configure the hosted HUD — see &quot;The HUD&quot;.
+            hud = new GCGameHudOptions()
+            {
+                players = new GCHudPlayersConfig(),
+                isPlayersAutoUpdateEnabled = true, // default true
+            }
+        }
+    );
+
+    GamingCouch.Instance.SetupDone(); // required when setup is finished
+}
+</code></pre>
+<p><strong>Play</strong> — the platform calls <code>GamingCouchPlay</code> with the round's players. Spawn them and start:</p>
+<pre><code class="lang-C#">private void GamingCouchPlay(GCPlayOptions options)
+{
+    // Instantiates and configures players from the player prefab linked to the GamingCouch object.
+    GamingCouch.Instance.SetupPlayers&lt;Player&gt;(options.players, (player) =&gt;
+    {
+        playerStore.AddPlayer(player);
+    });
+
+    StartMyGameNow();
+}
+</code></pre>
+<p><strong>Game over</strong> — when the round ends:</p>
+<pre><code class="lang-C#">GamingCouch.Instance.GameOver();
+</code></pre>
+<blockquote>
+<p>If you prefer to wire an existing scene by hand instead of using <a href="#quick-setup">Quick Setup</a>: add the
+<code>GamingCouch</code> object (<code>GamingCouch → Create GamingCouch GameObject</code>), create a &quot;Game&quot; object with your
+listener script and link it to the <code>Listener</code> field, and create a player prefab whose script extends
+<code>DSB.GC.GCPlayer</code> and link it to the <code>Player Prefab</code> field.</p>
+</blockquote>
+<h2 id="players-and-colors">Players and colors</h2>
+<p>When a player is instantiated, its game-facing properties are already set. They are available from
+<code>Awake</code> onward: Gaming Couch instantiates the player while it is inactive, sets the properties, and
+only then activates the object, so both <code>Awake</code> and <code>Start</code> see the final values.</p>
+<pre><code class="lang-C#">public class Player : GCPlayer
+{
+    private void Start()
+    {
+        GetComponent&lt;SpriteRenderer&gt;().color = ColorBase;
+    }
+}
+</code></pre>
+<p>Key player properties (see the full list in the <a href="https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/api/DSB.GC.GCPlayer.html">API documentation for GCPlayer</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Index</code></td>
+<td><code>int</code></td>
+<td>Zero-based player index for this round — the identity you use everywhere (inputs, lookups). Platform IDs and player names are <strong>not</strong> available to game code</td>
+</tr>
+<tr>
+<td><code>PlayerType</code> / <code>IsBot</code></td>
+<td>enum / <code>bool</code></td>
+<td>Whether the player is a bot</td>
+</tr>
+<tr>
+<td><code>PlayerSeed</code></td>
+<td><code>int</code></td>
+<td>Per-player deterministic seed</td>
+</tr>
+<tr>
+<td><code>ColorBase</code> / <code>ColorDark</code> / <code>ColorLight</code> / <code>ColorOffWhite</code></td>
+<td><code>Color</code></td>
+<td>Color variants for this player — access on the instance</td>
+</tr>
+<tr>
+<td><code>Score</code> / <code>Lives</code> / <code>Meter</code></td>
+<td><code>int</code></td>
+<td>Current values</td>
+</tr>
+<tr>
+<td><code>Status</code> / <code>StatusText</code></td>
+<td>enum / <code>string</code></td>
+<td>Player status</td>
+</tr>
+<tr>
+<td><code>EliminationState</code> / <code>FinishState</code>, <code>IsEliminated</code>, <code>IsFinished</code>, …</td>
+<td></td>
+<td>Read-only state flags</td>
+</tr>
+</tbody>
+</table>
+<p>Access color variants on the player instance:</p>
+<pre><code class="lang-C#">player.ColorBase
+player.ColorDark
+player.ColorLight
+player.ColorOffWhite
+</code></pre>
+<p><strong>The player store</strong> gives you filtered views of the round's players. <code>playerStore.Players</code> is all of
+them; convenience collections narrow by bot/non-bot and by eliminated/finished (permanent vs
+revokable) state — e.g. <code>PlayersUneliminated</code>, <code>PlayersBot</code>, <code>PlayersFinishedPermanent</code>. Look one up by
+index with <code>playerStore.GetPlayerByIndex(index)</code> (returns <code>null</code> if there is no such player). See the
+<a href="https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/api/DSB.GC.GCPlayerStore-1.html">API documentation for GCPlayerStore</a>
+for the complete set.</p>
+<p><code>GCPlayer</code> also exposes change events (<code>OnScoreChanged</code>, <code>OnLivesChanged</code>, <code>OnMeterChanged</code>,
+<code>OnStatusChanged</code>, <code>OnEliminationStateChanged</code>, <code>OnFinishStateChanged</code>) if you want to react to state
+changes.</p>
+<h2 id="player-inputs">Player inputs</h2>
+<p>Read each player's inputs in your <code>Update</code> loop, addressing players by <code>Index</code>:</p>
+<pre><code class="lang-C#">private void Update()
+{
+    foreach (var player in playerStore.Players)
+    {
+        var inputs = GamingCouch.Instance.GetInputsByPlayerIndex(player.Index);
+        if (inputs == null) continue;
+
+        // Move the player with the left stick and act on the primary button.
+        MyMove(player, inputs.leftX, inputs.leftY);
+        if (inputs.primary) MyJump(player);
+    }
+}
+</code></pre>
+<p><code>GCControllerInputs</code> members:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>leftX</code> / <code>leftY</code></td>
+<td><code>float</code></td>
+<td>Left stick axes, <code>-1.0</code>–<code>1.0</code></td>
+</tr>
+<tr>
+<td><code>primary</code></td>
+<td><code>bool</code></td>
+<td>Primary action button (A on an Xbox-style layout)</td>
+</tr>
+<tr>
+<td><code>secondary</code></td>
+<td><code>bool</code></td>
+<td>Secondary action button (B on an Xbox-style layout)</td>
+</tr>
+<tr>
+<td><code>alt</code></td>
+<td><code>bool</code></td>
+<td>Special/accessibility button — see below</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Design for <code>primary</code>/<code>secondary</code> first.</strong> <code>alt</code> is a special button that should not be used for
+core mechanics (such as combat) because it is less accessible on touch-screen controllers. Use it for
+occasional actions like &quot;reset player&quot; when stuck. It also has <strong>no keyboard mapping in the editor</strong>,
+so you cannot exercise it during local editor play — design your game to work without it.</p>
+</blockquote>
+<h2 id="player-placement">Player placement</h2>
+<p>You do not sort players yourself. Define the ranking in <code>SetupGameVersus</code> via <code>placementCriteria</code>, then
+drive it by calling the <code>GCPlayer</code> state methods. Placement is evaluated by each criterion in order:</p>
+<table>
+<thead>
+<tr>
+<th><code>GCPlacementSortCriteria</code></th>
+<th>Ranks by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Score</code> / <code>ScoreDescending</code></td>
+<td>Score, ascending / descending</td>
+</tr>
+<tr>
+<td><code>Eliminated</code> / <code>EliminatedDescending</code></td>
+<td>Elimination, ascending / descending</td>
+</tr>
+<tr>
+<td><code>Finished</code> / <code>FinishedDescending</code></td>
+<td>Finish, ascending / descending</td>
+</tr>
+</tbody>
+</table>
+<p>Set state with the <code>GCPlayer</code> methods:</p>
+<pre><code class="lang-C#">// Score
+player.SetScore(0, &quot;Dropped all coins&quot;);
+player.AddScore(1, &quot;Collected a coin&quot;);
+player.SubtractScore(2, &quot;Pushed off the edge&quot;);
+
+// Elimination — permanent, or revokable when the player can recover.
+player.SetEliminatedPermanent(&quot;Out of bounds&quot;);
+player.SetEliminatedRevokable(&quot;Tagged&quot;);
+player.SetRevokeEliminated(&quot;Respawned&quot;);
+
+// Finish — permanent, or revokable when finish can be rolled back.
+player.SetFinishedPermanent(&quot;Finish line&quot;);
+player.SetFinishedRevokable(&quot;Checkpoint finish&quot;);
+player.SetRevokeFinished(&quot;Checkpoint invalidated&quot;);
+</code></pre>
+<p>Revokable state counts while active and can be revoked; permanent state cannot.</p>
+<h2 id="the-hud">The HUD</h2>
+<p>The HUD is rendered by the hosted platform from the values you set. You configure it in
+<code>SetupGameVersus</code> and keep it in sync by calling <code>GCPlayer</code> state methods during play.</p>
+<blockquote>
+<p><strong>The HUD only renders inside the Gaming Couch platform.</strong> You cannot see it in the editor or in a
+plain Unity/WebGL build — the only way to verify HUD behavior is to run in the platform.</p>
+</blockquote>
+<p><strong>Configure the Players HUD.</strong> <code>GCHudPlayersConfig</code> chooses how each player's value and meter are
+shown:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>valueTypeEnum</code></td>
+<td><code>PlayersHudValueType</code></td>
+<td><code>None</code>, <code>PointsSmall</code>, <code>Status</code>, <code>Text</code>, <code>Lives</code></td>
+</tr>
+<tr>
+<td><code>meterTypeEnum</code></td>
+<td><code>PlayersHudMeterType</code></td>
+<td><code>None</code>, <code>Bar</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-C#">GamingCouch.Instance.SetupGameVersus(
+    new GCGameVersusSetupOptions()
+    {
+        maxScore = 10, // required when showing points
+        hud = new GCGameHudOptions()
+        {
+            players = new GCHudPlayersConfig()
+            {
+                valueTypeEnum = PlayersHudValueType.PointsSmall,
+            }
+        }
+    }
+);
+</code></pre>
+<ul>
+<li>With <code>PointsSmall</code>, the HUD reflects the score you set via <code>SetScore</code>/<code>AddScore</code>.</li>
+<li>With <code>Lives</code>, it reflects <code>SetLives</code>; with <code>Status</code>, it reflects <code>SetStatus</code>.</li>
+<li>With <code>Text</code>, override <code>GetHudValueText()</code> on your <code>GCPlayer</code> subclass to return the string to show.</li>
+<li>A <code>Bar</code> meter reflects <code>SetMeter</code> (<code>0</code>–<code>100</code>).</li>
+</ul>
+<blockquote>
+<p><strong><code>PointsSmall</code> requires <code>maxScore</code>.</strong> Setting <code>valueTypeEnum = PlayersHudValueType.PointsSmall</code>
+without a <code>maxScore</code> greater than <code>0</code> throws at setup. Set <code>maxScore</code> (or <code>SetGameMaxScore</code>) when you
+show points.</p>
+</blockquote>
+<p><strong>Player position and overhead anchors.</strong> So the HUD can place per-player overlays, attach small
+components to your player objects that report where each player is on screen:</p>
+<ul>
+<li><strong><code>GCPlayerPosition</code></strong> — add it to a transform that marks the player's world position. It drives the
+off-screen indicator (when a player leaves the view) and lets the HUD dim a player's elements when
+they are underneath the HUD. Options: <code>disableWhenEliminated</code> (default on), <code>disableWhenOutOfScreen</code>.
+If it is not on the player itself, set the player with <code>GCPlayerPosition.SetPlayer(player)</code>.</li>
+<li><strong><code>GCPlayerOverhead</code></strong> — add it (often to a child object offset above the player's head) to anchor
+the player's overhead HUD such as nametag, points, and meter. If it is not on the player itself, set
+the player with <code>GCPlayerOverhead.SetPlayer(player)</code>.</li>
+</ul>
+<h2 id="game-flow">Game flow</h2>
+<p>The platform calls your listener in this order: <code>GamingCouchSetup</code> (prepare) → you call <code>SetupDone()</code>
+→ <code>GamingCouchPlay</code> (spawn players, start) → you call <code>GameOver()</code> when the round ends. The platform
+also pauses/resumes your game on its own; you do not draw the pause UI.</p>
+<p><code>GamingCouch.Instance</code> exposes the run-level helpers you need along the way — for example <code>SetupPlayers</code>
+(with an optional spawn-position/rotation overload via <code>GCPlayerSpawnProperties</code>), <code>SetGameMaxScore</code>,
+<code>GameSeed</code>, and <code>Restart</code>. See the
+<a href="https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/api/DSB.GC.GamingCouch.html">API documentation</a> for the
+full surface.</p>
+<h2 id="build-and-upload">Build and upload</h2>
+<p>When you are ready to build for Gaming Couch:</p>
+<ol>
+<li>Run <strong><code>GamingCouch → WebGL Build → Preview web export settings</code></strong> (or the web export row on the Start
+Screen). It shows a preview of the build-target, template, splash/logo, and release-profile changes
+it will apply, then applies them. The installer is no-overwrite: it fills in missing template files
+but keeps your local template edits. If it cannot switch the build target to WebGL automatically, it
+leaves a warning — run it again or switch to WebGL manually before building.</li>
+<li>Build your WebGL project. For quick iteration, <code>Preview dev build settings (fast build)</code> and
+<code>Preview release build settings (slow build)</code> prepare fast/production profiles.</li>
+<li>Upload the build output. Alongside <code>index.html</code>, a Gaming Couch build writes the small metadata
+files the platform needs at upload — they are generated for you; you do not edit them by hand.</li>
+</ol>
+<h2 id="faq">FAQ</h2>
+<p><strong>Is online multiplayer supported?</strong>
+Online multiplayer is not currently supported.</p>
+<p>To test online it can be feasible over screen sharing in discord, google meet, etc. for this, you can share the mobile controller from the Gaming Couch DevApp or upload the build to gaming couch.</p>
+<p><strong>Can I test the HUD in the editor?</strong>
+Currently no. The HUD is rendered by the hosted platform, so it only appears when your game runs inside Gaming
+Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The HUD</a>.</p>
+<p>This is planned for the near future to be able to visualize the HUD in the editor as well.</p>
+<h2 id="what-next">What next?</h2>
+<ul>
+<li>Grow the generated example: after <a href="#quick-setup">Quick Setup</a>, read and extend <code>GCExampleTemplate</code> under <code>Assets/GamingCouch/GCExample</code> (or run <code>Wire Example Game</code> for the fuller <code>GCExampleGame</code> + <code>GCExamplePlayer</code>).</li>
+<li>Browse the full <a href="https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/api">API documentation</a>.</li>
+</ul>
+<h2 id="creating-a-unity-project-from-scratch">Creating a Unity project from scratch</h2>
+<p>To set up a new project from scratch:</p>
+<ul>
+<li>Create a new Unity project with the &quot;Universal 3D&quot; (URP) template, or optionally &quot;Universal 2D&quot; (URP).</li>
+<li>Follow <a href="#install">Install</a> and <a href="#quick-setup">Quick Setup</a>.</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<p><strong>For game developers</strong></p>
+<ul>
+<li>This README — the integration guide.</li>
+<li><a href="https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/api">API documentation</a> — generated per-member reference.</li>
+<li>Example project — generate one inside the Unity editor with <code>GamingCouch → Create New Example Scene</code>; it creates an editable <code>GCExampleTemplate</code> under <code>Assets/GamingCouch/GCExample</code> (run <code>GamingCouch → Wire Example Game</code> for the full <code>GCExampleGame</code> + <code>GCExamplePlayer</code>).</li>
+</ul>
+<p><strong>Internal (platform &amp; DevApp maintainers)</strong></p>
+<ul>
+<li><a href="Documentation%7E/platform-runtime-contract.md">Platform runtime contract</a> — the JS↔Unity wire spec.</li>
+<li><a href="Documentation%7E/devapp-local-play-contract.md">DevApp / local-play contract</a> — <code>gc.dev.json</code>/<code>gc.platform.json</code> schemas and the DevApp protocol.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.10" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.10</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

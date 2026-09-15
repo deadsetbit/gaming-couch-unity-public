@@ -1,0 +1,2146 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GCPlayer | Gaming Couch | 0.1.0-alpha.10 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GCPlayer | Gaming Couch | 0.1.0-alpha.10 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="DSB.GC.GCPlayer">
+
+
+
+  <h1 id="DSB_GC_GCPlayer" data-uid="DSB.GC.GCPlayer" class="text-break">
+Class GCPlayer  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="DSB.html">DSB</a>.<a class="xref" href="DSB.GC.html">GC</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GCPlayer : MonoBehaviour</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GCPlayer</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnEliminationStateChanged" data-uid="DSB.GC.GCPlayer.OnEliminationStateChanged">
+  OnEliminationStateChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;GCPlayerEliminationStateChangedEventArgs&gt; OnEliminationStateChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="DSB.GC.GCPlayerEliminationStateChangedEventArgs.html">GCPlayerEliminationStateChangedEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnFinishStateChanged" data-uid="DSB.GC.GCPlayer.OnFinishStateChanged">
+  OnFinishStateChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;GCPlayerFinishStateChangedEventArgs&gt; OnFinishStateChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="DSB.GC.GCPlayerFinishStateChangedEventArgs.html">GCPlayerFinishStateChangedEventArgs</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnLivesChanged" data-uid="DSB.GC.GCPlayer.OnLivesChanged">
+  OnLivesChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;int, int, string&gt; OnLivesChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnMeterChanged" data-uid="DSB.GC.GCPlayer.OnMeterChanged">
+  OnMeterChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;int, int, string&gt; OnMeterChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnScoreChanged" data-uid="DSB.GC.GCPlayer.OnScoreChanged">
+  OnScoreChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;int, int, string&gt; OnScoreChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_OnStatusChanged" data-uid="DSB.GC.GCPlayer.OnStatusChanged">
+  OnStatusChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;GCPlayerStatus, string, string&gt; OnStatusChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="DSB.GC.GCPlayerStatus.html">GCPlayerStatus</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="DSB_GC_GCPlayer_PlayerType" data-uid="DSB.GC.GCPlayer.PlayerType">
+  PlayerType
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerType PlayerType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="DSB.GC.GCPlayerType.html">GCPlayerType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="DSB_GC_GCPlayer_ColorBase_" data-uid="DSB.GC.GCPlayer.ColorBase*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorBase" data-uid="DSB.GC.GCPlayer.ColorBase">
+  ColorBase
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>GamingCouch player color &quot;base&quot; variant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color ColorBase { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_ColorDark_" data-uid="DSB.GC.GCPlayer.ColorDark*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorDark" data-uid="DSB.GC.GCPlayer.ColorDark">
+  ColorDark
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>GamingCouch player color &quot;dark&quot; variant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color ColorDark { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_ColorEnum_" data-uid="DSB.GC.GCPlayer.ColorEnum*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorEnum" data-uid="DSB.GC.GCPlayer.ColorEnum">
+  ColorEnum
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerColor ColorEnum { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="DSB.GC.GCPlayerColor.html">GCPlayerColor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_ColorLight_" data-uid="DSB.GC.GCPlayer.ColorLight*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorLight" data-uid="DSB.GC.GCPlayer.ColorLight">
+  ColorLight
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>GamingCouch player color &quot;light&quot; variant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color ColorLight { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_ColorName_" data-uid="DSB.GC.GCPlayer.ColorName*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorName" data-uid="DSB.GC.GCPlayer.ColorName">
+  ColorName
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ColorName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_ColorOffWhite_" data-uid="DSB.GC.GCPlayer.ColorOffWhite*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_ColorOffWhite" data-uid="DSB.GC.GCPlayer.ColorOffWhite">
+  ColorOffWhite
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>GamingCouch player color &quot;off-white&quot; variant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color ColorOffWhite { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_EliminationState_" data-uid="DSB.GC.GCPlayer.EliminationState*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_EliminationState" data-uid="DSB.GC.GCPlayer.EliminationState">
+  EliminationState
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerEliminationState EliminationState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="DSB.GC.GCPlayerEliminationState.html">GCPlayerEliminationState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_FinishState_" data-uid="DSB.GC.GCPlayer.FinishState*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_FinishState" data-uid="DSB.GC.GCPlayer.FinishState">
+  FinishState
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerFinishState FinishState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="DSB.GC.GCPlayerFinishState.html">GCPlayerFinishState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_FinishedTime_" data-uid="DSB.GC.GCPlayer.FinishedTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_FinishedTime" data-uid="DSB.GC.GCPlayer.FinishedTime">
+  FinishedTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removed. Use LastSetFinishedGameTime or the explicit permanent/revokable timestamp properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use LastSetFinishedGameTime, LastSetFinishedPermanentGameTime, or LastSetFinishedRevokableGameTime.&quot;, true)]
+public float FinishedTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Id_" data-uid="DSB.GC.GCPlayer.Id*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Id" data-uid="DSB.GC.GCPlayer.Id">
+  Id
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removed. Use Index for game-facing player identity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;GCPlayer.Id has been removed from the game-facing runtime contract. Use GCPlayer.Index.&quot;, true)]
+public int Id { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Index_" data-uid="DSB.GC.GCPlayer.Index*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Index" data-uid="DSB.GC.GCPlayer.Index">
+  Index
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsBot_" data-uid="DSB.GC.GCPlayer.IsBot*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsBot" data-uid="DSB.GC.GCPlayer.IsBot">
+  IsBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsEliminated_" data-uid="DSB.GC.GCPlayer.IsEliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsEliminated" data-uid="DSB.GC.GCPlayer.IsEliminated">
+  IsEliminated
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the player's broad eliminated status.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEliminated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsEliminatedPermanent_" data-uid="DSB.GC.GCPlayer.IsEliminatedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsEliminatedPermanent" data-uid="DSB.GC.GCPlayer.IsEliminatedPermanent">
+  IsEliminatedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEliminatedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsEliminatedRevokable_" data-uid="DSB.GC.GCPlayer.IsEliminatedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsEliminatedRevokable" data-uid="DSB.GC.GCPlayer.IsEliminatedRevokable">
+  IsEliminatedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEliminatedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsFinished_" data-uid="DSB.GC.GCPlayer.IsFinished*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsFinished" data-uid="DSB.GC.GCPlayer.IsFinished">
+  IsFinished
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFinished { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsFinishedPermanent_" data-uid="DSB.GC.GCPlayer.IsFinishedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsFinishedPermanent" data-uid="DSB.GC.GCPlayer.IsFinishedPermanent">
+  IsFinishedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFinishedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_IsFinishedRevokable_" data-uid="DSB.GC.GCPlayer.IsFinishedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_IsFinishedRevokable" data-uid="DSB.GC.GCPlayer.IsFinishedRevokable">
+  IsFinishedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFinishedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetEliminatedGameTime_" data-uid="DSB.GC.GCPlayer.LastSetEliminatedGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetEliminatedGameTime" data-uid="DSB.GC.GCPlayer.LastSetEliminatedGameTime">
+  LastSetEliminatedGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetEliminatedGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetEliminatedPermanentGameTime_" data-uid="DSB.GC.GCPlayer.LastSetEliminatedPermanentGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetEliminatedPermanentGameTime" data-uid="DSB.GC.GCPlayer.LastSetEliminatedPermanentGameTime">
+  LastSetEliminatedPermanentGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetEliminatedPermanentGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetEliminatedRevokableGameTime_" data-uid="DSB.GC.GCPlayer.LastSetEliminatedRevokableGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetEliminatedRevokableGameTime" data-uid="DSB.GC.GCPlayer.LastSetEliminatedRevokableGameTime">
+  LastSetEliminatedRevokableGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetEliminatedRevokableGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetEliminatedTime_" data-uid="DSB.GC.GCPlayer.LastSetEliminatedTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetEliminatedTime" data-uid="DSB.GC.GCPlayer.LastSetEliminatedTime">
+  LastSetEliminatedTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removed. Use LastSetEliminatedGameTime or the explicit permanent/revokable timestamp properties.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use LastSetEliminatedGameTime, LastSetEliminatedPermanentGameTime, or LastSetEliminatedRevokableGameTime.&quot;, true)]
+public float LastSetEliminatedTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetFinishedGameTime_" data-uid="DSB.GC.GCPlayer.LastSetFinishedGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetFinishedGameTime" data-uid="DSB.GC.GCPlayer.LastSetFinishedGameTime">
+  LastSetFinishedGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetFinishedGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetFinishedPermanentGameTime_" data-uid="DSB.GC.GCPlayer.LastSetFinishedPermanentGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetFinishedPermanentGameTime" data-uid="DSB.GC.GCPlayer.LastSetFinishedPermanentGameTime">
+  LastSetFinishedPermanentGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetFinishedPermanentGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetFinishedRevokableGameTime_" data-uid="DSB.GC.GCPlayer.LastSetFinishedRevokableGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetFinishedRevokableGameTime" data-uid="DSB.GC.GCPlayer.LastSetFinishedRevokableGameTime">
+  LastSetFinishedRevokableGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetFinishedRevokableGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetRevokeEliminatedGameTime_" data-uid="DSB.GC.GCPlayer.LastSetRevokeEliminatedGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetRevokeEliminatedGameTime" data-uid="DSB.GC.GCPlayer.LastSetRevokeEliminatedGameTime">
+  LastSetRevokeEliminatedGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetRevokeEliminatedGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetRevokeFinishedGameTime_" data-uid="DSB.GC.GCPlayer.LastSetRevokeFinishedGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetRevokeFinishedGameTime" data-uid="DSB.GC.GCPlayer.LastSetRevokeFinishedGameTime">
+  LastSetRevokeFinishedGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetRevokeFinishedGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetRevokeGameTime_" data-uid="DSB.GC.GCPlayer.LastSetRevokeGameTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetRevokeGameTime" data-uid="DSB.GC.GCPlayer.LastSetRevokeGameTime">
+  LastSetRevokeGameTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LastSetRevokeGameTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_LastSetUneliminatedTime_" data-uid="DSB.GC.GCPlayer.LastSetUneliminatedTime*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_LastSetUneliminatedTime" data-uid="DSB.GC.GCPlayer.LastSetUneliminatedTime">
+  LastSetUneliminatedTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removed. Use LastSetRevokeEliminatedGameTime.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use LastSetRevokeEliminatedGameTime.&quot;, true)]
+public float LastSetUneliminatedTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Lives_" data-uid="DSB.GC.GCPlayer.Lives*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Lives" data-uid="DSB.GC.GCPlayer.Lives">
+  Lives
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the player's lives. Depending on the GCPlacementSortCriteria used, this can be used to determine the player's placement.
+If hudAutoUpdate is true, the changes will be reflected in the HUD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Lives { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Meter_" data-uid="DSB.GC.GCPlayer.Meter*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Meter" data-uid="DSB.GC.GCPlayer.Meter">
+  Meter
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the player's meter value (-1-100).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Meter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_PlayerName_" data-uid="DSB.GC.GCPlayer.PlayerName*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_PlayerName" data-uid="DSB.GC.GCPlayer.PlayerName">
+  PlayerName
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removed. Player names are platform-owned and are not exposed to Unity game code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;GCPlayer.PlayerName has been removed from the game-facing runtime contract. Player names are platform-owned.&quot;, true)]
+public string PlayerName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_PlayerSeed_" data-uid="DSB.GC.GCPlayer.PlayerSeed*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_PlayerSeed" data-uid="DSB.GC.GCPlayer.PlayerSeed">
+  PlayerSeed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deterministic player-specific seed generated by the platform from player-owned identity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PlayerSeed { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Score_" data-uid="DSB.GC.GCPlayer.Score*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Score" data-uid="DSB.GC.GCPlayer.Score">
+  Score
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the player's score.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Score { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_Status_" data-uid="DSB.GC.GCPlayer.Status*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_Status" data-uid="DSB.GC.GCPlayer.Status">
+  Status
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Player status.
+This can be utilized in different ways to indicate the player's status in the game.
+If Players HUD is set to display status text, this will be reflected there as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GCPlayerStatus Status { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="DSB.GC.GCPlayerStatus.html">GCPlayerStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_StatusText_" data-uid="DSB.GC.GCPlayer.StatusText*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_StatusText" data-uid="DSB.GC.GCPlayer.StatusText">
+  StatusText
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Players status text.
+This can be utilized in different ways to indicate the player's status in the game.
+If Players HUD is set to display status text, this will be reflected there as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StatusText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="DSB_GC_GCPlayer_AddLives_" data-uid="DSB.GC.GCPlayer.AddLives*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_AddLives_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.AddLives(System.Int32,System.String)">
+  AddLives(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add to player's lives.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddLives(int lives, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lives</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_AddScore_" data-uid="DSB.GC.GCPlayer.AddScore*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_AddScore_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.AddScore(System.Int32,System.String)">
+  AddScore(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add to player's score. Depending on the GCPlacementSortCriteria used, this can be used to determine the player's placement.
+If hudAutoUpdate is true, the changes will be reflected in the HUD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddScore(int score, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>score</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_GetHudStatusText_" data-uid="DSB.GC.GCPlayer.GetHudStatusText*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_GetHudStatusText" data-uid="DSB.GC.GCPlayer.GetHudStatusText">
+  GetHudStatusText()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the player's HUD status text to be displayed in the HUD.
+This will include the status text and status.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetHudStatusText()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_GetHudValueText_" data-uid="DSB.GC.GCPlayer.GetHudValueText*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_GetHudValueText" data-uid="DSB.GC.GCPlayer.GetHudValueText">
+  GetHudValueText()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the player's HUD value to be displayed in the HUD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string GetHudValueText()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetEliminated_" data-uid="DSB.GC.GCPlayer.SetEliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetEliminated_System_String_" data-uid="DSB.GC.GCPlayer.SetEliminated(System.String)">
+  SetEliminated(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;SetEliminated has been removed from the game-facing runtime contract. Choose SetEliminatedPermanent(reason) or SetEliminatedRevokable(reason).&quot;, true)]
+public void SetEliminated(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetEliminatedPermanent_" data-uid="DSB.GC.GCPlayer.SetEliminatedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetEliminatedPermanent_System_String_" data-uid="DSB.GC.GCPlayer.SetEliminatedPermanent(System.String)">
+  SetEliminatedPermanent(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEliminatedPermanent(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetEliminatedRevokable_" data-uid="DSB.GC.GCPlayer.SetEliminatedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetEliminatedRevokable_System_String_" data-uid="DSB.GC.GCPlayer.SetEliminatedRevokable(System.String)">
+  SetEliminatedRevokable(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEliminatedRevokable(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetFinished_" data-uid="DSB.GC.GCPlayer.SetFinished*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetFinished_System_String_" data-uid="DSB.GC.GCPlayer.SetFinished(System.String)">
+  SetFinished(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;SetFinished has been removed from the game-facing runtime contract. Choose SetFinishedPermanent(reason) or SetFinishedRevokable(reason).&quot;, true)]
+public void SetFinished(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetFinishedPermanent_" data-uid="DSB.GC.GCPlayer.SetFinishedPermanent*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetFinishedPermanent_System_String_" data-uid="DSB.GC.GCPlayer.SetFinishedPermanent(System.String)">
+  SetFinishedPermanent(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFinishedPermanent(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetFinishedRevokable_" data-uid="DSB.GC.GCPlayer.SetFinishedRevokable*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetFinishedRevokable_System_String_" data-uid="DSB.GC.GCPlayer.SetFinishedRevokable(System.String)">
+  SetFinishedRevokable(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFinishedRevokable(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetLives_" data-uid="DSB.GC.GCPlayer.SetLives*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetLives_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.SetLives(System.Int32,System.String)">
+  SetLives(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the player's lives.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetLives(int newLives, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newLives</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetMeter_" data-uid="DSB.GC.GCPlayer.SetMeter*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetMeter_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.SetMeter(System.Int32,System.String)">
+  SetMeter(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the player's meter value ranging from -1 to 100. Depending on the HUD configuration, this will be displayed in the HUD.
+Set value to -1 to hide the meter from the HUD (if meter is configured to be displayed in the HUD).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMeter(int newMeter, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newMeter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetRevokeEliminated_" data-uid="DSB.GC.GCPlayer.SetRevokeEliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetRevokeEliminated_System_String_" data-uid="DSB.GC.GCPlayer.SetRevokeEliminated(System.String)">
+  SetRevokeEliminated(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRevokeEliminated(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetRevokeFinished_" data-uid="DSB.GC.GCPlayer.SetRevokeFinished*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetRevokeFinished_System_String_" data-uid="DSB.GC.GCPlayer.SetRevokeFinished(System.String)">
+  SetRevokeFinished(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRevokeFinished(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetScore_" data-uid="DSB.GC.GCPlayer.SetScore*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetScore_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.SetScore(System.Int32,System.String)">
+  SetScore(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the player's score. Depending on the GCPlacementSortCriteria used, this can be used to determine the player's placement.
+If hudAutoUpdate is true, the changes will be reflected in the HUD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetScore(int newScore, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newScore</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetStatus_" data-uid="DSB.GC.GCPlayer.SetStatus*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetStatus_DSB_GC_GCPlayerStatus_System_String_System_String_" data-uid="DSB.GC.GCPlayer.SetStatus(DSB.GC.GCPlayerStatus,System.String,System.String)">
+  SetStatus(GCPlayerStatus, string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the player's status and status text.
+This status is displayed in the Players HUD if the HUD is configured to display the status.
+Player status HUD color will be set based on the status and text can be anything game specific.
+Example:
+In parking game, while player is finding a spot:
+SetStatus(PlayerStatus.Pending, &quot;Finding a spot&quot;);</p>
+<p>When spot is found:
+SetStatus(PlayerStatus.Success, &quot;Parked!&quot;);</p>
+<p>If left without spot:
+SetStatus(PlayerStatus.Failure, &quot;Sadge :(&quot;);</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetStatus(GCPlayerStatus status, string statusText, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>status</code> <a class="xref" href="DSB.GC.GCPlayerStatus.html">GCPlayerStatus</a></dt>
+    <dd></dd>
+    <dt><code>statusText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SetUneliminated_" data-uid="DSB.GC.GCPlayer.SetUneliminated*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SetUneliminated_System_String_" data-uid="DSB.GC.GCPlayer.SetUneliminated(System.String)">
+  SetUneliminated(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;SetUneliminated has been removed from the game-facing runtime contract. Use SetRevokeEliminated(reason) for revokable elimination.&quot;, true)]
+public void SetUneliminated(string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SubtractLives_" data-uid="DSB.GC.GCPlayer.SubtractLives*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SubtractLives_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.SubtractLives(System.Int32,System.String)">
+  SubtractLives(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtract from player's lives.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractLives(int lives, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lives</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="DSB_GC_GCPlayer_SubtractScore_" data-uid="DSB.GC.GCPlayer.SubtractScore*"></a>
+
+  <h3 id="DSB_GC_GCPlayer_SubtractScore_System_Int32_System_String_" data-uid="DSB.GC.GCPlayer.SubtractScore(System.Int32,System.String)">
+  SubtractScore(int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtract from player's score. Depending on the GCPlacementSortCriteria used, this can be used to determine the player's placement.
+If hudAutoUpdate is true, the changes will be reflected in the HUD.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractScore(int score, string reason)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>score</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>reason</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.10" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.10</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

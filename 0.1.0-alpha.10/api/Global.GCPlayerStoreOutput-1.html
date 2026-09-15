@@ -1,0 +1,1191 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface GCPlayerStoreOutput&lt;T&gt; | Gaming Couch | 0.1.0-alpha.10 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface GCPlayerStoreOutput&lt;T&gt; | Gaming Couch | 0.1.0-alpha.10 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Global.GCPlayerStoreOutput`1">
+
+
+
+  <h1 id="Global_GCPlayerStoreOutput_1" data-uid="Global.GCPlayerStoreOutput`1" class="text-break">
+Interface GCPlayerStoreOutput&lt;T&gt;  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Global.html">Global</a></dd></dl>
+  
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface GCPlayerStoreOutput&lt;T&gt; where T : GCPlayer</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Global_GCPlayerStoreOutput_1_EliminatedPlayerCount_" data-uid="Global.GCPlayerStoreOutput`1.EliminatedPlayerCount*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_EliminatedPlayerCount" data-uid="Global.GCPlayerStoreOutput`1.EliminatedPlayerCount">
+  EliminatedPlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminated.Count.&quot;, true)]
+int EliminatedPlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_EliminatedPlayersEnumerable_" data-uid="Global.GCPlayerStoreOutput`1.EliminatedPlayersEnumerable*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_EliminatedPlayersEnumerable" data-uid="Global.GCPlayerStoreOutput`1.EliminatedPlayersEnumerable">
+  EliminatedPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersEliminated; broad eliminated includes permanent and revokable elimination.&quot;, true)]
+IEnumerable&lt;T&gt; EliminatedPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayerCount_" data-uid="Global.GCPlayerStoreOutput`1.PlayerCount*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayerCount" data-uid="Global.GCPlayerStoreOutput`1.PlayerCount">
+  PlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Players.Count.&quot;, true)]
+int PlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_Players_" data-uid="Global.GCPlayerStoreOutput`1.Players*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_Players" data-uid="Global.GCPlayerStoreOutput`1.Players">
+  Players
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; Players { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersBot">
+  PlayersBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminated_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminated*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminated" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminated">
+  PlayersEliminated
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedBot">
+  PlayersEliminatedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedNonBot">
+  PlayersEliminatedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanent_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanent*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanent" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanent">
+  PlayersEliminatedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanentBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanentBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanentBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanentBot">
+  PlayersEliminatedPermanentBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedPermanentBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanentNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanentNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedPermanentNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedPermanentNonBot">
+  PlayersEliminatedPermanentNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedPermanentNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokable_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokable*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokable" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokable">
+  PlayersEliminatedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokableBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokableBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokableBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokableBot">
+  PlayersEliminatedRevokableBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedRevokableBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokableNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokableNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEliminatedRevokableNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersEliminatedRevokableNonBot">
+  PlayersEliminatedRevokableNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersEliminatedRevokableNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersEnumerable_" data-uid="Global.GCPlayerStoreOutput`1.PlayersEnumerable*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersEnumerable" data-uid="Global.GCPlayerStoreOutput`1.PlayersEnumerable">
+  PlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Players.&quot;, true)]
+IEnumerable&lt;T&gt; PlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinished_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinished*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinished" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinished">
+  PlayersFinished
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinished { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedBot">
+  PlayersFinishedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedNonBot">
+  PlayersFinishedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanent_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanent*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanent" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanent">
+  PlayersFinishedPermanent
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedPermanent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanentBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanentBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanentBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanentBot">
+  PlayersFinishedPermanentBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedPermanentBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanentNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanentNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedPermanentNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedPermanentNonBot">
+  PlayersFinishedPermanentNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedPermanentNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokable_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokable*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokable" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokable">
+  PlayersFinishedRevokable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedRevokable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokableBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokableBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokableBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokableBot">
+  PlayersFinishedRevokableBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedRevokableBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokableNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokableNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersFinishedRevokableNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersFinishedRevokableNonBot">
+  PlayersFinishedRevokableNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersFinishedRevokableNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersNonBot">
+  PlayersNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersUneliminated_" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminated*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersUneliminated" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminated">
+  PlayersUneliminated
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersUneliminated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersUneliminatedBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminatedBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersUneliminatedBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminatedBot">
+  PlayersUneliminatedBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersUneliminatedBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_PlayersUneliminatedNonBot_" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminatedNonBot*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_PlayersUneliminatedNonBot" data-uid="Global.GCPlayerStoreOutput`1.PlayersUneliminatedNonBot">
+  PlayersUneliminatedNonBot
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IReadOnlyList&lt;T&gt; PlayersUneliminatedNonBot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_UneliminatedPlayerCount_" data-uid="Global.GCPlayerStoreOutput`1.UneliminatedPlayerCount*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_UneliminatedPlayerCount" data-uid="Global.GCPlayerStoreOutput`1.UneliminatedPlayerCount">
+  UneliminatedPlayerCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminated.Count.&quot;, true)]
+int UneliminatedPlayerCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_UneliminatedPlayersEnumerable_" data-uid="Global.GCPlayerStoreOutput`1.UneliminatedPlayersEnumerable*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_UneliminatedPlayersEnumerable" data-uid="Global.GCPlayerStoreOutput`1.UneliminatedPlayersEnumerable">
+  UneliminatedPlayersEnumerable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use PlayersUneliminated; broad uneliminated means eliminationState is None.&quot;, true)]
+IEnumerable&lt;T&gt; UneliminatedPlayersEnumerable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Global_GCPlayerStoreOutput_1_Clear_" data-uid="Global.GCPlayerStoreOutput`1.Clear*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_Clear" data-uid="Global.GCPlayerStoreOutput`1.Clear">
+  Clear()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_GetPlayerById_" data-uid="Global.GCPlayerStoreOutput`1.GetPlayerById*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_GetPlayerById_System_Int32_" data-uid="Global.GCPlayerStoreOutput`1.GetPlayerById(System.Int32)">
+  GetPlayerById(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;GetPlayerById has been removed from the game-facing runtime contract. Use GetPlayerByIndex.&quot;, true)]
+T GetPlayerById(int playerId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Global_GCPlayerStoreOutput_1_GetPlayerByIndex_" data-uid="Global.GCPlayerStoreOutput`1.GetPlayerByIndex*"></a>
+
+  <h3 id="Global_GCPlayerStoreOutput_1_GetPlayerByIndex_System_Int32_" data-uid="Global.GCPlayerStoreOutput`1.GetPlayerByIndex(System.Int32)">
+  GetPlayerByIndex(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the player with the given index, or <code>null</code> when no player has that index.
+The lookup never falls back to list position, so an unknown index returns <code>null</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetPlayerByIndex(int playerIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.10" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.10</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
