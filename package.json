@@ -1,0 +1,25 @@
+{
+          "name": "com.dsb.gamingcouch",
+          "version": "0.1.0-alpha.10",
+          "displayName": "Gaming Couch",
+          "description": "Integrate Unity game with Gaming Couch platform.",
+          "unity": "6000.0",
+          "documentationUrl": "https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/",
+          "changelogUrl": "https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/changelog/CHANGELOG.html",
+          "license": "Apache-2.0",
+          "licensesUrl": "https://deadsetbit.github.io/gaming-couch-unity-public/0.1.0-alpha.10/license/LICENSE.html",
+          "dependencies": {
+                    "com.unity.nuget.newtonsoft-json": "3.2.1"
+          },
+          "keywords": [
+                    "gaming-couch",
+                    "unity",
+                    "webgl",
+                    "local-multiplayer"
+          ],
+          "author": {
+                    "name": "DSB",
+                    "email": "info@deadsetbit.com",
+                    "url": "https://deadsetbit.com/"
+          }
+}
