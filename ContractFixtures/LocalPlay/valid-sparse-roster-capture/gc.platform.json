@@ -1,0 +1,23 @@
+{
+  "platformDataVersion": 1,
+  "game": {
+    "key": "contract-game",
+    "name": "Contract Game",
+    "entries": {
+      "duel": {
+        "name": "Contract Entry",
+        "minPlayers": 1,
+        "maxPlayers": 4,
+        "botSupport": true
+      }
+    }
+  },
+  "platform": {
+    "id": "unity"
+  },
+  "properties": {
+    "colors": {
+      "players": {}
+    }
+  }
+}

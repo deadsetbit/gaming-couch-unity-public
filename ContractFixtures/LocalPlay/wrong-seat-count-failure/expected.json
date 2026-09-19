@@ -1,0 +1,16 @@
+{
+  "id": "wrong-seat-count-failure",
+  "valid": false,
+  "issues": [
+    {
+      "code": "InvalidSeatCount",
+      "severity": "Error"
+    }
+  ],
+  "capture": {
+    "assert": false
+  },
+  "write": {
+    "assert": false
+  }
+}
