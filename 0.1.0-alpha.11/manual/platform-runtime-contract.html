@@ -1,0 +1,1113 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Platform runtime contract (JS ↔ Unity wire spec) | Gaming Couch | 0.1.0-alpha.11 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Platform runtime contract (JS ↔ Unity wire spec) | Gaming Couch | 0.1.0-alpha.11 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+      <link rel="canonical" href="https://deadsetbit.github.io/gaming-couch-unity-public/latest/manual/platform-runtime-contract.html">
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="platform-runtime-contract-js--unity-wire-spec">Platform runtime contract (JS ↔ Unity wire spec)</h1>
+
+<blockquote>
+<p><strong>Internal: Gaming Couch platform (client/SDK) maintainers — game developers do not need this.</strong>
+&quot;Internal&quot; is an audience label, not secrecy — this document ships with the package.
+Third-party game developers should read the package <a href="../README.md">README</a> instead; nothing
+here is required to build and ship a game. This document is the complete wire contract between the Gaming Couch
+JavaScript host (client/SDK) and this Unity package.</p>
+</blockquote>
+<p>This is a living contract reference. Every schema below carries <code>file:line</code> provenance against the
+package's code (line numbers are pointers — the named type/method is the durable anchor). It states
+the <em>shape</em>, not the <em>why</em>: decision rationale lives in the package repository's architecture decision
+records, which are internal and do not ship with the package.</p>
+<p>JSON examples use <strong>placeholder</strong> package identity values (e.g. <code>com.example.game</code>, <code>1.2.3</code>): the real
+<code>package.json</code> name/version is never copied into documentation, so a release cannot leave these examples
+stale. <code>platform</code> (<code>&quot;unity&quot;</code>) and <code>gameProtocolVersion</code> (<code>1</code>) are protocol constants, not package metadata,
+and are shown literally.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#1-boot-sendmessage-surface-and-lifecycle-order">1. Boot SendMessage surface and lifecycle order</a></li>
+<li><a href="#2-gcsetupoptions-setup-payload">2. <code>GCSetupOptions</code> (setup payload)</a></li>
+<li><a href="#3-gcplayoptions-play-payload">3. <code>GCPlayOptions</code> (play payload)</a></li>
+<li><a href="#4-boot-roster-validation">4. Boot roster validation</a></li>
+<li><a href="#5-platformdata--gcplatformruntimeview">5. <code>platformData</code> — <code>GCPlatformRuntimeView</code></a></li>
+<li><a href="#6-input-wire-format-and-button-semantics">6. Input wire format and button semantics</a></li>
+<li><a href="#7-runtime_messages-envelope-records-and-payloads">7. <code>runtime_messages</code> envelope, records, and payloads</a></li>
+<li><a href="#8-gcdiagnostic-payload-and-code-catalog">8. <code>gc.diagnostic</code> payload and code catalog</a></li>
+<li><a href="#9-screen_space-envelope-and-anchors">9. <code>screen_space</code> envelope and anchors</a></li>
+<li><a href="#10-jslib-bridge--windowgamingcouch-callbacks">10. jslib bridge — <code>window.gamingCouch*</code> callbacks</a></li>
+<li><a href="#11-sidecars-and-template-gating">11. Sidecars and template gating</a></li>
+<li><a href="#12-web-export-template-contract">12. Web export template contract</a></li>
+<li><a href="#13-gameprotocolversion-policy">13. <code>gameProtocolVersion</code> policy</a></li>
+<li><a href="#14-upload-validation-cross-repo-expectation">14. Upload validation (cross-repo expectation)</a></li>
+<li><a href="#appendix-a-unsupported-online-multiplayer-surface">Appendix A. Unsupported online-multiplayer surface</a></li>
+</ul>
+<hr>
+<h2 id="1-boot-sendmessage-surface-and-lifecycle-order">1. Boot SendMessage surface and lifecycle order</h2>
+<p>The host drives Unity through <code>unityInstance.SendMessage(&quot;GamingCouch&quot;, &quot;&lt;method&gt;&quot;, &lt;arg&gt;)</code>. The
+receiving methods live on the <code>GamingCouch</code> component (<code>Runtime/GamingCouch.cs</code>, region &quot;Methods
+called by the GamingCouch platform&quot;, L244–561). They are <code>private</code>; <code>SendMessage</code> reaches them by name.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Host → Unity (<code>SendMessage</code>)</th>
+<th>Arg</th>
+<th>Effect</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>GamingCouchSetupOptions</code></td>
+<td><code>GCSetupOptions</code> JSON string</td>
+<td>Stored only; <strong>not</strong> forwarded to the game yet (waits for <code>Start</code> so Unity is initialized and the splash shows)</td>
+<td><code>GamingCouch.cs:248</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>GamingCouchSetup</code></td>
+<td><em>(none)</em></td>
+<td>Forwards the stored options to the game listener's <code>GamingCouchSetup(GCSetupOptions)</code></td>
+<td><code>GamingCouch.cs:277</code>, forward at <code>:298</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>GamingCouchPlay</code></td>
+<td><code>GCPlayOptions</code> JSON string</td>
+<td>Parses and forwards to the game listener's <code>GamingCouchPlay(GCPlayOptions)</code></td>
+<td><code>GamingCouch.cs:328</code>, forward at <code>:434</code></td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>GamingCouchPause</code></td>
+<td><code>&quot;true&quot;</code> / <code>&quot;false&quot;</code></td>
+<td>Toggles pause; sets <code>Time.timeScale</code> to 0 when paused</td>
+<td><code>GamingCouch.cs:353</code></td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>GamingCouchInputs</code></td>
+<td><code>&quot;playerIndex\|inputsJson&quot;</code></td>
+<td>Per-player input frame (see §6)</td>
+<td><code>GamingCouch.cs:518</code></td>
+</tr>
+</tbody>
+</table>
+<p>Unity → host signals during this flow are the jslib callbacks in §10.</p>
+<p><strong>Lifecycle order (happy path):</strong></p>
+<ol>
+<li>WebGL build loads. A <code>[RuntimeInitializeOnLoadMethod(BeforeSplashScreen)]</code> bootstrap forwards the
+baked runtime identity to <code>window.gamingCouchRegisterRuntimeInfo</code> (and optional
+<code>window.gamingCouchRegisterUnityBuildInfo</code>); <code>GamingCouchInstanceStarted()</code> fires as a payload-free
+startup signal (<code>GamingCouch.cs:223</code>).</li>
+<li>Host sends <code>GamingCouchSetupOptions</code> (stored) → then <code>GamingCouchSetup</code>.</li>
+<li>Game listener's <code>GamingCouchSetup</code> loads its mode/level, calls
+<code>GamingCouch.Instance.SetupGameVersus(...)</code> and then <code>SetupDone()</code>, which signals
+<code>window.gamingCouchSetupDone()</code>.</li>
+<li>Host sends <code>GamingCouchPlay</code>. Game listener's <code>GamingCouchPlay</code> spawns players
+(<code>SetupPlayers&lt;T&gt;</code>) and starts the round.</li>
+<li>During play the host streams inputs (<code>GamingCouchInputs</code>) and pause toggles (<code>GamingCouchPause</code>);
+Unity streams <code>runtime_messages</code> and <code>screen_space</code> outward (§7, §9).</li>
+<li><code>GameOver()</code> emits the terminal <code>game_over</code> runtime message (§7).</li>
+</ol>
+<p>The identity boundary is strict-current: the package accepts only current identity, and adapting
+legacy identity is the client/SDK's job.</p>
+<hr>
+<h2 id="2-gcsetupoptions-setup-payload">2. <code>GCSetupOptions</code> (setup payload)</h2>
+<p>Deserialized by <code>GCSetupOptions.CreateFromJSON</code> (<code>Runtime/GCSetupOptions.cs:6-16</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td>int enum <code>GCMode</code></td>
+<td><code>1</code> = Development, <code>2</code> = Production (<code>GamingCouch.cs:23</code>). Defaults to Production</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td>uint</td>
+<td>Host-assigned client id</td>
+</tr>
+<tr>
+<td><code>isServer</code></td>
+<td>bool</td>
+<td>Server role flag (online-multiplayer only; see Appendix A)</td>
+</tr>
+<tr>
+<td><code>gameModeId</code></td>
+<td>string</td>
+<td>Game-mode selector passed through to the game</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{ &quot;mode&quot;: 2, &quot;clientId&quot;: 1, &quot;isServer&quot;: false, &quot;gameModeId&quot;: &quot;versus&quot; }
+</code></pre>
+<hr>
+<h2 id="3-gcplayoptions-play-payload">3. <code>GCPlayOptions</code> (play payload)</h2>
+<p>Deserialized by <code>GCPlayOptions.CreateFromJSON</code> (<code>Runtime/GCPlayOptions.cs</code>; class <code>GCPlayOptions</code>
+fields at L512–529, <code>CreateFromJSON</code> at L534–572). Parsing goes through the internal
+<code>GCPlayOptionsTransport</code> (L931–938).</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>players</code></td>
+<td><code>GCPlayerOptions[]</code></td>
+<td>Round roster. Required: the <code>players</code> field must be present and non-null (see §4). Note: <code>CreateFromJSON</code> does <strong>not</strong> reject an empty <code>[]</code> — an empty array parses and skips index validation (<code>GCPlayOptions.cs:553-562</code>); the platform is expected to send at least one player</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>int</td>
+<td>Round seed, <code>1</code>–<code>999999</code>; deterministic level/FX generation (L513–527)</td>
+</tr>
+<tr>
+<td><code>runtimeOutput</code></td>
+<td><code>GCRuntimeOutputOptions</code></td>
+<td>Output toggles; defaults applied if omitted</td>
+</tr>
+<tr>
+<td><code>platformData</code></td>
+<td><code>GCPlatformRuntimeView</code></td>
+<td>Platform metadata view; falls back to a &quot;missing&quot; view if absent (see §5)</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>GCPlayerOptions</code></strong> (<code>GCPlayOptions.cs:11-17</code>) — one roster entry:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>playerIndex</code></td>
+<td>int</td>
+<td>Zero-based, dense, run-scoped participant index (the only public player identity)</td>
+</tr>
+<tr>
+<td><code>playerSeed</code></td>
+<td>int</td>
+<td>Deterministic per-player seed, <code>1</code>–<code>999999</code> — the same range as <code>seed</code>. The platform generates it inside that range (SDK <code>UnityPlayerIdentityMap.createUnityPlayerSeed</code>, <code>(fnv1a32(name) % 999999) + 1</code>); an out-of-range value is normalized rather than rejected (<code>GCPlayerSeed.NormalizeOrFallback</code>, <code>Runtime/GCPlayerSeed.cs:16-29</code>)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Parsed to <code>GCPlayerType</code> (<code>player</code>, <code>bot</code>; the enum also has a default <code>unset</code>, <code>GamingCouch.cs:29</code>)</td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>string</td>
+<td>Parsed to <code>GCPlayerColor</code> (<code>blue red green yellow purple pink cyan brown</code>, <code>GamingCouch.cs:27</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>GCRuntimeOutputOptions</code></strong> (<code>GCPlayOptions.cs:19-25</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stateSnapshots</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enables <code>runtime_messages</code> state output</td>
+</tr>
+<tr>
+<td><code>screenSpace</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Enables <code>screen_space</code> output</td>
+</tr>
+<tr>
+<td><code>runtimeLogCapture</code></td>
+<td>string</td>
+<td><code>&quot;off&quot;</code></td>
+<td>One of <code>off</code>, <code>error_only</code>, <code>warning_and_error</code>, <code>full</code> (<code>GCRuntimeUnityLogCaptureMode</code>, L27-34). The parser also accepts the legacy aliases <code>error</code> → <code>error_only</code> and <code>warningAndError</code> → <code>warning_and_error</code> (<code>GCUnityLogCapture.NormalizeMode</code>)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;players&quot;: [
+    { &quot;playerIndex&quot;: 0, &quot;playerSeed&quot;: 111, &quot;type&quot;: &quot;player&quot;, &quot;color&quot;: &quot;blue&quot; },
+    { &quot;playerIndex&quot;: 1, &quot;playerSeed&quot;: 222, &quot;type&quot;: &quot;bot&quot;,    &quot;color&quot;: &quot;red&quot;  }
+  ],
+  &quot;seed&quot;: 424242,
+  &quot;runtimeOutput&quot;: { &quot;stateSnapshots&quot;: true, &quot;screenSpace&quot;: true, &quot;runtimeLogCapture&quot;: &quot;off&quot; },
+  &quot;platformData&quot;: { &quot;…&quot;: &quot;see section 5&quot; }
+}
+</code></pre>
+<blockquote>
+<p><strong>Cross-repo note (client/SDK):</strong> <code>platformData</code> arrives <strong>inside</strong> this <code>GamingCouchPlay</code> payload,
+not as a separate message.</p>
+</blockquote>
+<blockquote>
+<p><strong>Known cross-repo discrepancy — <code>seed</code> ranges disagree.</strong> Hosted play generates and validates both
+<code>seed</code> and <code>playerSeed</code> inside <code>1</code>–<code>999999</code> (SDK <code>ACTIVE_RUN_SEED</code> in
+<code>sdk/src/plugins/platform/unity/adapters/UnityPlayerIdentityMap.ts</code>), and this package rejects a
+<code>gc.dev.json</code> seed outside that range as a validation error (<code>GCDevJsonFile.MaxSeed</code>; see the
+<a href="devapp-local-play-contract.html#1-gcdevjson-schema">DevApp local-play contract §1</a>). The DevApp's
+run-configuration UI, however, accepts and randomizes a fixed <strong>round</strong> seed anywhere in
+<code>1</code>–<code>Number.MAX_SAFE_INTEGER</code> (<code>RUN_CONFIGURATION_MAX_FIXED_SEED</code> in
+<code>devspace/devapp/src/frontend/ui/domain/runConfiguration/runConfiguration.ts</code>), so a DevApp-chosen
+seed above <code>999999</code> is written to <code>gc.dev.json</code> and then refused by this package. This is a <code>seed</code>
+mismatch only — <code>playerSeed</code> is unaffected — and the fix belongs in the DevApp, not here.</p>
+</blockquote>
+<hr>
+<h2 id="4-boot-roster-validation">4. Boot roster validation</h2>
+<p><code>GCPlayOptions.CreateFromJSON</code> rejects malformed rosters before the game sees them (constants at
+<code>GCPlayOptions.cs:497-510</code>; checks at L534–639):</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Error message constant</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Roster present</td>
+<td><code>MissingPlayersPayloadErrorMessage</code></td>
+<td>No top-level <code>players</code> field, or null</td>
+</tr>
+<tr>
+<td>No legacy entries</td>
+<td><code>LegacyPlayersPayloadErrorMessage</code></td>
+<td>Any <code>players[]</code> object contains <code>playerId</code> or <code>name</code> (raw JSON scan, L601-605)</td>
+</tr>
+<tr>
+<td><code>playerIndex</code> present</td>
+<td><code>MissingPlayerIndexPayloadErrorMessage</code></td>
+<td>A <code>players[]</code> object omits <code>playerIndex</code></td>
+</tr>
+<tr>
+<td>Dense, in range</td>
+<td><code>DensePlayerIndexPayloadErrorMessage</code></td>
+<td>Any <code>playerIndex &lt; 0</code> or <code>&gt;= players.length</code> (L621-639)</td>
+</tr>
+<tr>
+<td>Unique</td>
+<td><code>DuplicatePlayerIndexPayloadErrorMessage</code></td>
+<td>Duplicate <code>playerIndex</code> values</td>
+</tr>
+</tbody>
+</table>
+<p>Legacy <code>playerId</code>/<code>name</code> roster adaptation is <strong>not</strong> performed here — the client/SDK must translate
+before invoking Unity.</p>
+<hr>
+<h2 id="5-platformdata--gcplatformruntimeview">5. <code>platformData</code> — <code>GCPlatformRuntimeView</code></h2>
+<p>Full shape at <code>GCPlayOptions.cs</code>, class <code>GCPlatformRuntimeView</code> (L43–172) and its nested types.
+This is the runtime-facing projection of <code>gc.platform.json</code>; the <strong>capture/producer</strong> side of that
+schema is owned by the <a href="devapp-local-play-contract.html">DevApp local-play contract</a>. When platform
+data is missing or invalid, Unity substitutes a read-only fallback view (see
+<a href="devapp-local-play-contract.html#4-fallback-platform-view">DevApp local-play contract §4</a>).</p>
+<p><strong><code>GCPlatformRuntimeView</code></strong> (L43-58):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schemaVersion</code></td>
+<td>int</td>
+<td>Current <code>1</code> (<code>CurrentSchemaVersion</code>, L46)</td>
+</tr>
+<tr>
+<td><code>validationState</code></td>
+<td>string</td>
+<td><code>valid</code> / <code>missing</code> / <code>invalid</code> (<code>GCPlatformRuntimeValidationState</code>, L36-41)</td>
+</tr>
+<tr>
+<td><code>fallbackActive</code></td>
+<td>bool</td>
+<td><code>true</code> when the fallback view is in effect</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>GCPlatformRuntimeSource</code></td>
+<td>Provenance of the metadata</td>
+</tr>
+<tr>
+<td><code>game</code></td>
+<td><code>GCPlatformRuntimeGame</code></td>
+<td><code>{ key, name }</code> (L232-252)</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td><code>GCPlatformRuntimePlatform</code></td>
+<td><code>{ id }</code>; <code>id</code> is <code>&quot;unity&quot;</code> (L254-272)</td>
+</tr>
+<tr>
+<td><code>selectedEntryKey</code></td>
+<td>string</td>
+<td>Selected entry; <code>&quot;notdefined&quot;</code> in fallback</td>
+</tr>
+<tr>
+<td><code>entries</code></td>
+<td><code>GCPlatformRuntimeEntry[]</code></td>
+<td>Available entries</td>
+</tr>
+<tr>
+<td><code>playerColors</code></td>
+<td><code>GCPlatformRuntimePlayerColors</code></td>
+<td>Per-color RGB triples</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>GCPlatformRuntimeSource</code></strong> (L174-229):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fileName</code></td>
+<td>string</td>
+<td><code>&quot;gc.platform.json&quot;</code></td>
+</tr>
+<tr>
+<td><code>platformDataVersion</code></td>
+<td>int</td>
+<td>The version declared by <code>gc.platform.json</code>, including on a fallback view when that field parsed; <code>-1</code> (<code>PlatformDataVersionUnavailable</code>) only when no version could be read at all. A version concept <strong>distinct</strong> from <code>gameProtocolVersion</code> and the sidecar <code>schemaVersion</code></td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Source path (may be null)</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>Fallback/validation message (may be null)</td>
+</tr>
+<tr>
+<td><code>fieldName</code></td>
+<td>string</td>
+<td>Offending field for invalid data (may be null)</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>GCPlatformRuntimeEntry</code></strong> (L274-320):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entryKey</code></td>
+<td>string</td>
+<td>Entry id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td><code>minPlayers</code></td>
+<td>int</td>
+<td>Production minimum (not locally enforced; see DevApp contract)</td>
+</tr>
+<tr>
+<td><code>maxPlayers</code></td>
+<td>int</td>
+<td>Maximum enabled seats</td>
+</tr>
+<tr>
+<td><code>botSupport</code></td>
+<td>bool</td>
+<td>Whether bots are allowed on this entry</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>GCPlatformRuntimePlayerColors</code></strong> (L384-492) has one field per built-in color
+(<code>blue red green yellow purple pink cyan brown</code>), each a <strong><code>GCPlatformRuntimePlayerColor</code></strong> (L322-382):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code> (serialized key <code>base</code>; C# field is <code>@base</code>)</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code></td>
+</tr>
+<tr>
+<td><code>mutedDarker</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fallback view values</strong> (<code>CreateFallbackMissing</code> / <code>GCPlatformRuntimeEntry.Fallback</code>, L83-112, L302-311):
+<code>validationState</code> <code>missing</code>, <code>fallbackActive</code> <code>true</code>, <code>game</code>/<code>selectedEntryKey</code> <code>notdefined</code>, one entry
+<code>notdefined</code> with <code>minPlayers 1 / maxPlayers 8 / botSupport true</code>, and default player colors.</p>
+<p><code>source.platformDataVersion</code> is <strong>not</strong> forced to <code>-1</code> on a fallback view: when the file parsed far
+enough to read a <code>platformDataVersion</code>, the fallback reports that declared version alongside
+<code>fallbackActive: true</code> and the <code>invalid</code>/<code>missing</code> state (<code>BuildFallback</code>,
+<code>Editor/GCPlatformDataFile.cs</code>); <code>-1</code> is reserved for the case where no version could be read — a
+missing file, or a file that failed before that field. <code>fallbackActive</code>/<code>validationState</code> already say
+&quot;do not trust this data&quot;, so the declared version is the more useful debugging signal, where a magic
+<code>-1</code> that no consumer reads would only invite mistaking the sentinel for a real version. Runtime
+normalization only floors the value at <code>-1</code> (<code>GCPlatformRuntimeSource.NormalizeForRuntime</code>, L220-227).</p>
+<pre><code class="lang-json">{
+  &quot;schemaVersion&quot;: 1,
+  &quot;validationState&quot;: &quot;valid&quot;,
+  &quot;fallbackActive&quot;: false,
+  &quot;source&quot;: { &quot;fileName&quot;: &quot;gc.platform.json&quot;, &quot;platformDataVersion&quot;: 3, &quot;path&quot;: null, &quot;message&quot;: null, &quot;fieldName&quot;: null },
+  &quot;game&quot;: { &quot;key&quot;: &quot;my-game&quot;, &quot;name&quot;: &quot;My Game&quot; },
+  &quot;platform&quot;: { &quot;id&quot;: &quot;unity&quot; },
+  &quot;selectedEntryKey&quot;: &quot;versus&quot;,
+  &quot;entries&quot;: [ { &quot;entryKey&quot;: &quot;versus&quot;, &quot;name&quot;: &quot;Versus&quot;, &quot;minPlayers&quot;: 2, &quot;maxPlayers&quot;: 8, &quot;botSupport&quot;: true } ],
+  &quot;playerColors&quot;: { &quot;blue&quot;: { &quot;base&quot;: [0,0,0], &quot;muted&quot;: [0,0,0], &quot;mutedDarker&quot;: [0,0,0] }, &quot;…&quot;: {} }
+}
+</code></pre>
+<hr>
+<h2 id="6-input-wire-format-and-button-semantics">6. Input wire format and button semantics</h2>
+<p>Per-player input arrives as <code>GamingCouchInputs(&quot;playerIndex|inputsJson&quot;)</code>. The message is split on
+<code>|</code>; <code>playerIndex</code> is parsed invariant-culture / <code>NumberStyles.None</code>; a malformed message is dropped,
+not thrown (<code>GamingCouch.cs:518-560</code>, parser <code>TryParsePlayerInputMessage</code> at <code>:537</code>). <code>inputsJson</code>
+deserializes to <code>GCControllerInputsData</code> (<code>Runtime/GCControllerInputsData.cs:13-40</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Wire field</th>
+<th>Type</th>
+<th>Exposed to games as</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a0</code></td>
+<td>float</td>
+<td><code>GCControllerInputs.leftX</code></td>
+<td><code>GCControllerInputs.cs:25</code></td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td>float</td>
+<td><code>GCControllerInputs.leftY</code></td>
+<td><code>GCControllerInputs.cs:31</code></td>
+</tr>
+<tr>
+<td><code>b0</code></td>
+<td>int <code>0/1</code></td>
+<td><code>GCControllerInputs.primary</code> (<code>b0 == 1</code>)</td>
+<td><code>GCControllerInputs.cs:35</code></td>
+</tr>
+<tr>
+<td><code>b1</code></td>
+<td>int <code>0/1</code></td>
+<td><code>GCControllerInputs.secondary</code> (<code>b1 == 1</code>)</td>
+<td><code>GCControllerInputs.cs:39</code></td>
+</tr>
+<tr>
+<td><code>b2</code></td>
+<td>int <code>0/1</code></td>
+<td><code>GCControllerInputs.alt</code> (<code>b2 == 1</code>)</td>
+<td><code>GCControllerInputs.cs:49</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Buttons are integers <code>0/1</code> on the wire, not booleans</strong> — the package compares <code>== 1</code>. Axes are
+floats, <code>-1.0</code>–<code>1.0</code>.</p>
+<p><code>b2</code>/<code>alt</code> is present on the wire but is <strong>never originated by this package in the editor</strong> — there is
+no keyboard binding for it in local play (editor input mapping at <code>GamingCouch.cs</code>, <code>ApplyDevAppInput</code>
+path). The physical/touch mapping of <code>b2</code> (which button, on which controller) is owned by the client
+repo, not this package. Game-facing semantics for <code>alt</code> (an accessibility button, not for core
+mechanics) live in the package <a href="../README.md#player-inputs">README</a> and the <code>GCControllerInputs.alt</code>
+XML docs.</p>
+<p>Example message: <code>0|{&quot;a0&quot;:-1.0,&quot;a1&quot;:0.0,&quot;b0&quot;:1,&quot;b1&quot;:0,&quot;b2&quot;:0}</code></p>
+<hr>
+<h2 id="7-runtime_messages-envelope-records-and-payloads">7. <code>runtime_messages</code> envelope, records, and payloads</h2>
+<p>Runtime state and diagnostics flow out through <code>window.gamingCouchRuntimeMessages</code> as batched
+envelopes.</p>
+<p><strong>Transition records are an ordered history and are never coalesced.</strong> Every accepted player
+state change is queued as its own transition record in occurrence order, so an eliminate-then-
+respawn cannot collapse into &quot;nothing changed&quot;. Only latest-state projections — state snapshots
+and HUD output — coalesce to the current value at a flush. Batch caps may change <em>when</em> a flush
+happens but never remove or merge a transition record. A consumer needing history reads the
+transition records; one needing current truth reads snapshots, <strong>and must not infer from a single
+snapshot that no intermediate changes occurred</strong>. Duplicate-value requests are rejected as no-ops
+at the transition gate, so the stream carries only real changes.</p>
+<p>Builder:
+<code>Runtime/RuntimeMessages/GCRuntimeMessages.cs</code>.</p>
+<p><strong>Envelope</strong> (<code>BuildEnvelopeJson</code>, L787-817):</p>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;runtime_messages&quot;, &quot;v&quot;: 1, &quot;messages&quot;: [ /* records */ ] }
+</code></pre>
+<p><strong>Record</strong> (<code>GCRuntimeMessageRecord.ToJson</code>, L592-658):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>gc.player</code> / <code>gc.state</code> / <code>gc.game</code> / <code>gc.diagnostic</code> (<code>GCRuntimeMessageTypes</code>, L16-22)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>See message-name table below</td>
+</tr>
+<tr>
+<td><code>seq</code></td>
+<td>long</td>
+<td>One-based sequence within the active run</td>
+</tr>
+<tr>
+<td><code>ms</code></td>
+<td>long</td>
+<td>Milliseconds since run start (non-negative)</td>
+</tr>
+<tr>
+<td><code>playerIndex</code></td>
+<td>int</td>
+<td><strong>Optional</strong> — present only for player-scoped messages</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>object</td>
+<td>Payload; shape depends on <code>type</code>/<code>name</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message names</strong> (<code>GCRuntimeMessageNames</code>, L24-34):
+<code>snapshot</code>, <code>score_changed</code>, <code>lives_changed</code>, <code>status_changed</code>, <code>meter_changed</code>,
+<code>elimination_changed</code>, <code>finish_changed</code>, <code>game_over</code>.</p>
+<p><strong>Batching:</strong> player transitions accumulate and flush at <code>MaxPendingMessagesPerBatch = 128</code>
+(<code>:664</code>, <code>QueuePlayerTransition</code> at <code>:727</code>); the runtime also flushes on <code>LateUpdate</code>. Diagnostics
+flush immediately (<code>EmitDiagnosticPayload</code>, L117-122).</p>
+<h3 id="71-state-snapshot-gcstate--snapshot">7.1 State snapshot (<code>gc.state</code> / <code>snapshot</code>)</h3>
+<p><code>GCRuntimeStateSnapshotPayload.ToJson</code> (L256-280), player entries via
+<code>GCRuntimeStateSnapshotPlayer.AppendJson</code> (L300-316). <strong>Note the JSON keys differ from field names</strong>:
+<code>statusText → text</code>, <code>eliminationState → elimination</code>, <code>finishState → finish</code>.</p>
+<pre><code class="lang-json">{
+  &quot;game&quot;: { &quot;status&quot;: &quot;playing&quot; },
+  &quot;players&quot;: [
+    { &quot;playerIndex&quot;: 0, &quot;score&quot;: 3, &quot;lives&quot;: 2, &quot;status&quot;: &quot;Neutral&quot;, &quot;text&quot;: &quot;&quot;,
+      &quot;meter&quot;: -1, &quot;placement&quot;: 1, &quot;elimination&quot;: &quot;None&quot;, &quot;finish&quot;: &quot;None&quot; }
+  ]
+}
+</code></pre>
+<p><code>game.status</code> is <code>pending_setup</code> / <code>setup_done</code> / <code>playing</code> / <code>game_over</code> (<code>ToSnapshotGameStatus</code>, L425-440).</p>
+<h3 id="72-player-transitions-gcplayer--_changed">7.2 Player transitions (<code>gc.player</code> / <code>*_changed</code>)</h3>
+<p>Int transitions (<code>score_changed</code>, <code>lives_changed</code>, <code>meter_changed</code>) — <code>GCRuntimeTransitionPayload.BuildIntJson</code> (L461-470):</p>
+<pre><code class="lang-json">{ &quot;from&quot;: 2, &quot;to&quot;: 3, &quot;reason&quot;: &quot;Collected a coin&quot; }
+</code></pre>
+<p><code>status_changed</code> nests <code>{status,text}</code> for <code>from</code>/<code>to</code> (<code>BuildStatusJson</code>/<code>AppendStatusValue</code>, L485-512).
+<code>reason</code> is optional and truncated to 256 chars (<code>GCRuntimePayloadBounds</code>, L443-457).</p>
+<h3 id="73-game-over-gcgame--game_over">7.3 Game over (<code>gc.game</code> / <code>game_over</code>)</h3>
+<p><code>GCRuntimeGameOverPlacementPayload.BuildJson</code> (L534-554). The array is player indices ordered by final
+placement (first = 1st place):</p>
+<pre><code class="lang-json">{ &quot;playersByPlacement&quot;: [2, 0, 1] }
+</code></pre>
+<p><strong>The result is an object, never a bare array.</strong> Legacy builds ended a game by emitting a bare
+array that receivers read as platform player IDs, so a bare array of zero-based player indices
+would be shape-identical and ambiguous — <code>playerIndex: 0</code> cannot be told apart from an old
+positive platform ID. The wrapper keeps new results structurally distinct from that bridge and
+leaves room for further result fields without a version field. A receiver must not accept a bare
+array as a current result; the legacy bare array stays a client/SDK migration bridge interpreted
+as platform IDs and never gains new result semantics.</p>
+<p>The payload must be a permutation of all active player indices; an invalid placement is rejected
+with a diagnostic rather than emitted.</p>
+<p><strong>First-accepted-wins:</strong> once accepted, later submissions are rejected with a
+<code>gc.runtime.invalid_game_over_placement</code> diagnostic and ignored — even byte-identical ones, and
+even re-entrant ones during the accept callback. A rejected submission before any acceptance does
+not consume the slot (<code>TrySubmitGameOverPlacement</code>, L129-201; guard <code>gameOverPlacementAccepted</code> at
+L155/193). Pending transitions and a final state snapshot are flushed immediately before the
+<code>game_over</code> record, in one envelope.</p>
+<hr>
+<h2 id="8-gcdiagnostic-payload-and-code-catalog">8. <code>gc.diagnostic</code> payload and code catalog</h2>
+<p>Emitted as <code>gc.diagnostic</code> records via <code>GCDiagnostics.Emit(code, severity, sourceArea, message, context)</code> (<code>Runtime/RuntimeMessages/GCDiagnostics.cs:520-533</code>). The <strong><code>code</code> is the record <code>name</code></strong>;
+the <code>data</code> payload is (<code>BuildPayloadJson</code>, L573-608):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>severity</code></td>
+<td>string</td>
+<td><code>info</code> / <code>warning</code> / <code>error</code> (<code>FormatSeverity</code>, L610-623)</td>
+</tr>
+<tr>
+<td><code>sourceArea</code></td>
+<td>string</td>
+<td><code>api</code> / <code>mapping</code> / <code>state</code> / <code>runtime_messages</code> / <code>screen_space</code> / <code>metadata</code> / <code>runtime_log</code> (<code>GCDiagnosticSourceAreas</code>, L17-42)</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>Bounded length</td>
+</tr>
+<tr>
+<td><code>mapping</code></td>
+<td>object</td>
+<td><strong>Optional</strong> context</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>object</td>
+<td><strong>Optional</strong> context</td>
+</tr>
+<tr>
+<td><code>debug</code></td>
+<td>object</td>
+<td><strong>Optional</strong> context</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{ &quot;severity&quot;: &quot;warning&quot;, &quot;sourceArea&quot;: &quot;metadata&quot;, &quot;message&quot;: &quot;gc.platform.json was not found.&quot;, &quot;details&quot;: { &quot;path&quot;: &quot;…&quot; } }
+</code></pre>
+<p>The code catalog is <strong>closed</strong> — <code>Emit</code> throws on an unknown code, an unknown source area, or a
+code/source-area mismatch (<code>ValidateDiagnostic</code>, L535-571). The left column below is the <strong>code
+prefix</strong> (the record <code>name</code>); each prefix maps 1:1 to the matching <code>sourceArea</code> string
+(<code>gc.api.*</code> → <code>api</code>, <code>gc.state.*</code> → <code>state</code>, <code>gc.runtime.*</code> → <code>runtime_messages</code>, <code>gc.log.*</code> →
+<code>runtime_log</code>, etc.). Codes (<code>GCDiagnosticCodes</code>, L44-69):</p>
+<table>
+<thead>
+<tr>
+<th>Code prefix</th>
+<th>Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gc.api.*</code></td>
+<td><code>removed_identity_api</code>, <code>removed_player_name_api</code>, <code>removed_state_api</code>, <code>removed_store_api</code>, <code>unsupported_multiplayer_api</code>, <code>legacy_runtime_payload</code></td>
+</tr>
+<tr>
+<td><code>gc.mapping.*</code></td>
+<td><code>invalid_player_index</code>, <code>unmapped_participant</code></td>
+</tr>
+<tr>
+<td><code>gc.state.*</code></td>
+<td><code>duplicate_elimination</code>, <code>duplicate_finish</code>, <code>invalid_revoke</code>, <code>invalid_transition</code>, <code>post_game_over_mutation</code>, <code>clamped_value</code></td>
+</tr>
+<tr>
+<td><code>gc.runtime.*</code></td>
+<td><code>malformed_message</code>, <code>unknown_message</code>, <code>invalid_game_over_placement</code>, <code>malformed_screen_space</code>¹</td>
+</tr>
+<tr>
+<td><code>gc.metadata.*</code></td>
+<td><code>missing_platform_data</code>, <code>invalid_platform_data</code>, <code>fallback_active</code></td>
+</tr>
+<tr>
+<td><code>gc.log.*</code></td>
+<td><code>runtime_log</code>, <code>runtime_warning</code>, <code>runtime_error</code></td>
+</tr>
+</tbody>
+</table>
+<p>¹ <strong>Exception to the prefix→area mapping:</strong> <code>gc.runtime.malformed_screen_space</code> is emitted with
+<code>sourceArea: &quot;screen_space&quot;</code>, not <code>runtime_messages</code> — special-cased in
+<code>GCDiagnosticCodes.IsValidSourceArea</code> (<code>GCDiagnostics.cs:111-114</code>).</p>
+<p><strong>Platform-player-id keys are hard-rejected.</strong> Context field keys <code>playerId</code>, <code>playerIds</code>,
+<code>platformPlayerId</code>, <code>platformPlayerIds</code> throw (<code>ValidateKey</code>, L207-213) — public diagnostics must
+never expose platform player IDs.</p>
+<hr>
+<h2 id="9-screen_space-envelope-and-anchors">9. <code>screen_space</code> envelope and anchors</h2>
+<p>Screen-space presentation anchors flow out through <code>window.gamingCouchScreenSpace</code>, one envelope per
+frame (<code>GCRuntimeScreenSpaceOutput</code>, L908-1004). Anchors are produced by HUD components
+(<code>Runtime/Hud/GCHud.cs</code>).</p>
+<p><strong>Envelope</strong> (<code>BuildEnvelopeJson</code>, L936-980):</p>
+<pre><code class="lang-json">{ &quot;type&quot;: &quot;screen_space&quot;, &quot;v&quot;: 1, &quot;frame&quot;: 1234, &quot;ms&quot;: 5678, &quot;anchors&quot;: [ /* anchors */ ] }
+</code></pre>
+<p><strong>Anchor</strong> (<code>GCRuntimeScreenSpaceAnchor.AppendJson</code>, L864-905):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>playerOverhead</code> / <code>playerPosition</code> (<code>GCRuntimeScreenSpaceAnchorTypes</code>, L36-46)</td>
+</tr>
+<tr>
+<td><code>playerIndex</code></td>
+<td>int</td>
+<td>Non-negative</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>float</td>
+<td>Clamped <code>0–1</code></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>float</td>
+<td>Clamped <code>0–1</code></td>
+</tr>
+<tr>
+<td><code>offscreen</code></td>
+<td>bool</td>
+<td>Whether the anchor is off the visible screen</td>
+</tr>
+</tbody>
+</table>
+<p>Anchors must be <strong>unique per <code>(type, playerIndex)</code></strong> within an envelope (<code>ValidateUniqueAnchors</code>,
+L987-1003); duplicates throw.</p>
+<hr>
+<h2 id="10-jslib-bridge--windowgamingcouch-callbacks">10. jslib bridge — <code>window.gamingCouch*</code> callbacks</h2>
+<p>Unity → host callbacks are declared in <code>Plugins/GamingCouch.jslib</code> (L1-114). All eight:</p>
+<table>
+<thead>
+<tr>
+<th>Callback</th>
+<th>Payload</th>
+<th>Fired when</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gamingCouchInstanceStarted</code></td>
+<td><em>(none)</em></td>
+<td>Boot startup signal</td>
+<td>jslib L2; <code>GamingCouch.cs:237</code></td>
+</tr>
+<tr>
+<td><code>gamingCouchRegisterRuntimeInfo</code></td>
+<td>runtime-info object</td>
+<td>Baked identity forwarded before splash</td>
+<td>jslib L10</td>
+</tr>
+<tr>
+<td><code>gamingCouchRegisterUnityBuildInfo</code></td>
+<td>build-info object</td>
+<td>Optional baked build diagnostics</td>
+<td>jslib L28</td>
+</tr>
+<tr>
+<td><code>gamingCouchSetupDone</code></td>
+<td><em>(none)</em></td>
+<td>Game called <code>SetupDone()</code></td>
+<td>jslib L49</td>
+</tr>
+<tr>
+<td><code>gamingCouchSetupHud</code></td>
+<td>HUD config object</td>
+<td>HUD configured for hosted rendering</td>
+<td>jslib L57; <code>GCHud.cs:178</code></td>
+</tr>
+<tr>
+<td><code>gamingCouchSendProjectInfo</code></td>
+<td>project name string</td>
+<td>Boot, right after <code>instanceStarted</code> — <strong>the host does not implement this handler; the call is inert</strong> (see below)</td>
+<td>jslib L74; <code>GamingCouch.cs:415</code></td>
+</tr>
+<tr>
+<td><code>gamingCouchRuntimeMessages</code></td>
+<td><code>runtime_messages</code> envelope (§7)</td>
+<td>Batch flush</td>
+<td>jslib L83</td>
+</tr>
+<tr>
+<td><code>gamingCouchScreenSpace</code></td>
+<td><code>screen_space</code> envelope (§9)</td>
+<td>Per frame</td>
+<td>jslib L99</td>
+</tr>
+</tbody>
+</table>
+<p><code>registerUnityBuildInfo</code>, <code>sendProjectInfo</code>, <code>runtimeMessages</code>, and <code>screenSpace</code> are no-ops if the
+host has not defined the handler (silent early-return); the others log a console error.</p>
+<p><code>gamingCouchSendProjectInfo</code> currently has <strong>no receiver anywhere in the platform</strong> — no client, SDK,
+backend, or DevApp code defines <code>window.gamingCouchSendProjectInfo</code>. Every hosted player build still
+makes the call at boot (<code>Application.productName</code>, non-editor branch of <code>Start</code>), where it takes the
+silent early-return above, so the notification is fire-and-forget with nothing depending on it. It is
+kept as a declared surface a future host may pick up; nothing in the package changes behavior either
+way, and it is not a <code>gameProtocolVersion</code> concern — a bump is reserved for contract changes that
+games and SDK adapters cannot translate (§13).</p>
+<hr>
+<h2 id="11-sidecars-and-template-gating">11. Sidecars and template gating</h2>
+<p>WebGL export writes two sidecars with deliberately different weights.</p>
+<h3 id="gcruntime-infojson--narrow-identity-gate"><code>gc.runtime-info.json</code> — narrow identity gate</h3>
+<p>Written to the build output root next to <code>index.html</code> <strong>only</strong> when the Gaming Couch template
+(<code>PROJECT:GamingCouch</code>) is selected, and deleted as stale on other-template WebGL builds
+(<code>Editor/GamingCouchWebGLRuntimeInfoSidecar.cs</code>). Shape (<code>Runtime/GCRuntimeInfo.cs:8-14</code>,
+serializer L16-36):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>platform</code></td>
+<td>string (<code>&quot;unity&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>packageName</code></td>
+<td>string (from <code>package.json</code>)</td>
+</tr>
+<tr>
+<td><code>packageVersion</code></td>
+<td>string (from <code>package.json</code>)</td>
+</tr>
+<tr>
+<td><code>gameProtocolVersion</code></td>
+<td>int (<code>1</code>)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{ &quot;platform&quot;: &quot;unity&quot;, &quot;packageName&quot;: &quot;com.example.game&quot;, &quot;packageVersion&quot;: &quot;1.2.3&quot;, &quot;gameProtocolVersion&quot;: 1 }
+</code></pre>
+<p>The same payload is baked into the runtime resource <code>Runtime/Resources/GamingCouchRuntimeInfo.json</code>
+and forwarded before splash via <code>window.gamingCouchRegisterRuntimeInfo</code> (kept in sync with
+<code>package.json</code> by a release-time guard in the package repository).</p>
+<h3 id="gcunity-build-infojson--non-gating-build-diagnostics"><code>gc.unity-build-info.json</code> — non-gating build diagnostics</h3>
+<p>Written for <strong>every</strong> WebGL build (any template), never part of the identity gate. Section shape
+(<code>Editor/GCUnityBuildInfoSidecar.cs</code>, class <code>GCUnityBuildInfoSidecar</code> L465-472):</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Type</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>schemaVersion</code></td>
+<td>int</td>
+<td>Diagnostics schema version (own version, independent of <code>gameProtocolVersion</code>)</td>
+</tr>
+<tr>
+<td><code>generator</code></td>
+<td>string</td>
+<td>Generator identity</td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>object</td>
+<td><code>platform</code>, <code>packageName</code>, <code>packageVersion</code>, <code>gameProtocolVersion</code> (L474-481)</td>
+</tr>
+<tr>
+<td><code>buildEnvironment</code></td>
+<td>object</td>
+<td><code>unityEditorVersion</code>, <code>target</code>, <code>targetGroup</code>, <code>webGL{template,settings}</code>, <code>host{editorPlatform,osFamily,operatingSystem}</code> (L483-506)</td>
+</tr>
+<tr>
+<td><code>buildResult</code></td>
+<td>object</td>
+<td>Build summary + path-normalized/redacted output path (L508-522)</td>
+</tr>
+</tbody>
+</table>
+<p>Build diagnostic paths are normalized before serialization: build-output-relative, project-relative,
+<code>${USER_HOME}</code>-prefixed, or redacted — never emitted verbatim.</p>
+<hr>
+<h2 id="12-web-export-template-contract">12. Web export template contract</h2>
+<p>The Gaming Couch web export template is a production/upload shell only. Constants at
+<code>Editor/GamingCouchWebGLExportSetup.cs:208-212</code>:</p>
+<ul>
+<li>Template name <code>GamingCouch</code>; selected as <code>PROJECT:GamingCouch</code> (<code>ProjectTemplateIdentifier</code>).</li>
+<li>Installed to the project-local <code>Assets/WebGLTemplates/GamingCouch</code> (no-overwrite install).</li>
+<li>The shell is <code>index.html</code> only — it shows loading progress and errors, and provides <strong>no</strong>
+standalone playtest harness, no GamingCouch JS callback shims, no local fixtures, no controller
+simulation, and no DevApp communication (<code>Editor/WebGLTemplates/GamingCouch/index.html</code>).</li>
+</ul>
+<p>WebGL compression is intentionally disabled in the export profiles — do not &quot;fix&quot; it to Brotli.</p>
+<hr>
+<h2 id="13-gameprotocolversion-policy">13. <code>gameProtocolVersion</code> policy</h2>
+<p><code>gameProtocolVersion</code> identifies the JS↔Unity integration contract; <code>packageVersion</code> is diagnostics
+only. <strong>Bump <code>gameProtocolVersion</code> only when this wire contract itself changes</strong> — not for package
+metadata, sidecar generation, or upload-validation changes. Documenting existing schemas (this
+document) does not change the contract and requires no bump.</p>
+<p>The current recommendation is to keep <code>gameProtocolVersion</code> at <code>1</code> when the client/SDK already
+translates legacy hosted payloads into current Unity payloads before invoking the package. Any bump
+is always a release-owner decision.</p>
+<hr>
+<h2 id="14-upload-validation-cross-repo-expectation">14. Upload validation (cross-repo expectation)</h2>
+<blockquote>
+<p><strong>Cross-repo note — main-repo behavior, not enforced by this package.</strong> The Gaming Couch main repo
+owns upload processing. This section records what this package <em>expects</em> of it, not code that runs
+here.</p>
+</blockquote>
+<p>Main-repo upload processing preserves the root <code>gc.runtime-info.json</code> and, for Unity uploads,
+<strong>requires and validates</strong> it: <code>platform: &quot;unity&quot;</code>, non-empty <code>packageName</code>, SemVer <code>packageVersion</code>,
+and <code>gameProtocolVersion: 1</code>. <code>gc.unity-build-info.json</code> is preserved when present but is <strong>not</strong>
+required or validated in this slice. The hosted SDK reads <code>gc.runtime-info.json</code> before
+<code>createUnityInstance</code> and rejects startup if the later runtime callback identity differs.</p>
+<hr>
+<h2 id="appendix-a-unsupported-online-multiplayer-surface">Appendix A. Unsupported online-multiplayer surface</h2>
+<blockquote>
+<p><strong>Internal migration surface — not a supported runtime contract.</strong> Reserved for temporary internal
+migration of legacy games that already used the old multiplayer path. Do not use for new work. The
+package <a href="../README.md">README</a> says only &quot;Online multiplayer is not currently supported.&quot;</p>
+</blockquote>
+<p>Default package builds keep <code>GamingCouch.OnlineMultiplayerSupport</code> as a false-returning compatibility
+probe (<code>GamingCouch.cs:90</code>); <code>OnlineMultiplayerServerReady()</code> and <code>OnlineMultiplayerClientReady()</code>
+throw unsupported-API errors and emit <code>gc.api.unsupported_multiplayer_api</code> diagnostics
+(<code>CreateUnsupportedMultiplayerApiException</code>, <code>GamingCouch.cs:618-632</code>). The Netcode for GameObjects
+helper assembly is not compiled.</p>
+<p>The legacy path compiles only under the <code>GC_ENABLE_UNSUPPORTED_MULTIPLAYER</code> scripting define, which
+also enables the NGO transport jslibs (<code>Runtime/Unity/NGO/Transport/GCServer.jslib</code>,
+<code>Runtime/Unity/NGO/Transport/GCClient.jslib</code>). Under the define, <code>mode</code>/<code>isServer</code> from
+<code>GCSetupOptions</code> (§2) select the server/client role.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.11" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.11</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

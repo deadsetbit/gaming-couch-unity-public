@@ -1,0 +1,726 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.11 </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.11 ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      <meta name="docfx:disablenewtab" content="true">
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+      <link rel="canonical" href="https://deadsetbit.github.io/gaming-couch-unity-public/latest/manual/devapp-local-play-contract.html">
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="devapp--local-play-contract">DevApp / local-play contract</h1>
+
+<blockquote>
+<p><strong>Internal: Gaming Couch DevApp maintainers — game developers do not need this.</strong>
+&quot;Internal&quot; is an audience label, not secrecy — this document ships with the package.
+Third-party game developers should read the package <a href="../README.md">README</a>; nothing here is
+required to build a game. This document is the local-development contract between the Gaming Couch DevApp and this Unity
+package: the on-disk <code>gc.dev.json</code> / <code>gc.platform.json</code> schemas, how seats become players, and the
+DevApp WebSocket protocol as this package implements it.</p>
+</blockquote>
+<p>Living contract reference. Every schema carries <code>file:line</code> provenance (the named type/method is the
+durable anchor; line numbers drift). Rationale lives in the package repository's architecture
+decision records, which are internal and do not ship with the package. The <strong>received-at-boot</strong> side of these payloads (<code>GCPlayOptions</code>,
+<code>platformData</code> as Unity sees them) is owned by the
+<a href="platform-runtime-contract.html">platform runtime contract</a>; this document owns the <strong>producer/capture</strong>
+side and links across per the overlap rule (capture/schema → here; wire/received → platform doc).</p>
+<p>JSON examples use placeholder package identity values; the real <code>package.json</code> name/version is never
+copied into documentation.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#1-gcdevjson-schema">1. <code>gc.dev.json</code> schema</a></li>
+<li><a href="#2-gcplatformjson-schema">2. <code>gc.platform.json</code> schema</a></li>
+<li><a href="#3-validation-and-gating">3. Validation and gating</a></li>
+<li><a href="#4-fallback-platform-view">4. Fallback platform view</a></li>
+<li><a href="#5-seat--player-capture">5. Seat → player capture</a></li>
+<li><a href="#6-deterministic-player-index-shuffle">6. Deterministic player-index shuffle</a></li>
+<li><a href="#7-the-players-vs-seatidentities-ordering-trap">7. The <code>players[]</code> vs <code>seatIdentities[]</code> ordering trap</a></li>
+<li><a href="#8-devapp-websocket-protocol-package-side-spec">8. DevApp WebSocket protocol (package-side spec)</a></li>
+<li><a href="#9-contractfixtures--executable-spec">9. ContractFixtures — executable spec</a></li>
+</ul>
+<hr>
+<h2 id="1-gcdevjson-schema">1. <code>gc.dev.json</code> schema</h2>
+<p>Root project file (<code>gc.dev.json</code>) that drives Unity editor local play. <strong>Unity never creates,
+bootstraps, or repairs it</strong> — create/update it through the DevApp, which owns the canonical file.
+Model: <code>Editor/GCDevJsonFile.cs:6-70</code>; parse/validate:
+<code>Editor/GCDevJsonValidation.cs</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Rule</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>devVersion</code></td>
+<td>int</td>
+<td>Must equal <code>2</code> (<code>SupportedDevVersion</code>); pinned, <strong>not</strong> inspector-editable</td>
+<td><code>GCDevJsonFile.cs:9</code>, check <code>GCDevJsonValidation.cs:248</code></td>
+</tr>
+<tr>
+<td><code>entryKey</code></td>
+<td>string</td>
+<td>Must be a valid entry key</td>
+<td><code>GCDevJsonValidation.cs:253</code></td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>string</td>
+<td><code>&quot;random&quot;</code> or an integer <code>1</code>–<code>999999</code> (as a string)</td>
+<td><code>GCDevJsonFile.cs:13-15</code>, check <code>:258</code></td>
+</tr>
+<tr>
+<td><code>seats</code></td>
+<td>array</td>
+<td>Exactly <code>8</code> seat records</td>
+<td><code>GCDevJsonFile.cs:10</code>, check <code>GCDevJsonValidation.cs:418-420</code></td>
+</tr>
+</tbody>
+</table>
+<p>Seat record (<code>GCDevJsonSeat</code>, <code>GCDevJsonFile.cs:82-99</code>; fields at <code>:84-86</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Length <code>1</code>–<code>8</code> (<code>PlayerNameMinLength</code>/<code>MaxLength</code>, <code>GCDevJsonFile.cs:11-12</code>)</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>bool</td>
+<td>At least one seat must be <code>true</code> (<code>GCDevJsonValidation.cs:445-448</code>)</td>
+</tr>
+<tr>
+<td><code>isBot</code></td>
+<td>bool</td>
+<td>Bot seat marker</td>
+</tr>
+</tbody>
+</table>
+<p>The Unity inspector edits only <code>entryKey</code>, <code>seed</code>, <code>seats</code> and <strong>preserves unknown top-level fields</strong>
+on write (unknown-field-preserving writes, <code>Editor/GCDevJsonStore.cs</code>).</p>
+<pre><code class="lang-json">{
+  &quot;devVersion&quot;: 2,
+  &quot;entryKey&quot;: &quot;versus&quot;,
+  &quot;seed&quot;: &quot;random&quot;,
+  &quot;seats&quot;: [
+    { &quot;name&quot;: &quot;P1&quot;, &quot;enabled&quot;: true,  &quot;isBot&quot;: false },
+    { &quot;name&quot;: &quot;P2&quot;, &quot;enabled&quot;: true,  &quot;isBot&quot;: true  },
+    { &quot;name&quot;: &quot;P3&quot;, &quot;enabled&quot;: false, &quot;isBot&quot;: false }
+    /* … exactly 8 seat records … */
+  ]
+}
+</code></pre>
+<hr>
+<h2 id="2-gcplatformjson-schema">2. <code>gc.platform.json</code> schema</h2>
+<p>Root project file describing the production platform metadata the game would ship with. Parsed at
+<code>Editor/GCDevJsonValidation.cs:683-739</code>; model <code>Editor/GCPlatformDataFile.cs</code>. <strong>Field-level failures
+are Warnings, not Errors</strong> — invalid platform data degrades to the fallback view (§4) rather than
+blocking raw <code>gc.dev.json</code> editing (<code>InvalidFieldsReadResult</code>, <code>:751-762</code>).</p>
+<table>
+<thead>
+<tr>
+<th>JSON path</th>
+<th>Type</th>
+<th>Notes</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>platformDataVersion</code></td>
+<td>int ≥ 0</td>
+<td>Metadata version</td>
+<td><code>:683</code></td>
+</tr>
+<tr>
+<td><code>game.key</code></td>
+<td>string</td>
+<td>Non-empty game key</td>
+<td><code>:695</code></td>
+</tr>
+<tr>
+<td><code>game.name</code></td>
+<td>string</td>
+<td>Non-empty display name</td>
+<td><code>:701</code></td>
+</tr>
+<tr>
+<td><code>game.entries.&lt;entryKey&gt;</code></td>
+<td>object</td>
+<td>Map of entry key → entry</td>
+<td><code>:714</code>, <code>TryReadEntries</code></td>
+</tr>
+<tr>
+<td><code>game.entries.&lt;key&gt;.name</code></td>
+<td>string</td>
+<td>Entry display name</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>game.entries.&lt;key&gt;.minPlayers</code></td>
+<td>int ≥ 0</td>
+<td>Production minimum (see gating)</td>
+<td><code>:806</code></td>
+</tr>
+<tr>
+<td><code>game.entries.&lt;key&gt;.maxPlayers</code></td>
+<td>int ≥ minPlayers</td>
+<td>Max enabled seats</td>
+<td><code>:813</code></td>
+</tr>
+<tr>
+<td><code>game.entries.&lt;key&gt;.botSupport</code></td>
+<td>bool</td>
+<td>Bot allowance</td>
+<td><code>:820</code></td>
+</tr>
+<tr>
+<td><code>platform.id</code></td>
+<td>string</td>
+<td>Must be <code>&quot;unity&quot;</code> for local play (<code>GCPlatformDataFile.cs:13</code>)</td>
+<td><code>:708</code></td>
+</tr>
+<tr>
+<td><code>properties.colors.players.&lt;color&gt;.base</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code></td>
+<td><code>:869</code></td>
+</tr>
+<tr>
+<td><code>properties.colors.players.&lt;color&gt;.muted</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code></td>
+<td><code>:870</code></td>
+</tr>
+<tr>
+<td><code>properties.colors.players.&lt;color&gt;.mutedDarker</code></td>
+<td>int[3]</td>
+<td>RGB <code>0–255</code></td>
+<td><code>:871</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-json">{
+  &quot;platformDataVersion&quot;: 3,
+  &quot;game&quot;: {
+    &quot;key&quot;: &quot;my-game&quot;,
+    &quot;name&quot;: &quot;My Game&quot;,
+    &quot;entries&quot;: {
+      &quot;versus&quot;: { &quot;name&quot;: &quot;Versus&quot;, &quot;minPlayers&quot;: 2, &quot;maxPlayers&quot;: 8, &quot;botSupport&quot;: true }
+    }
+  },
+  &quot;platform&quot;: { &quot;id&quot;: &quot;unity&quot; },
+  &quot;properties&quot;: {
+    &quot;colors&quot;: { &quot;players&quot;: { &quot;blue&quot;: { &quot;base&quot;: [0,0,0], &quot;muted&quot;: [0,0,0], &quot;mutedDarker&quot;: [0,0,0] } } }
+  }
+}
+</code></pre>
+<hr>
+<h2 id="3-validation-and-gating">3. Validation and gating</h2>
+<p>Two distinct layers — <strong>do not conflate them</strong> (this is the precise version of the imprecise
+README wording, findings A3):</p>
+<p><strong>Structural rules — always enforced</strong> on any <code>gc.dev.json</code>, independent of platform data
+(<code>AddDataIssues</code> + <code>AddSeatIssues</code>, <code>GCDevJsonValidation.cs:240-264, 416-449</code>):</p>
+<ul>
+<li><code>devVersion == 2</code>, valid <code>entryKey</code>, valid <code>seed</code>.</li>
+<li>Exactly 8 seats; each <code>name</code> length <code>1</code>–<code>8</code>.</li>
+<li><strong>At least one enabled seat</strong> (<code>NoEnabledSeats</code> Error, <code>:445-448</code>). This is a structural rule, <strong>not</strong>
+a platform-data gate.</li>
+</ul>
+<p><strong>Platform-data gate — only when <code>gc.platform.json</code> is valid</strong> (<code>AddPlatformDataContextIssues</code>,
+<code>:451-522</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>platform.id != &quot;unity&quot;</code></td>
+<td><strong>Warning</strong> → local play uses fallback platform metadata (<code>:471-481</code>)</td>
+</tr>
+<tr>
+<td>Selected <code>entryKey</code> not in <code>game.entries</code></td>
+<td><strong>Error</strong> (<code>:484-495</code>)</td>
+</tr>
+<tr>
+<td>enabled seat count <code>&gt; entry.maxPlayers</code></td>
+<td><strong>Error</strong> (<code>:499-509</code>)</td>
+</tr>
+<tr>
+<td><code>entry.minPlayers</code></td>
+<td><strong>Not locally enforced</strong> — playtests may run with one enabled seat (<code>:498</code>)</td>
+</tr>
+<tr>
+<td>enabled bot seats on an entry with <code>botSupport: false</code></td>
+<td><strong>Warning</strong> (<code>:511-521</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>When platform data is missing or invalid, Unity shows a warning and keeps raw <code>gc.dev.json</code> editing
+available for structurally valid files.</p>
+<hr>
+<h2 id="4-fallback-platform-view">4. Fallback platform view</h2>
+<p>When <code>gc.platform.json</code> is missing/invalid, runtime code receives a read-only fallback
+<code>GCPlatformRuntimeView</code> (shape owned by the
+<a href="platform-runtime-contract.html#5-platformdata--gcplatformruntimeview">platform contract §5</a>).
+Fallback values (<code>Runtime/GCPlayOptions.cs:83-112, 302-311</code>):</p>
+<ul>
+<li><code>validationState</code> <code>missing</code> (or <code>invalid</code>), <code>fallbackActive: true</code>.</li>
+<li><code>game</code>/<code>selectedEntryKey</code> <code>&quot;notdefined&quot;</code>; <code>platform.id</code> <code>&quot;unity&quot;</code>.</li>
+<li>One entry <code>notdefined</code> with <code>minPlayers 1 / maxPlayers 8 / botSupport true</code>.</li>
+<li><code>source.platformDataVersion</code>: the version the file declared, when <code>platformDataVersion</code> itself
+parsed (<code>BuildFallback</code>, <code>Editor/GCPlatformDataFile.cs</code>) — so an <code>invalid</code> fallback typically
+carries a real version; <code>-1</code> (unavailable) only when no version could be read at all, as with a
+missing file. Default player colors.</li>
+</ul>
+<p>Unity emits <code>gc.metadata.*</code> diagnostics for the fallback and never writes or repairs
+<code>gc.platform.json</code>.</p>
+<hr>
+<h2 id="5-seat--player-capture">5. Seat → player capture</h2>
+<p>Play-mode capture turns the 8-seat roster into a dense player roster (<code>Editor/GCDevJsonLocalPlaySessionProvider.cs</code>,
+capture at <code>:455-501</code>):</p>
+<ul>
+<li><strong>Skip disabled seats.</strong> Iterate seats in order; enabled seats get a dense <strong>zero-based</strong>
+<code>playerIndex</code> (capture order).</li>
+<li><strong>Fixed seat → color map by seat position</strong> (<code>SeatColors</code>, <code>:262-272</code>): seat 1 → <code>blue</code>, 2 → <code>red</code>,
+3 → <code>green</code>, 4 → <code>yellow</code>, 5 → <code>purple</code>, 6 → <code>pink</code>, 7 → <code>cyan</code>, 8 → <code>brown</code>
+(fixture <code>valid-full-roster-seat-color-map</code>).</li>
+<li><code>playerSeed</code> is derived from the normalized seat name — FNV-1a32 of the name mapped into the
+<code>1</code>–<code>999999</code> seed range (<code>GCPlayerSeed.FromPlayerName</code> → <code>ToSeed</code>, <code>Runtime/GCPlayerSeed.cs:11, 34-36</code>).</li>
+<li>Each captured player gets a parallel <strong><code>GCSeatIdentity</code></strong> carrying <strong>1-based</strong> seat provenance
+(<code>Runtime/Dev/GCSeatIdentity.cs</code>; built in <code>GCDevJsonLocalPlaySessionProvider.cs</code>):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>GCSeatIdentity</code> field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourceSeatIndex</code></td>
+<td>1-based seat number</td>
+</tr>
+<tr>
+<td><code>stableKey</code></td>
+<td>1-based seat number as string</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td><code>&quot;Seat N&quot;</code></td>
+</tr>
+<tr>
+<td><code>playerType</code></td>
+<td><code>player</code> / <code>bot</code></td>
+</tr>
+<tr>
+<td><code>playerColor</code></td>
+<td>seat color from the map above</td>
+</tr>
+</tbody>
+</table>
+<p>Capture stability: the captured roster holds until restart or the next Play Mode entry.</p>
+<hr>
+<h2 id="6-deterministic-player-index-shuffle">6. Deterministic player-index shuffle</h2>
+<p>The captured roster is shuffled into game-facing <code>playerIndex</code> order deterministically
+(<code>Runtime/GCPlayerIndexMapping.cs:42-101</code>):</p>
+<ol>
+<li>For each captured participant, compute <code>Hash = FNV-1a32(&quot;{seed}:{stableKey}&quot;)</code>
+(<code>:74</code>; <code>GCFnv1A32.Compute</code>).</li>
+<li>Sort by unsigned <code>Hash</code> ascending, tie-break by captured order
+(<code>OrderBy(Hash).ThenBy(CapturedOrder)</code>, <code>:85-87</code>).</li>
+<li>Assign <code>playerIndex</code> by sorted position.</li>
+</ol>
+<p>The same <code>seed</code> + same roster always yields the same mapping. (Hosted play instead uses the
+provided <code>playerIndex</code> values directly — <code>CreateFromProvidedPlayerIndices</code>, <code>:103-143</code> — but that is
+the platform-doc path, not local capture.)</p>
+<hr>
+<h2 id="7-the-players-vs-seatidentities-ordering-trap">7. The <code>players[]</code> vs <code>seatIdentities[]</code> ordering trap</h2>
+<blockquote>
+<p><strong>Trap — these two arrays are indexed differently.</strong></p>
+</blockquote>
+<p>The game-facing <code>players[]</code> produced by <code>CreateGameFacingPlayOptions</code> (<code>GCPlayerIndexMapping.cs:150-170</code>)
+is in <strong>post-shuffle <code>playerIndex</code> order</strong>. The <code>seatIdentities[]</code> array captured in §5 stays in
+<strong>capture order</strong>. Because the shuffle reorders participants, <code>players[i]</code> and <code>seatIdentities[i]</code> are
+generally <strong>not the same participant</strong> — <code>players[i]</code> corresponds to the captured participant at
+<code>entry.CapturedOrder</code>, not to <code>seatIdentities[i]</code>.</p>
+<p>To map a game-facing player back to its seat, use the mapping's <code>sourceSeatIndex</code>/<code>CapturedOrder</code>
+(<code>GCPlayerIndexMappingEntry</code>, <code>:299-330</code>), never positional index equality. The fixture
+<code>valid-sparse-roster-capture</code> (§9) exercises exactly this.</p>
+<hr>
+<h2 id="8-devapp-websocket-protocol-package-side-spec">8. DevApp WebSocket protocol (package-side spec)</h2>
+<blockquote>
+<p><strong>Package-side spec — &quot;what this package sends and accepts.&quot;</strong> The DevApp repo owns the server
+behavior and should link here. This section documents the Unity editor's side only, with provenance
+against this repository. (Backlog: optionally upstream a canonical protocol spec to the DevApp repo,
+after which this doc would defer to it.)</p>
+</blockquote>
+<p><strong>Connection:</strong> the editor integration connects to <code>ws://localhost:3167/ws</code> and appends
+<code>identity=runtime</code> (<code>Runtime/Dev/GCDevAppIntegration.cs:25, 91</code>).</p>
+<h3 id="81-outbound-runtime_register">8.1 Outbound: <code>runtime_register</code></h3>
+<p>Sent on connect (<code>GCDevAppRuntimeMessages.cs:17-38</code>, type <code>RuntimeRegisterMessage</code> <code>:173-187</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>&quot;runtime_register&quot;</code></td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>long</td>
+<td></td>
+</tr>
+<tr>
+<td><code>runtimeKind</code></td>
+<td>string</td>
+<td><code>&quot;unity_editor&quot;</code></td>
+</tr>
+<tr>
+<td><code>projectRootPath</code></td>
+<td>string</td>
+<td>Resolved project root</td>
+</tr>
+<tr>
+<td><code>projectName</code></td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td>string</td>
+<td><code>&quot;unity&quot;</code></td>
+</tr>
+<tr>
+<td><code>gameProtocolVersion</code></td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>integrationName</code></td>
+<td>string</td>
+<td><code>package.json</code> name</td>
+</tr>
+<tr>
+<td><code>integrationVersion</code></td>
+<td>string</td>
+<td><code>package.json</code> version</td>
+</tr>
+<tr>
+<td><code>rendererMode</code></td>
+<td>string</td>
+<td><code>&quot;external&quot;</code></td>
+</tr>
+<tr>
+<td><code>displayName</code></td>
+<td>string</td>
+<td><code>&quot;Unity Editor&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-outbound-runtime_snapshot">8.2 Outbound: <code>runtime_snapshot</code></h3>
+<p>Run/pause/seat state (<code>GCDevAppRuntimeMessages.cs:40-73</code>, type <code>RuntimeSnapshotMessage</code> <code>:200-211</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td><code>&quot;runtime_snapshot&quot;</code></td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>long</td>
+<td></td>
+</tr>
+<tr>
+<td><code>runId</code></td>
+<td>string</td>
+<td>Minted once per run, including a restart, and stable across socket reconnects. Null until the first <code>Play()</code> — the runtime is still visible to the DevApp in that window, which treats a missing run id as not-yet-eligible rather than an error.</td>
+</tr>
+<tr>
+<td><code>isRunning</code></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><code>capabilities</code></td>
+<td>object</td>
+<td><code>{ restart, pause, timescale }</code> all <code>true</code> (<code>:156-162, 80-88</code>)</td>
+</tr>
+<tr>
+<td><code>seats</code></td>
+<td>array</td>
+<td>Empty when not running</td>
+</tr>
+<tr>
+<td><code>paused</code></td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td><code>timescale</code></td>
+<td>float</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Seat entry (<code>RuntimeSeatMessage</code>, <code>:164-171</code>): <code>{ playerIndex (0-based), seatIndex (1-based), label, type }</code>.</p>
+<h3 id="83-inbound-gcdevtool-actions-text">8.3 Inbound: <code>gcdevtool</code> actions (text)</h3>
+<p>Text messages <code>{ &quot;type&quot;: &quot;gcdevtool&quot;, &quot;action&quot;: ..., &quot;payload&quot;: ... }</code>
+(<code>Runtime/Dev/GCDevAppRuntimeInbound.cs:194-199, 311-329</code>). Actions:</p>
+<table>
+<thead>
+<tr>
+<th><code>action</code></th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>restart</code></td>
+<td>Restart the run</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>Apply a text input payload</td>
+</tr>
+<tr>
+<td><code>timescale_state</code></td>
+<td>Set pause/timescale</td>
+</tr>
+<tr>
+<td><code>runtime_output_options</code></td>
+<td>Update runtime output options (e.g. log-capture mode)</td>
+</tr>
+</tbody>
+</table>
+<p>Unknown types/actions are dropped (<code>unsupported_message_type</code> / <code>unsupported_devtool_action</code>).</p>
+<h3 id="84-inbound-binary-compact-controller-input-frame">8.4 Inbound: binary compact controller input frame</h3>
+<p>A binary WebSocket message, exactly <strong>16 bytes</strong>, type byte <code>0x44</code>
+(<code>GCDevAppRuntimeInbound.cs:202-308</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Bytes</th>
+<th>Field</th>
+<th>Encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>type</td>
+<td><code>0x44</code></td>
+</tr>
+<tr>
+<td>1–2</td>
+<td><code>playerIndex</code></td>
+<td>uint16 LE</td>
+</tr>
+<tr>
+<td>3–6</td>
+<td><code>seq</code></td>
+<td>uint32 LE</td>
+</tr>
+<tr>
+<td>7–10</td>
+<td><code>timestampMs</code></td>
+<td>uint32 LE</td>
+</tr>
+<tr>
+<td>11–12</td>
+<td><code>a0</code> (left X)</td>
+<td>int16 LE, clamped ±1000, ÷1000 → float</td>
+</tr>
+<tr>
+<td>13–14</td>
+<td><code>a1</code> (left Y)</td>
+<td>int16 LE, clamped ±1000, ÷1000 → float</td>
+</tr>
+<tr>
+<td>15</td>
+<td>buttons</td>
+<td>bitmask: bit0→<code>b0</code>, bit1→<code>b1</code>, bit2→<code>b2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Frames with a <code>seq</code> ≤ the last seen for that <code>playerIndex</code> are ignored as stale (<code>:250-256</code>). The
+decoded values populate <code>GCControllerInputsData</code> (<code>b*</code> as int <code>0/1</code>) — the same shape the platform
+delivers over the WebGL input wire (see <a href="platform-runtime-contract.html#6-input-wire-format-and-button-semantics">platform contract §6</a>).</p>
+<hr>
+<h2 id="9-contractfixtures--executable-spec">9. ContractFixtures — executable spec</h2>
+<p><code>ContractFixtures/LocalPlay/</code> holds the executable specification for local play, replayed by
+<code>Tests/Editor/GCDevJsonContractFixtureTests.cs</code>.
+The seven cases:</p>
+<table>
+<thead>
+<tr>
+<th>Fixture</th>
+<th>Covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>valid-sparse-roster-capture</code></td>
+<td>Skip-disabled capture + shuffle + the §7 ordering trap</td>
+</tr>
+<tr>
+<td><code>valid-full-roster-seat-color-map</code></td>
+<td>All eight seats enabled: the whole §7 seat → color map</td>
+</tr>
+<tr>
+<td><code>missing-platform-data-warning-only</code></td>
+<td>Warning-only degrade to fallback</td>
+</tr>
+<tr>
+<td><code>platform-data-max-player-gate-failure</code></td>
+<td><code>&gt; maxPlayers</code> gate Error (§3)</td>
+</tr>
+<tr>
+<td><code>unsupported-dev-version-failure</code></td>
+<td><code>devVersion != 2</code> Error</td>
+</tr>
+<tr>
+<td><code>wrong-seat-count-failure</code></td>
+<td>Seat count ≠ 8 Error</td>
+</tr>
+<tr>
+<td><code>preserving-write-unrelated-top-level-fields</code></td>
+<td>Unknown-field-preserving write</td>
+</tr>
+</tbody>
+</table>
+<p>Cite the fixture name next to any schema example this file adds; a fixture that disagrees with the doc
+is the source of truth.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.11" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.11</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
