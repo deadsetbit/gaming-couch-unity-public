@@ -1,0 +1,92 @@
+/* The facts the action bakes into every page's footer, and the version banner. */
+
+footer .docs-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+footer .docs-version {
+  font-variant-numeric: tabular-nums;
+}
+
+.docs-banner {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid currentColor;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.docs-banner-unchecked {
+  background: #f8f9fa;
+  color: #495057;
+}
+
+[data-bs-theme="dark"] .docs-banner-unchecked {
+  background: #2b3035;
+  color: #dee2e6;
+}
+
+/* Superseded and notice are pinned to the bottom of the viewport; current and unchecked stay
+   in flow at the top, neither asking the reader to do anything. A reader arriving on an
+   anchored deep link lands mid-page on first paint, so a banner at the top of the document is
+   never on screen at all. The bottom rather than above the header, because DocFX offsets both
+   sidebars by a hardcoded 60px from the top. Sticky as the last element in the body, so the
+   space it takes is reserved at the end of the page and the footer is never covered. The
+   z-index matches the header's, keeping the mobile table-of-contents drawer (1045) above it. */
+.docs-banner-superseded,
+.docs-banner-notice {
+  position: sticky;
+  bottom: 0;
+  z-index: 1030;
+  border-top: 1px solid currentColor;
+  border-bottom: 0;
+}
+
+/* Superseded and relocated carry weight the inconclusive notice deliberately does not: the
+   page is telling the reader something it knows, not apologising for not knowing. */
+.docs-banner-superseded {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+[data-bs-theme="dark"] .docs-banner-superseded {
+  background: #332701;
+  color: #ffda6a;
+}
+
+.docs-banner-notice {
+  background: #cfe2ff;
+  color: #052c65;
+}
+
+[data-bs-theme="dark"] .docs-banner-notice {
+  background: #031633;
+  color: #9ec5fe;
+}
+
+.docs-banner a {
+  color: inherit;
+}
+
+/* Kept to one line: every release ever published ends up in this list. */
+.docs-banner-picker {
+  margin-left: 0.25rem;
+  padding: 0.1rem 0.25rem;
+  max-width: 14rem;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 0.2rem;
+}
+
+/* A statement of fact, not a warning: quieter than every other variant. */
+.docs-banner-current {
+  background: transparent;
+  color: #6c757d;
+}
+
+[data-bs-theme="dark"] .docs-banner-current {
+  color: #adb5bd;
+}

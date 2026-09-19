@@ -1,0 +1,814 @@
+{
+  "sitemap": {
+    "baseUrl": "https://deadsetbit.github.io/gaming-couch-unity-public/latest/"
+  },
+  "source_base_path": "/home/runner/work/gaming-couch-unity/gaming-couch-unity/Documentation~",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Dev.FluctuateFpsMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Dev.FluctuateFpsMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Dev.GCDevAppIntegration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Dev.GCDevAppIntegration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Dev.GCDevUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Dev.GCDevUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Dev.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Dev.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCControllerInputs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCControllerInputs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCControllerInputsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCControllerInputsData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimeEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimeEntry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimeGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimeGame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimePlatform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimePlatform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimePlayerColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimePlayerColor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimePlayerColors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimePlayerColors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimeSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimeSource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimeValidationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimeValidationState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlatformRuntimeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlatformRuntimeView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerColor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerColor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerEliminationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerEliminationState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerEliminationStateChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerEliminationStateChangedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerFinishState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerFinishState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerFinishStateChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerFinishStateChangedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerStore-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerStore-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCPlayerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCPlayerType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCRuntimeOutputOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCRuntimeOutputOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCRuntimeUnityLogCaptureMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCRuntimeUnityLogCaptureMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCSetupOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCSetupOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GCStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GCStatus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCGame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCGame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCGameHudOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCGameHudOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCGameSetupOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCGameSetupOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCGameVersus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCGameVersus.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCGameVersusSetupOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCGameVersusSetupOptions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.GCPlacementSortCriteria.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.GCPlacementSortCriteria.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Game.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Game.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GamingCouch.GCPlayerSpawnProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GamingCouch.GCPlayerSpawnProperties.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.GamingCouch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.GamingCouch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCHud.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCHud.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCHudConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCHudConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCHudPlayersConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCHudPlayersConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCNameTag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCNameTag.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCPlayerOverhead.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCPlayerOverhead.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCPlayerPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCPlayerPosition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCPlayersHudData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCPlayersHudData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCPlayersHudDataPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCPlayersHudDataPlayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCScreenPointData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCScreenPointData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.GCScreenPointDataPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.GCScreenPointDataPoint.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.PlayersHudMeterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.PlayersHudMeterType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.PlayersHudValueType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.PlayersHudValueType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Hud.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Hud.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Log.GCLog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Log.GCLog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Log.LogLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Log.LogLevel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Log.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Log.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Utils.Assert.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Utils.Assert.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.Utils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DSB.GC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DSB.GC.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GCPlayerColorData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GCPlayerColorData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GCPlayerColorVariants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GCPlayerColorVariants.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GCPlayerStoreInput-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GCPlayerStoreInput-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GCPlayerStoreOutput-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GCPlayerStoreOutput-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GamingCouchMenuItems.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GamingCouchMenuItems.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GamingCouchWebGLBuildMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GamingCouchWebGLBuildMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.GamingCouchWebGLRuntimeInfoSidecarPostprocess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.GamingCouchWebGLRuntimeInfoSidecarPostprocess.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Global.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Global.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "changelog/CHANGELOG.md",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/CHANGELOG.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "changelog/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/toc.html"
+        },
+        ".json": {
+          "relative_path": "changelog/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "license/LICENSE.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/LICENSE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "license/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "license/toc.html"
+        },
+        ".json": {
+          "relative_path": "license/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/README.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/devapp-local-play-contract.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/devapp-local-play-contract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/platform-runtime-contract.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/platform-runtime-contract.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
