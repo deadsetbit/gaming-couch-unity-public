@@ -1,0 +1,17 @@
+{
+  "id": "platform-data-max-player-gate-failure",
+  "valid": false,
+  "issues": [
+    {
+      "code": "PlatformDataEnabledSeatsAboveMaximum",
+      "severity": "Error"
+    }
+  ],
+  "capture": {
+    "assert": true,
+    "success": false
+  },
+  "write": {
+    "assert": false
+  }
+}

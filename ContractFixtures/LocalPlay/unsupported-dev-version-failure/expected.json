@@ -1,0 +1,16 @@
+{
+  "id": "unsupported-dev-version-failure",
+  "valid": false,
+  "issues": [
+    {
+      "code": "UnsupportedDevVersion",
+      "severity": "Error"
+    }
+  ],
+  "capture": {
+    "assert": false
+  },
+  "write": {
+    "assert": false
+  }
+}

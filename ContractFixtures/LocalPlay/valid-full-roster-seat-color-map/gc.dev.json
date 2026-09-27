@@ -1,0 +1,47 @@
+{
+  "devVersion": 2,
+  "entryKey": "duel",
+  "seed": "12345",
+  "seats": [
+    {
+      "name": "P1",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P2",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P3",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P4",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P5",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P6",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P7",
+      "enabled": true,
+      "isBot": false
+    },
+    {
+      "name": "P8",
+      "enabled": true,
+      "isBot": false
+    }
+  ]
+}
