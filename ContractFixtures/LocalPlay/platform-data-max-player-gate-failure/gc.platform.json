@@ -1,0 +1,33 @@
+{
+  "platformDataVersion": 2,
+  "game": {
+    "key": "contract-game",
+    "name": "Contract Game",
+    "entries": {
+      "duel": {
+        "name": "Contract Entry",
+        "minPlayers": 1,
+        "maxPlayers": 2,
+        "botSupport": true
+      }
+    }
+  },
+  "platform": {
+    "id": "unity"
+  },
+  "properties": {
+    "colors": {
+      "players": {},
+      "seatOrder": [
+        "blue",
+        "red",
+        "green",
+        "cyan",
+        "yellow",
+        "purple",
+        "pink",
+        "brown"
+      ]
+    }
+  }
+}

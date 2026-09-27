@@ -1,0 +1,35 @@
+{
+  "id": "missing-platform-data-warning-only",
+  "valid": true,
+  "issues": [
+    {
+      "code": "MissingPlatformDataFile",
+      "severity": "Warning"
+    }
+  ],
+  "capture": {
+    "assert": true,
+    "success": true,
+    "entryKey": "duel",
+    "seed": 12345,
+    "players": [
+      {
+        "playerIndex": 0,
+        "type": "player",
+        "color": "blue"
+      }
+    ],
+    "seatIdentities": [
+      {
+        "sourceSeatIndex": 1,
+        "stableKey": "1",
+        "label": "Seat 1",
+        "playerType": "player",
+        "playerColor": "blue"
+      }
+    ]
+  },
+  "write": {
+    "assert": false
+  }
+}
