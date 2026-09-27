@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Changelog | Gaming Couch | 0.1.0-alpha.12 </title>
+      <title>Changelog | Gaming Couch | 0.1.0-alpha.13 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Changelog | Gaming Couch | 0.1.0-alpha.12 ">
+      <meta name="title" content="Changelog | Gaming Couch | 0.1.0-alpha.13 ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -89,8 +89,22 @@
 <h1 id="changelog">Changelog</h1>
 
 <h2 id="unreleased">[Unreleased]</h2>
-<h2 id="010-alpha12---2026-09-27">[0.1.0-alpha.12] - 2026-09-27</h2>
+<h2 id="010-alpha13---2026-09-27">[0.1.0-alpha.13] - 2026-09-27</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li><code>GamingCouch/Documentation</code> opens the documentation for the installed package version. The Start Screen has a footer with Documentation and Devspace buttons and the installed package version under them.</li>
+</ul>
 <h3 id="changed">Changed</h3>
+<ul>
+<li>The Start Screen replaces &quot;Create New Example Scene&quot; and &quot;Wire Example Game&quot;, which looked like alternatives but only worked in that order, with one <code>Create Example Scene</code> button. It opens a popup with two options. Template makes <code>GCTemplateScene</code> with <code>GCExampleTemplate</code> and the stock player. Example Game makes <code>GCExampleGameScene</code> with <code>GCExampleGame</code> and <code>GCExamplePlayer</code> wired directly, with no template step. Each option has a one-line caption and neither needs the other to run first. Running an option again moves its previous scene, scripts and player prefab to the Trash and generates fresh copies, so it always starts from the original example; it never touches the other option's files. The <code>GamingCouch → Create Example Scene</code> menu has the same two options. An existing <code>GCExampleScene</code> from the old flow is left alone.</li>
+<li>The bot-support warning on the Start Screen and in the Local Play Settings inspector now names the game mode and says its private entry in Dashboard has Bot Support off. It gives two fixes. Turn on Bot Support if the game has bots for that mode, which does not add bots by itself, or turn the bot seats off in DevApp playtest settings. After a Dashboard change, returning to DevApp pulls the updated platform data into the project. The issue code, entry key, field and path move to a details line at the end.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Fixed a new example scene being left unsaved on the first run. When Unity had to compile the generated scripts first, the listener and player prefab were wired after the compile, but the scene was not saved and the only report was a Console line. The scene is now saved once it is wired, and the Start Screen says it is ready.</li>
+</ul>
+<h2 id="010-alpha12---2026-09-27">[0.1.0-alpha.12] - 2026-09-27</h2>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>Applying the WebGL build setup now requires disabled compression, even when optional build-setting rows are deselected, so uploaded builds use the compression format the platform supports.</li>
 </ul>
@@ -98,7 +112,7 @@
 <ul>
 <li>The old documentation site at <code>https://deadsetbit.github.io/gaming-couch-unity/</code> is gone, and the source repository <code>https://github.com/deadsetbit/gaming-couch-unity</code> is private. Both return 404. The documentation, changelog and licence links in 0.1.0-alpha.7 and earlier point there, so Package Manager's links for those versions are dead. Install with DevApp, or from <code>https://github.com/deadsetbit/gaming-couch-unity-public.git#unity-&lt;version&gt;</code> with a tag from the <a href="https://github.com/deadsetbit/gaming-couch-unity-public/tags">mirror's tag list</a>, and read each release's documentation under <code>https://deadsetbit.github.io/gaming-couch-unity-public/</code>.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>Fixed a seat being one color in DevApp and another in the running game, from seat 4 on. DevApp ordered its seat colors blue, red, green, cyan, yellow, purple, pink, brown, and the package assigned them blue, red, green, yellow, purple, pink, cyan, brown, so a developer testing with four or more players was told one color and shown another. <code>gc.platform.json</code> now carries the platform's own order as <code>properties.colors.seatOrder</code>, and editor play and the Local Play Settings inspector both read seat colors from it, so neither side keeps a list that has to be held in step by hand. A <code>gc.platform.json</code> written before the field existed reports invalid platform data and the run falls back to <code>GCPlayerColorData.SeatOrder</code>, which holds the same order, so colors are right either way; pull platform data again in DevApp to clear the warning. <code>GCPlayerColor</code>'s declaration order is untouched, because it is not the seat order and reordering it would change every value a game has serialized against it.</li>
 <li>Fixed the package logging seven <code>CS0414</code> warnings in every consumer's player build. <code>GCDevUtils</code> declared its time scale shortcut settings outside the <code>#if UNITY_EDITOR</code> guard that wrapped the only code reading them, so a player build compiled the fields and nothing that used them. The settings now sit behind the same guard. The play mode restart settings escaped the warning only because their reader was unguarded dead code in a player build; both are guarded now, leaving fluctuate FPS as the one part of the class that runs in a build.</li>
@@ -111,22 +125,22 @@
 </ul>
 <h2 id="earlier-alpha-releases-010-alpha8010-alpha11">Earlier alpha releases (0.1.0-alpha.8–0.1.0-alpha.11)</h2>
 <p>These releases shipped with the following notes grouped under Unreleased. They are retained here as a combined history.</p>
-<h3 id="added">Added</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li>The platform runtime contract and the DevApp / local-play contract now ship with the package, under <code>Documentation~/</code>, and are linked from the README. They are the JS-to-Unity wire spec and the <code>gc.dev.json</code> / <code>gc.platform.json</code> spec; previously they were readable only in the package's own repository.</li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li>The README's install section now leads with DevApp, which installs the package and keeps it on the version the platform expects. The git-URL install stays as the manual alternative, and is pinned: Unity offers no update affordance for one.</li>
 <li>Documentation, changelog and licence links in the package manifest, and every API reference link in the README, now point into this release's own folder under <code>https://deadsetbit.github.io/gaming-couch-unity-public/</code>. Each release's documentation is published separately and is never overwritten, so a pinned install reads the documentation for the version it actually has rather than for whatever shipped most recently.</li>
 <li>Every documentation page states the version it documents and carries a link to <a href="https://gamingcouch.com">https://gamingcouch.com</a>.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>Fixed a game played in the Unity Editor connecting to DevApp and then never becoming the running game: DevApp stayed on its idle view and phones kept showing &quot;No game running&quot;, while scoring and game-over events still arrived in DevApp's runtime console. On a fresh connection the package could send its first runtime snapshot ahead of the <code>runtime_register</code> that introduces the runtime, and DevApp discards a snapshot from a runtime it does not yet know. The package's own change detection then saw nothing new to report, so no later snapshot was sent and the runtime stayed connected but unusable for the rest of the session. Snapshots now wait until the register is queued.</li>
 </ul>
 <h2 id="010-alpha7---2026-09-10">[0.1.0-alpha.7] - 2026-09-10</h2>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>Renamed <code>ApplyDevAppInput</code> to <code>ApplyExternalPlayerInput</code>. It is the shared entry point for hosted platform input as well as DevApp input, so the old name described half of what it does. Hosted platform inputs also report as <code>platform_input</code> rather than <code>devapp_input</code> in diagnostics, so the two sources can be told apart.</li>
 <li>Narrowed <code>IGCPlayerStore</code>'s collection properties to <code>IReadOnlyList</code>. <code>GCPlayerStore</code> keeps its <code>List</code> properties and satisfies the interface explicitly, so a game that declares the concrete store and calls <code>List</code> members on it is unaffected. The derived collections are rebuilt whenever a transition is accepted, so enumerating one while eliminating players still throws -- that hazard is now documented per property.</li>
@@ -138,7 +152,7 @@
 <ul>
 <li>Removed the Codex test bridge (<code>Editor/GamingCouchCodexTestBridge.cs</code>) and its <code>Tools/run-open-unity-tests.py</code> runner. The bridge let an agent run this package's tests inside an already-open Editor by polling a request file under the user's application-data directory. It was internal agent tooling that happened to ship inside the package's <code>Editor/</code> folder, and it was inert for anyone who had not opted in, so removing it changes no package behavior. The <code>.gamingcouch/codex-bridge.enabled</code> marker file and the <code>GAMINGCOUCH_CODEX_TEST_BRIDGE</code> environment variable no longer do anything and can be deleted. The Unity CLI covers package validation (<code>unity test</code>), and its <code>com.unity.pipeline</code> channel is the supported way to drive a live Editor; <code>AGENTS.md</code> documents the flow.</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>Fixed the package failing to compile on Unity 6000.3 with <code>error CS1061: 'SerializedProperty' does not contain a definition for 'objectReferenceEntityIdValue'</code>. The scene-wiring missing-reference check gated that property behind <code>UNITY_6000_3_OR_NEWER</code>, but while the <code>EntityId</code> type ships in 6000.3, the <code>SerializedProperty.objectReferenceEntityIdValue</code> accessor only arrives in 6000.4. The guard is now <code>UNITY_6000_4_OR_NEWER</code>, which leaves 6000.3 on the deprecated but still available instance-ID path.</li>
 <li>Fixed the Codex test bridge activating in every Editor with this package installed. It was gated behind <code>#if UNITY_INCLUDE_TESTS</code>, which is active in a package consumer's Editor, so simply installing the package started a background file-polling bridge that created directories outside the project, wrote a token manifest into the user's application-data directory, and (on macOS/Linux) tightened permissions there. The bridge is now opt-in per host project -- a <code>.gamingcouch/codex-bridge.enabled</code> marker file or the <code>GAMINGCOUCH_CODEX_TEST_BRIDGE</code> environment variable -- and is completely inert without one.</li>
@@ -168,11 +182,11 @@
 <li>Fixed the start screen recomputing its scene list twice per repaint and allocating four <code>GUIStyle</code>s per row, and the pending-setup poller running a full assembly and type sweep on every editor tick on the default template path. The stock player type is now memoized, cached only on success so a tick during compilation stays free to find it later.</li>
 </ul>
 <h2 id="010-alpha6---2026-07-18">[0.1.0-alpha.6] - 2026-07-18</h2>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li>Rebaked the WebGL runtime-info payload (<code>Runtime/Resources/GamingCouchRuntimeInfo.json</code>) and package version to <code>0.1.0-alpha.6</code>; <code>gameProtocolVersion</code> stays <code>1</code>.</li>
 </ul>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li>Added a one-command version-bump release protocol (<code>Tools/bump-version.py</code> plus <code>npm run release:*</code> shortcuts) that bumps <code>package.json</code>, re-bakes the runtime-info payload, verifies, commits, and creates the <code>unity-&lt;version&gt;</code> tag. This is maintainer tooling and does not change package runtime behavior.</li>
 </ul>
@@ -181,25 +195,25 @@
 <li>Removed the Gaming Couch Unity Template link from the package documentation reference list.</li>
 </ul>
 <h2 id="010-alpha5---2026-07-14">[0.1.0-alpha.5] - 2026-07-14</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>Added a &quot;Gaming Couch scenes&quot; section at the top of the Start Screen that lists project scenes containing a <code>GamingCouch</code> component, highlights the active scene, and lets you open a pre-existing scene without opening each scene to detect it. Unity crash-recovery <code>_Recovery</code> backups are excluded from the list.</li>
 <li>Added a &quot;Wire example game&quot; action (Start Screen button and menu) that upgrades the barebones template scene in place into the full playable example, swapping the listener component and repointing the player prefab without overwriting existing work.</li>
 </ul>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>Restructured the generated example into two self-contained, swappable game scripts sharing one scene: a barebones <code>GCExampleTemplate</code> (wiring demo, stock <code>GCPlayer</code>) and a full <code>GCExampleGame</code> (playable loop, <code>GCExamplePlayer</code>). Each script is itself the platform listener and implements the <code>SendMessage</code> lifecycle methods directly, with no adapter or base class, and the example now compiles against the real runtime API so generation cannot silently drift from it. Renamed <code>GCGameExample</code> to <code>GCExampleGame</code> and <code>GCPlayerExample</code> to <code>GCExamplePlayer</code> accordingly.</li>
 <li>Changed &quot;Create New Example Scene&quot; to reset the example to a single canonical <code>GCExampleScene</code> instead of adding a scene alongside the existing one. The action is now idempotent: it moves previous example scenes and any leftover blocking folders to the Trash (recoverable) and reuses valid existing example scripts and the player prefab rather than deleting and regenerating them.</li>
 <li>Hid the Active Scene Name/Path summary in the Start Screen whenever the active scene already appears in the Gaming Couch scenes list, keeping it only as a fallback for an active scene with no <code>GamingCouch</code> component.</li>
 </ul>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>Fixed the WebGL runtime attestation reporting a stale version: the baked <code>Runtime/Resources/GamingCouchRuntimeInfo.json</code> was left at <code>0.1.0-alpha.3</code> after the <code>0.1.0-alpha.4</code> version bump and is now rebaked to match the released package version.</li>
 <li>Fixed editor console noise and IMGUI layout errors during example scene setup by guarding the <code>[ExecuteInEditMode]</code> log initialization behind play mode and running Start Screen actions on the next editor tick instead of mid-<code>OnGUI</code>.</li>
 <li>Fixed example-folder cleanup so it is honestly recoverable: imported folders are moved to the Trash, a raw un-imported folder is removed only when empty, and a non-empty un-imported folder is refused rather than permanently deleted.</li>
 </ul>
 <h2 id="010-alpha4---2026-07-09">[0.1.0-alpha.4] - 2026-07-09</h2>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>Added WebGL runtime-info drift detection: exports now write canonical root <code>gc.runtime-info.json</code>, bake the same payload into an early <code>GamingCouchRegisterRuntimeInfo</code> callback before splash screen, keep <code>GamingCouchInstanceStarted()</code> payload-free, let the hosted SDK fail startup on sidecar/runtime drift, and make upload validation require and validate <code>gc.runtime-info.json</code>.</li>
 <li>Updated Unity build diagnostics: <code>gc.unity-build-info.json</code> now has runtime identity, build environment, host OS diagnostics, and build result sections; upload processing preserves it when present, but upload validation does not require or validate it.</li>
@@ -218,19 +232,19 @@
 <li>Protocol-version decision: the current recommendation is no <code>gameProtocolVersion</code> bump if client/SDK adapters already translate legacy payloads and send current payloads to this package. Any bump remains a release-owner/user decision based on rollout risk and adapter compatibility.</li>
 </ul>
 <h2 id="010-alpha3---2026-05-26">[0.1.0-alpha.3] - 2026-05-26</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>Added the Gaming Couch Start Screen with quick-start setup actions that scaffold a working example scene from scratch: the <code>GamingCouch</code> object, an example game listener, an example player prefab, generated example scripts, and the scene wiring between them.</li>
 <li>Added Start Screen project-readiness reporting so setup surfaces which pieces are still missing.</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Fixed editor keyboard input priority during local editor play.</li>
 <li>Fixed DevApp runtime game-over and reconnect handling.</li>
 <li>Fixed a WebGL export preview compile error.</li>
 </ul>
 <h2 id="010-alpha2---2026-05-09">[0.1.0-alpha.2] - 2026-05-09</h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Added root <code>gc.dev.json</code> sync for Unity editor local play settings.</li>
 <li>Added a file-backed <code>GamingCouch</code> inspector flow for entry, seed, and eight-seat roster edits.</li>
@@ -240,7 +254,7 @@
 <li>Added editor-only <code>com.unity.nuget.newtonsoft-json</code> dependency for structured JSON parsing and unknown-field-preserving <code>gc.dev.json</code> writes.</li>
 <li>Added Gaming Couch web export settings documentation for the Unity 6 workflow, project-local template install, release defaults, no-overwrite behavior, warning-only build-target policy, and v1 playtest exclusion.</li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>This development line now targets Unity 6 for Gaming Couch web export settings and splash/logo removal.</li>
 <li>Unity editor local play settings now use root <code>gc.dev.json</code> as the source of truth instead of old scene-serialized entry/player settings.</li>
@@ -264,7 +278,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.12" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.12</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.13" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.13</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
         </div>
       </div>
     </footer>

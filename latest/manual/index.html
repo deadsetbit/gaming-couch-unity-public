@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | Gaming Couch | 0.1.0-alpha.12 </title>
+      <title> | Gaming Couch | 0.1.0-alpha.13 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.12 ">
+      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.13 ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -159,22 +159,32 @@ to a 16:9 aspect ratio.</li>
 <p>The fastest way to a working scene is the tooling — you do not need to wire anything by hand:</p>
 <ol>
 <li>Open <strong><code>GamingCouch → Start Screen</code></strong>.</li>
-<li>Choose <strong><code>Create New Example Scene</code></strong> (also on the <code>GamingCouch</code> menu directly).</li>
+<li>Press <strong><code>Create Example Scene</code></strong> and pick one of its two options. Both are also under
+<code>GamingCouch → Create Example Scene</code> in the menu.
+<ul>
+<li><strong>Template</strong> makes <code>GCTemplateScene</code> with <code>GCExampleTemplate</code>, an empty game that logs each
+lifecycle step. Start your own game here.</li>
+<li><strong>Example Game</strong> makes <code>GCExampleGameScene</code> with <code>GCExampleGame</code> and <code>GCExamplePlayer</code>, a
+playable game with scoring, timed rounds and elimination. Read it to learn the SDK.</li>
+</ul>
+</li>
 <li>Press <strong>Play</strong>.</li>
 </ol>
-<p><code>Create New Example Scene</code> offers to save your current scene, creates a fresh scene, wires the
-<code>GamingCouch</code> object, and generates a barebones example <code>Game</code> listener (<code>GCExampleTemplate</code>) plus a
-stock player prefab. The new scene shows an on-screen note in Game View (and logs a clickable console
-message) pointing to the generated <code>GCExampleTemplate</code> file under <code>Assets/GamingCouch/GCExample</code> —
-read it to see the whole platform contract in one file, then grow it into your own game. Players spawn
-only at runtime, so the Game View is otherwise empty until you press Play.</p>
+<p>Either option offers to save your current scene, creates a fresh scene, wires the <code>GamingCouch</code>
+object, and generates the example scripts and player prefab under <code>Assets/GamingCouch/GCExample</code>.
+Neither needs the other to run first. Running an option again starts it over: its previous scene,
+scripts and player prefab go to the Trash and fresh copies are generated, so move the scripts into
+your own folder before you change them. Each option only touches its own files, so you can keep
+both. On
+a first run Unity compiles the generated scripts before the scene is wired; the Start Screen says when
+the scene is ready and saved. The new scene shows an on-screen note in Game View (and logs a
+clickable console message) pointing to the generated files. Players spawn only at runtime, so the
+Game View is otherwise empty until you press Play.</p>
 <blockquote>
-<p><strong>New here? Start from the generated example.</strong> <code>Create New Example Scene</code> gives you
-<code>GCExampleTemplate</code>: a barebones <em>wiring demo</em> — the minimum a listener does to complete the platform
-loop, which you copy and grow into your own game. Want a fuller reference? Run <code>Wire Example Game</code> to
-swap in <code>GCExampleGame</code> + <code>GCExamplePlayer</code>, a small but complete <em>playable loop</em> (scoring, rounds,
-per-player input). The snippets below are the same wiring, isolated topic by topic, for when you set
-up your own scene.</p>
+<p><strong>New here?</strong> The template is the minimum a listener does to complete the platform loop, in one
+file you copy and grow into your own game. The example game is the same shape with a real game loop
+in it. The snippets below are the same wiring, isolated topic by topic, for when you set up your
+own scene.</p>
 </blockquote>
 <p>Other menu entries you will use:</p>
 <ul>
@@ -529,7 +539,7 @@ Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The H
 <p>This is planned for the near future to be able to visualize the HUD in the editor as well.</p>
 <h2 id="what-next">What next?</h2>
 <ul>
-<li>Grow the generated example: after <a href="#quick-setup">Quick Setup</a>, read and extend <code>GCExampleTemplate</code> under <code>Assets/GamingCouch/GCExample</code> (or run <code>Wire Example Game</code> for the fuller <code>GCExampleGame</code> + <code>GCExamplePlayer</code>).</li>
+<li>Grow the generated example: after <a href="#quick-setup">Quick Setup</a>, read and extend <code>GCExampleTemplate</code> under <code>Assets/GamingCouch/GCExample</code>, and read <code>GCExampleGame</code> + <code>GCExamplePlayer</code> from the Example Game option of <code>Create Example Scene</code> for a fuller reference.</li>
 <li>Browse the full <a href="https://deadsetbit.github.io/gaming-couch-unity-public/latest/api">API documentation</a>.</li>
 </ul>
 <h2 id="creating-a-unity-project-from-scratch">Creating a Unity project from scratch</h2>
@@ -543,7 +553,7 @@ Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The H
 <ul>
 <li>This README — the integration guide.</li>
 <li><a href="https://deadsetbit.github.io/gaming-couch-unity-public/latest/api">API documentation</a> — generated per-member reference.</li>
-<li>Example project — generate one inside the Unity editor with <code>GamingCouch → Create New Example Scene</code>; it creates an editable <code>GCExampleTemplate</code> under <code>Assets/GamingCouch/GCExample</code> (run <code>GamingCouch → Wire Example Game</code> for the full <code>GCExampleGame</code> + <code>GCExamplePlayer</code>).</li>
+<li>Example project — generate one inside the Unity editor with <code>GamingCouch → Create Example Scene → Template</code> (an editable <code>GCExampleTemplate</code>) or <code>→ Example Game</code> (the full <code>GCExampleGame</code> + <code>GCExamplePlayer</code>), both under <code>Assets/GamingCouch/GCExample</code>.</li>
 </ul>
 <p><strong>Internal (platform &amp; DevApp maintainers)</strong></p>
 <ul>
@@ -569,7 +579,7 @@ Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The H
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.12" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.12</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.13" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.13</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
         </div>
       </div>
     </footer>
