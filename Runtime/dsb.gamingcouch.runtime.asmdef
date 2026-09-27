@@ -1,0 +1,13 @@
+{
+    "name": "GamingCouch",
+    "references": [
+        "Unity.InputSystem"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0.0",
+            "define": "GC_INPUT_SYSTEM"
+        }
+    ]
+}
