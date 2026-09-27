@@ -3896,6 +3896,12 @@ references:
   commentId: T:Global.GCPlayerColorData
   fullName: GCPlayerColorData
   nameWithType: GCPlayerColorData
+- uid: Global.GCPlayerColorData.SeatOrder
+  name: SeatOrder
+  href: api/Global.GCPlayerColorData.html#Global_GCPlayerColorData_SeatOrder
+  commentId: F:Global.GCPlayerColorData.SeatOrder
+  fullName: GCPlayerColorData.SeatOrder
+  nameWithType: GCPlayerColorData.SeatOrder
 - uid: Global.GCPlayerColorData.Variants
   name: Variants
   href: api/Global.GCPlayerColorData.html#Global_GCPlayerColorData_Variants

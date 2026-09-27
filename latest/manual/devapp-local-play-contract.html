@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.11 </title>
+      <title>DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.12 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.11 ">
+      <meta name="title" content="DevApp / local-play contract | Gaming Couch | 0.1.0-alpha.12 ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -287,6 +287,12 @@ blocking raw <code>gc.dev.json</code> editing (<code>InvalidFieldsReadResult</co
 <td>RGB <code>0–255</code></td>
 <td><code>:871</code></td>
 </tr>
+<tr>
+<td><code>properties.colors.seatOrder</code></td>
+<td>string[]</td>
+<td>Seat 1 first, at least 8 known color names, no repeats</td>
+<td><code>TryReadSeatColorOrder</code></td>
+</tr>
 </tbody>
 </table>
 <pre><code class="lang-json">{
@@ -300,7 +306,10 @@ blocking raw <code>gc.dev.json</code> editing (<code>InvalidFieldsReadResult</co
   },
   &quot;platform&quot;: { &quot;id&quot;: &quot;unity&quot; },
   &quot;properties&quot;: {
-    &quot;colors&quot;: { &quot;players&quot;: { &quot;blue&quot;: { &quot;base&quot;: [0,0,0], &quot;muted&quot;: [0,0,0], &quot;mutedDarker&quot;: [0,0,0] } } }
+    &quot;colors&quot;: {
+      &quot;players&quot;: { &quot;blue&quot;: { &quot;base&quot;: [0,0,0], &quot;muted&quot;: [0,0,0], &quot;mutedDarker&quot;: [0,0,0] } },
+      &quot;seatOrder&quot;: [&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;yellow&quot;, &quot;purple&quot;, &quot;pink&quot;, &quot;brown&quot;]
+    }
   }
 }
 </code></pre>
@@ -363,7 +372,7 @@ Fallback values (<code>Runtime/GCPlayOptions.cs:83-112, 302-311</code>):</p>
 <li><code>source.platformDataVersion</code>: the version the file declared, when <code>platformDataVersion</code> itself
 parsed (<code>BuildFallback</code>, <code>Editor/GCPlatformDataFile.cs</code>) — so an <code>invalid</code> fallback typically
 carries a real version; <code>-1</code> (unavailable) only when no version could be read at all, as with a
-missing file. Default player colors.</li>
+missing file. Default player colors, and the built-in seat order of §5.</li>
 </ul>
 <p>Unity emits <code>gc.metadata.*</code> diagnostics for the fallback and never writes or repairs
 <code>gc.platform.json</code>.</p>
@@ -374,9 +383,12 @@ capture at <code>:455-501</code>):</p>
 <ul>
 <li><strong>Skip disabled seats.</strong> Iterate seats in order; enabled seats get a dense <strong>zero-based</strong>
 <code>playerIndex</code> (capture order).</li>
-<li><strong>Fixed seat → color map by seat position</strong> (<code>SeatColors</code>, <code>:262-272</code>): seat 1 → <code>blue</code>, 2 → <code>red</code>,
-3 → <code>green</code>, 4 → <code>yellow</code>, 5 → <code>purple</code>, 6 → <code>pink</code>, 7 → <code>cyan</code>, 8 → <code>brown</code>
-(fixture <code>valid-full-roster-seat-color-map</code>).</li>
+<li><strong>Seat → color by seat position, in the order the platform names.</strong>
+<code>properties.colors.seatOrder</code> gives seat 1 the first color and seat 8 the eighth, so a seat is the
+color DevApp's seat list paints it. With no <code>gc.platform.json</code> there is no order to read and
+<code>GCPlayerColorData.SeatOrder</code> stands in: <code>blue</code>, <code>red</code>, <code>green</code>, <code>cyan</code>, <code>yellow</code>, <code>purple</code>,
+<code>pink</code>, <code>brown</code> (fixture <code>valid-full-roster-seat-color-map</code>). <code>GCPlayerColor</code>'s declaration order
+is not this order and never was.</li>
 <li><code>playerSeed</code> is derived from the normalized seat name — FNV-1a32 of the name mapped into the
 <code>1</code>–<code>999999</code> seed range (<code>GCPlayerSeed.FromPlayerName</code> → <code>ToSeed</code>, <code>Runtime/GCPlayerSeed.cs:11, 34-36</code>).</li>
 <li>Each captured player gets a parallel <strong><code>GCSeatIdentity</code></strong> carrying <strong>1-based</strong> seat provenance
@@ -673,7 +685,7 @@ The seven cases:</p>
 </tr>
 <tr>
 <td><code>valid-full-roster-seat-color-map</code></td>
-<td>All eight seats enabled: the whole §7 seat → color map</td>
+<td>All eight seats enabled: the whole §7 seat → color map, taken from <code>seatOrder</code></td>
 </tr>
 <tr>
 <td><code>missing-platform-data-warning-only</code></td>
@@ -718,7 +730,7 @@ is the source of truth.</p>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.11" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.11</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.12" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.12</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
         </div>
       </div>
     </footer>

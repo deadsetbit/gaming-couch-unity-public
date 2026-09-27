@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | Gaming Couch | 0.1.0-alpha.11 </title>
+      <title> | Gaming Couch | 0.1.0-alpha.12 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.11 ">
+      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.12 ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -369,6 +369,24 @@ core mechanics (such as combat) because it is less accessible on touch-screen co
 occasional actions like &quot;reset player&quot; when stuck. It also has <strong>no keyboard mapping in the editor</strong>,
 so you cannot exercise it during local editor play — design your game to work without it.</p>
 </blockquote>
+<h3 id="the-editor-playtest-keyboard">The editor playtest keyboard</h3>
+<p>Your game never reads Unity input for players. The platform and the DevApp deliver it as data, and the
+only keyboard the package itself reads is the one that drives a player during editor play. Number keys
+<code>1</code> to <code>8</code> choose which seat it drives, using the seat numbers DevApp shows.</p>
+<p>Which keys that keyboard uses follows your project's <strong>Active Input Handling</strong>. You choose that setting.
+The package compiles and playtests under Old, New, and Both, and nothing in Quick Setup reads or writes
+it.</p>
+<ul>
+<li>With <code>com.unity.inputsystem</code> installed and Active Input Handling set to New or Both, the keyboard is
+WASD and the arrow keys, <code>Space</code> for primary and <code>Left Ctrl</code> for secondary. Its axes read -1, 0 or 1
+with no ramp.</li>
+<li>Otherwise it reads the Input Manager, using the axis and button names set on the <code>GamingCouch</code>
+component. Those default to <code>Horizontal</code>, <code>Vertical</code>, <code>Jump</code> and <code>Fire1</code>, and the Input Manager ramps
+a key axis up to full over a few frames rather than snapping.</li>
+</ul>
+<p>Set Active Input Handling to New without installing <code>com.unity.inputsystem</code> and there is no keyboard to
+read. The editor keyboard is then unavailable, and the package logs why once the first game starts.
+DevApp controllers still work.</p>
 <h2 id="player-placement">Player placement</h2>
 <p>You do not sort players yourself. Define the ranking in <code>SetupGameVersus</code> via <code>placementCriteria</code>, then
 drive it by calling the <code>GCPlayer</code> state methods. Placement is evaluated by each criterion in order:</p>
@@ -503,6 +521,8 @@ files the platform needs at upload — they are generated for you; you do not ed
 <p><strong>Is online multiplayer supported?</strong>
 Online multiplayer is not currently supported.</p>
 <p>To test online it can be feasible over screen sharing in discord, google meet, etc. for this, you can share the mobile controller from the Gaming Couch DevApp or upload the build to gaming couch.</p>
+<p><strong>Which Active Input Handling should my project use?</strong>
+Any of the three. See <a href="#the-editor-playtest-keyboard">The editor playtest keyboard</a> for what changes.</p>
 <p><strong>Can I test the HUD in the editor?</strong>
 Currently no. The HUD is rendered by the hosted platform, so it only appears when your game runs inside Gaming
 Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The HUD</a>.</p>
@@ -549,7 +569,7 @@ Couch — not in the editor or a plain WebGL build. See <a href="#the-hud">The H
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.11" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.11</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.12" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.12</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
         </div>
       </div>
     </footer>
