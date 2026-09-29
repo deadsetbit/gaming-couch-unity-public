@@ -1,0 +1,54 @@
+{
+  "id": "valid-sparse-roster-capture",
+  "valid": true,
+  "issues": [],
+  "capture": {
+    "assert": true,
+    "success": true,
+    "entryKey": "duel",
+    "seed": 12345,
+    "players": [
+      {
+        "playerIndex": 0,
+        "type": "player",
+        "color": "green"
+      },
+      {
+        "playerIndex": 1,
+        "type": "player",
+        "color": "blue"
+      },
+      {
+        "playerIndex": 2,
+        "type": "player",
+        "color": "brown"
+      }
+    ],
+    "seatIdentities": [
+      {
+        "sourceSeatIndex": 1,
+        "stableKey": "1",
+        "label": "Seat 1",
+        "playerType": "player",
+        "playerColor": "blue"
+      },
+      {
+        "sourceSeatIndex": 3,
+        "stableKey": "3",
+        "label": "Seat 3",
+        "playerType": "player",
+        "playerColor": "green"
+      },
+      {
+        "sourceSeatIndex": 8,
+        "stableKey": "8",
+        "label": "Seat 8",
+        "playerType": "player",
+        "playerColor": "brown"
+      }
+    ]
+  },
+  "write": {
+    "assert": false
+  }
+}
