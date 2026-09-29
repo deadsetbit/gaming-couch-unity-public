@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title> | Gaming Couch | 0.1.0-alpha.14 </title>
+      <title> | Gaming Couch | 0.1.0-alpha.15 </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.14 ">
+      <meta name="title" content=" | Gaming Couch | 0.1.0-alpha.15 ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -105,7 +105,7 @@ a playable example, then covers each topic you need as your game grows.</p>
 <li><a href="#build-and-upload">Build and upload</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="#more-documentation">More documentation</a></li>
-<li><a href="#manual-install">Manual install</a></li>
+<li><a href="#install-the-package-by-hand">Install the package by hand</a></li>
 </ul>
 <h2 id="how-your-game-runs">How your game runs</h2>
 <p>Gaming Couch runs your game as a WebGL build inside the platform. The platform provides the menus,
@@ -152,7 +152,7 @@ account yet? Ask for one on <a href="https://discord.gg/UqSX9ZGz5u">Discord</a>.
 offers it.</li>
 <li>Open the project in Unity and continue with <a href="#quick-setup">Quick setup</a>.</li>
 </ol>
-<p>To install without DevApp, see <a href="#manual-install">Manual install</a>.</p>
+<p>To add the package yourself instead, see <a href="#install-the-package-by-hand">Install the package by hand</a>.</p>
 <h2 id="quick-setup">Quick setup</h2>
 <p>The editor tools create a working scene for you:</p>
 <ol>
@@ -162,8 +162,7 @@ offers it.</li>
 <ul>
 <li><strong>Template</strong> creates <code>GCTemplateScene</code> with <code>GCExampleTemplate</code>, an empty game that logs each
 lifecycle step. Start your own game from this one.</li>
-<li><strong>Example Game</strong> creates <code>GCExampleGameScene</code>, a last-ball-standing game. Players bump each other
-inside a shrinking ring, and touching the ring eliminates them. Read it to learn the SDK.</li>
+<li><strong>Example Game</strong> creates <code>GCExampleGameScene</code>, a complete game. Read it to learn the SDK.</li>
 </ul>
 </li>
 <li>Press <strong>Play</strong>.</li>
@@ -173,7 +172,9 @@ object set up. It generates the example scripts and player prefab under <code>As
 <ul>
 <li>You can run the options in any order and keep both. Each one only touches its own files.</li>
 <li>Running an option again moves its previous scene, scripts and prefab to the Trash and generates
-new copies. Move the scripts to your own folder before you edit them.</li>
+new copies. Before you edit a generated script, move it to your own folder and rename the file and
+class, for example to <code>Game.cs</code> and <code>Game</code>. Rename the file in Unity's Project window, so the scene
+and prefab keep their links to it.</li>
 <li>On the first run Unity compiles the generated scripts before it sets up the scene. The Start Screen
 tells you when the scene is ready and saved.</li>
 <li>Both options log a clickable link to the generated files in the Console. The template scene also
@@ -181,13 +182,15 @@ shows it as a note in the Game View. Players spawn only at runtime, so the Game 
 empty until you press Play.</li>
 </ul>
 <p>The template is the smallest listener that completes a round, in one file you can copy and grow. The
-example game has the same structure with a real game in it. The sections after this one show the same
-code topic by topic, for when you set up your own scene.</p>
+example game has the same kind of listener, with a real game's rules in a separate mode script. The
+sections after this one show the same code topic by topic, for when you set up your own scene.</p>
 <h3 id="the-example-game">The example game</h3>
-<p>The code is in four scripts. Only the first one talks to Gaming Couch.</p>
+<p>The code is in five scripts. Only the first one calls <code>GamingCouch.Instance</code>.</p>
 <ul>
-<li><code>GCExampleGame</code> is the listener. It sets up the HUD and placement in <code>GamingCouchSetup</code>, spawns the
-players in <code>GamingCouchPlay</code>, reads controller input, eliminates players and calls <code>GameOver</code>.</li>
+<li><code>GCExampleGame</code> is the listener. It sets up the game in <code>GamingCouchSetup</code>, spawns the players in
+<code>GamingCouchPlay</code>, reads controller input and calls <code>GameOver</code> when the mode has a winner.</li>
+<li><code>GCExampleSurvivalMode</code> holds the rules: spawn positions, bots, the ring, eliminations and the
+tie-break. It also chooses the HUD and placement settings.</li>
 <li><code>GCExamplePlayer</code> is the ball. It handles the player colour, movement, pushing and sprint stamina.
 The HUD meter shows the stamina.</li>
 <li><code>GCExampleRing</code> runs the ring cycles and draws the ring.</li>
@@ -202,10 +205,13 @@ scene.</li>
 <a href="#build-and-upload">Build and upload</a>.</li>
 </ul>
 <h2 id="the-game-script">The game script</h2>
+<p>The <code>GamingCouch</code> object has a <code>Listener</code> field that holds your game's GameObject. The package calls
+<code>GamingCouchSetup</code> and <code>GamingCouchPlay</code> on that GameObject with <code>SendMessage</code>, so they can be private
+methods on any script attached to it. Quick setup fills in the field for you. Select the <code>GamingCouch</code>
+object in the example scene to see it.</p>
 <p>Your game needs two scripts:</p>
 <ul>
-<li>A listener script on a &quot;Game&quot; object. Link the object to the <code>Listener</code> field of the <code>GamingCouch</code>
-object.</li>
+<li>A listener script on the GameObject in the <code>Listener</code> field.</li>
 <li>A player script that extends <code>GCPlayer</code>.</li>
 </ul>
 <p>Declare a player store in the listener to hold the round's players, typed to your player script:</p>
@@ -342,9 +348,9 @@ lists them all.</p>
         var inputs = GamingCouch.Instance.GetInputsByPlayerIndex(player.Index);
         if (inputs == null) continue;
 
-        // Move the player with the left stick and act on the primary button.
+        // Move the player with the left stick and sprint while primary is held.
         MyMove(player, inputs.leftX, inputs.leftY);
-        if (inputs.primary) MyJump(player);
+        MySprint(player, inputs.primary);
     }
 }
 </code></pre>
@@ -406,24 +412,48 @@ does not work. The package logs why when the first game starts. DevApp controlle
 <thead>
 <tr>
 <th><code>GCPlacementSortCriteria</code></th>
-<th>Ranks by</th>
+<th>Who wins?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Score</code> / <code>ScoreDescending</code></td>
-<td>Score, ascending or descending</td>
+<td><code>EliminatedDescending</code></td>
+<td>The <strong>last</strong> player eliminated</td>
 </tr>
 <tr>
-<td><code>Eliminated</code> / <code>EliminatedDescending</code></td>
-<td>Elimination, ascending or descending</td>
+<td><code>Eliminated</code></td>
+<td>The <strong>first</strong> player eliminated</td>
 </tr>
 <tr>
-<td><code>Finished</code> / <code>FinishedDescending</code></td>
-<td>Finish, ascending or descending</td>
+<td><code>ScoreDescending</code></td>
+<td>The <strong>highest</strong> score</td>
+</tr>
+<tr>
+<td><code>Score</code></td>
+<td>The <strong>lowest</strong> score</td>
+</tr>
+<tr>
+<td><code>Finished</code></td>
+<td>The <strong>first</strong> player to finish</td>
+</tr>
+<tr>
+<td><code>FinishedDescending</code></td>
+<td>The <strong>last</strong> player to finish</td>
 </tr>
 </tbody>
 </table>
+<p>A player who is never eliminated or never finished counts as later than everyone. If players tie on
+one criterion, the next one in the list decides.</p>
+<p>If you do not set <code>placementCriteria</code>, the default is <code>EliminatedDescending</code>, <code>ScoreDescending</code>,
+<code>Finished</code>: survivors first, then the highest score, then the first to finish. Setting your own list
+replaces the default. It does not add to it.</p>
+<p>Put the criterion that decides your game first:</p>
+<ul>
+<li>A last-one-standing game: <code>EliminatedDescending</code></li>
+<li>A points game: <code>ScoreDescending</code></li>
+<li>A race: <code>Finished</code></li>
+</ul>
+<p>Add more criteria after it only if your game needs a tie-break.</p>
 <p>Set state with the <code>GCPlayer</code> methods:</p>
 <pre><code class="lang-C#">// Score
 player.SetScore(0, &quot;Dropped all coins&quot;);
@@ -440,6 +470,13 @@ player.SetFinishedPermanent(&quot;Finish line&quot;);
 player.SetFinishedRevokable(&quot;Checkpoint finish&quot;);
 player.SetRevokeFinished(&quot;Checkpoint invalidated&quot;);
 </code></pre>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Placement only sees state set through the <code>GCPlayer</code> methods above. A score kept in your own
+variable does not count, and hiding or destroying a player's GameObject does not eliminate them.
+Call the method at the moment it happens in the game, because elimination and finish rank by when
+you called it.</p>
+</div>
 <p>Revokable state counts toward placement until you revoke it. Permanent state cannot be revoked.</p>
 <h2 id="the-hud">The HUD</h2>
 <p>The platform draws the HUD from the values you set. Configure it in <code>SetupGameVersus</code> and update it
@@ -529,6 +566,10 @@ as it is. The build writes the metadata files Gaming Couch needs next to <code>i
 them.</li>
 </ol>
 <h2 id="faq">FAQ</h2>
+<p><strong>My game does not start in the editor.</strong>
+Check the Console. &quot;GamingCouch listener not set&quot; means the <code>Listener</code> field on the <code>GamingCouch</code>
+object is empty. &quot;SendMessage GamingCouchSetup has no receiver!&quot; means no script on that GameObject
+has a <code>GamingCouchSetup</code> method. Check the spelling against <a href="#the-game-script">The game script</a>.</p>
 <p><strong>Is online multiplayer supported?</strong>
 No. To play with someone remotely, share your screen over Discord, Google Meet or a similar tool, and
 share the phone controller from DevApp. You can also upload the build to Gaming Couch.</p>
@@ -546,9 +587,11 @@ every class and member.</li>
 Extend <code>GCExampleTemplate</code> into your own game, and read <code>GCExampleGame</code> and the scripts next to it
 for a full game.</li>
 </ul>
-<h2 id="manual-install">Manual install</h2>
-<p>Use this only if you do not use DevApp. In Unity, open <em>Package Manager → Add package from git URL</em>
-and enter the URL with a release tag:</p>
+<h2 id="install-the-package-by-hand">Install the package by hand</h2>
+<p>Use this to add the package yourself instead of through DevApp's <strong>Install package</strong> button. You still
+need DevApp to play in the editor. It writes <code>gc.dev.json</code> to the project root, and the package blocks
+Play Mode without that file.</p>
+<p>In Unity, open <em>Package Manager → Add package from git URL</em> and enter the URL with a release tag:</p>
 <pre><code>https://github.com/deadsetbit/gaming-couch-unity-public.git#unity-&lt;version&gt;
 </code></pre>
 <p>Pick a version from the <a href="https://github.com/deadsetbit/gaming-couch-unity-public/tags">tags</a>. Unity
@@ -573,7 +616,7 @@ does not offer updates for a git URL, so to move to a newer release, change the 
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.14" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.14</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
+          <span>Made by <a href="https://github.com/deadsetbit" target="_blank">deadsetbit</a> using <a href="https://dotnet.github.io/docfx" target="_blank">DocFX</a></span><span class="docs-facts"><span class="docs-version" data-docs-version="0.1.0-alpha.15" data-docs-manifest="https://deadsetbit.github.io/gaming-couch-unity-public/versions.json">Version 0.1.0-alpha.15</span><span class="docs-home"><a href="https://gamingcouch.com">gamingcouch.com</a></span></span>
         </div>
       </div>
     </footer>
